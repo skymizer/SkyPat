@@ -1,0 +1,14 @@
+2014-01-23 TDYa127 <a127a127@skymizer.com>
+	2.4.2 Fixes timer overflow bug.
+
+2014-01-20 TDYa127 <a127a127@skymizer.com>
+	Refine installation process.
+
+2014-01-05 Luba Tang <luba@skymizer.com>
+	Complete installable tarball.
+
+2013-12-22 Luba Tang <luba@skymizer.com>
+	To initialize "pat" project and building system
+
+2013-09-18 Luba Tang <lubatang@gmail.com>
+	To create all basic directories and building system

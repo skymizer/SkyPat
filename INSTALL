@@ -1,0 +1,44 @@
+------------------------------------------------------------------------------
+                             The pat Team 
+------------------------------------------------------------------------------
+============
+Introduction
+============
+  "pat" is a precise performance test library.
+
+========================
+Compilation Instructions
+========================
+  The simplest way to compile this package is:
+
+--------------
+Build "pat" 
+--------------
+  Dance with standard auto-tools.
+
+  1.  clone Skymizer from the repositry
+      git clone https://code.google.com/p/pat/ ${PAT}
+
+  2.  Type `cd ${PAT}' to the directory containing the source code.
+
+  3.  If there are no `configure' shell script in the directory, type
+      `./autogen.sh' to generate `configure' script.
+
+  4.  Type `./configure` to configure the package for your system. See INSTALL
+      for more details.
+      ./configure --prefix=${PAT_INSTALL} \
+
+  5.  Type `make` to compile the package
+
+  6.  Type `make install` to install the package into your system.
+
+===================
+Directory Structure
+===================
+README               - this document
+Makefile.am          - input of automake
+configure.ac         - input of autoconf
+src/                 - source code of verification tool
+include/             - include file, exported interface
+lib/                 - source code of exported interface
+examples/            - the place of examples
