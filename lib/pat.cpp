@@ -21,27 +21,27 @@
 
 #include <pat/Support/config.h>
 
-using namespace skymizer;
+using namespace pat;
 
 //===----------------------------------------------------------------------===//
 // Config
 //===----------------------------------------------------------------------===//
 /* Define if this is Unixish platform */
-#define SKYMIZER_ON_UNIX 1
+#define PAT_ON_UNIX 1
 
 /* Define if this is Win32ish platform */
-/* #undef SKYMIZER_ON_WIN32 */
+/* #undef PAT_ON_WIN32 */
 
 /* Define if this is SkyDragon platform */
-/* #undef SKYMIZER_ON_DRAGON */
+/* #undef PAT_ON_DRAGON */
 
 /* Define the numebr of iteration of performance loop */
-#define SKYMIZER_PERFORM_LOOP_TIMES 1
+#define PAT_PERFORM_LOOP_TIMES 1
 
 //===----------------------------------------------------------------------===//
 // Support
 //===----------------------------------------------------------------------===//
-namespace skymizer {
+namespace pat {
 
 template <class Container, typename Functor>
 void ForEach(const Container& c, Functor functor) {
@@ -523,10 +523,10 @@ private:
 //===----------------------------------------------------------------------===//
 // Timer Implementation
 //===----------------------------------------------------------------------===//
-#if defined(SKYMIZER_ON_WIN32)
+#if defined(PAT_ON_WIN32)
 #include "Windows/Timer.inc"
 #endif
-#if defined(SKYMIZER_ON_UNIX)
+#if defined(PAT_ON_UNIX)
 
 #include <time.h>
 #include <unistd.h>
@@ -612,13 +612,13 @@ std::string Timer::unit()
 }
 
 #endif
-#if defined(SKYMIZER_ON_DRAGON)
+#if defined(PAT_ON_DRAGON)
 #include "Dragon/Timer.inc"
 #endif
 
 } // namespace of internal
 } // namespace of testing
-} // namespace of skymizer
+} // namespace of pat
 
 
 //===----------------------------------------------------------------------===//
@@ -702,7 +702,7 @@ testing::MakeAndRegisterTestInfo(const char* pCaseName, const char* pTestName,
 }
 
 std::string testing::GetBoolAssertionFailureMessage(
-    const skymizer::testing::AssertionResult& pAssertionResult,
+    const pat::testing::AssertionResult& pAssertionResult,
     const char* pExpressionText,
     const char* pActualPredicateValue,
     const char* pExpectedPredicateValue)
@@ -738,7 +738,7 @@ testing::PerfIterator::~PerfIterator()
 bool testing::PerfIterator::next()
 {
   ++m_Counter;
-  if (m_Counter >= SKYMIZER_PERFORM_LOOP_TIMES) {
+  if (m_Counter >= PAT_PERFORM_LOOP_TIMES) {
     return false;
   }
   return true;
@@ -871,7 +871,7 @@ void testing::TestInfo::run()
   UnitTest& unittest = *UnitTest::self();
   Repeater& repeater = unittest.repeater();
   unittest.setCurrentInfo(*this);
-  skymizer::Test* test = m_pFactory->CreateTest();
+  pat::Test* test = m_pFactory->CreateTest();
   if (NULL != test) {
     repeater.OnSetUpStart(unittest);
     test->SetUp();
@@ -911,35 +911,35 @@ testing::TestInfo::addPerfPartResult(const char* pFile, int pLine)
 //===----------------------------------------------------------------------===//
 // AssertionResult
 //===----------------------------------------------------------------------===//
-skymizer::testing::AssertionResult::AssertionResult(const AssertionResult& pOther)
+pat::testing::AssertionResult::AssertionResult(const AssertionResult& pOther)
   : m_bSuccess(pOther.m_bSuccess), m_Message(pOther.m_Message) {
 }
 
-skymizer::testing::AssertionResult::AssertionResult(bool pSuccess)
+pat::testing::AssertionResult::AssertionResult(bool pSuccess)
   : m_bSuccess(pSuccess) {
 }
 
-skymizer::testing::AssertionResult
-skymizer::testing::AssertionResult::operator!() const
+pat::testing::AssertionResult
+pat::testing::AssertionResult::operator!() const
 {
   AssertionResult negative(!m_bSuccess);
   negative << m_Message;
   return negative;
 }
 
-template <typename T> skymizer::testing::AssertionResult&
-skymizer::testing::AssertionResult::operator<<(const T& pValue)
+template <typename T> pat::testing::AssertionResult&
+pat::testing::AssertionResult::operator<<(const T& pValue)
 {
-  skymizer::OStrStream OS(m_Message);
+  pat::OStrStream OS(m_Message);
   OS << pValue;
   return *this;
 }
 
-skymizer::testing::AssertionResult&
-skymizer::testing::AssertionResult::operator<<(
+pat::testing::AssertionResult&
+pat::testing::AssertionResult::operator<<(
                   ::std::ostream& (*basic_manipulator)(::std::ostream& stream))
 {
-  skymizer::OStrStream OS(m_Message);
+  pat::OStrStream OS(m_Message);
   OS << basic_manipulator;
   return *this;
 }
@@ -947,14 +947,14 @@ skymizer::testing::AssertionResult::operator<<(
 //===----------------------------------------------------------------------===//
 // AssertHelper
 //===----------------------------------------------------------------------===//
-skymizer::testing::AssertHelper::AssertHelper(TestPartResult::Type pType,
+pat::testing::AssertHelper::AssertHelper(TestPartResult::Type pType,
                                               const std::string& pFile,
                                               int pLineOfCode,
                                               const std::string& pMessage)
   : m_Result(pType, pFile, pLineOfCode, pMessage) {
 }
 
-void skymizer::testing::AssertHelper::operator=(bool pValue) const
+void pat::testing::AssertHelper::operator=(bool pValue) const
 {
   UnitTest::self()->addTestPartResult(m_Result);
 }
@@ -1068,7 +1068,7 @@ PAT_REPEATER_METHOD(OnTestProgramEnd, UnitTest)
 //===----------------------------------------------------------------------===//
 // PrettyResultPrinter
 //===----------------------------------------------------------------------===//
-class PrettyResultPrinter : public skymizer::testing::Listener
+class PrettyResultPrinter : public pat::testing::Listener
 {
 public:
   static void PrintCaseName(const std::string& pCase, const std::string& pTest)

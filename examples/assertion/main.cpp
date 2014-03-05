@@ -34,7 +34,7 @@
 // Every test contains two parts: performance test and unit-test.
 // PERFORM macro is used to measure the performance of code within a test;
 // ASSERT macro compares the actual value to an expected value by using the
-// equals operator. Skymizer remembers the performance number of a test only if
+// equals operator. pat remembers the performance number of a test only if
 // all unit-tests in the test are passed.
 //
 // The names of cases and tests should be valid C++ identifiers.
@@ -67,6 +67,6 @@ PAT_F(MyCase, factorial_test)
 // convenient?
 int main(int argc, char* argv[])
 {
-  skymizer::Test::Initialize(&argc, argv);
-  skymizer::Test::RunAll();
+  pat::Test::Initialize(&argc, argv);
+  pat::Test::RunAll();
 }

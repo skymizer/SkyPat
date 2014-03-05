@@ -6,8 +6,8 @@
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#ifndef SKYMIZER_PAT_H
-#define SKYMIZER_PAT_H
+#ifndef PAT_PAT_H
+#define PAT_PAT_H
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -19,7 +19,7 @@
 #define SKY_LOCAL  __attribute__ ((visibility ("hidden")))
 
 
-namespace skymizer {
+namespace pat {
 class Test;
 
 namespace testing {
@@ -66,32 +66,32 @@ class PAT_TEST_CLASS_NAME_(case_name, test_name) : public parent_class {\
   PAT_TEST_CLASS_NAME_(case_name, test_name)() {}\
  private:\
   virtual void TestBody();\
-  static skymizer::testing::TestInfo* const m_TestInfo;\
+  static pat::testing::TestInfo* const m_TestInfo;\
 };\
 \
-skymizer::testing::TestInfo* const PAT_TEST_CLASS_NAME_(case_name, test_name)\
+pat::testing::TestInfo* const PAT_TEST_CLASS_NAME_(case_name, test_name)\
   ::m_TestInfo =\
-    skymizer::testing::MakeAndRegisterTestInfo(\
+    pat::testing::MakeAndRegisterTestInfo(\
         #case_name, #test_name, \
-        new skymizer::testing::TestFactory<\
+        new pat::testing::TestFactory<\
             PAT_TEST_CLASS_NAME_(case_name, test_name)>);\
 void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 
 // The message handling macros.
 #define PAT_MESSAGE_AT(file, line, message, result_type) \
-  skymizer::testing::AssertHelper(result_type, file, line, message) = true\
+  pat::testing::AssertHelper(result_type, file, line, message) = true\
 
 #define PAT_MESSAGE(message, result_type) \
   PAT_MESSAGE_AT(__FILE__, __LINE__, message, result_type)
 
 #define PAT_FATAL_FAILURE(message) \
-  return PAT_MESSAGE(message, skymizer::testing::TestPartResult::kFatalFailure)
+  return PAT_MESSAGE(message, pat::testing::TestPartResult::kFatalFailure)
 
 #define PAT_NONFATAL_FAILURE(message) \
-  PAT_MESSAGE(message, skymizer::testing::TestPartResult::kNonFatalFailure)
+  PAT_MESSAGE(message, pat::testing::TestPartResult::kNonFatalFailure)
 
 #define PAT_SUCCESS(message) \
-  PAT_MESSAGE(message, skymizer::testing::TestPartResult::kSuccess)
+  PAT_MESSAGE(message, pat::testing::TestPartResult::kSuccess)
 
 // The GNU compiler emits a warning if nested "if" statements are followed by
 // an "else" statement and braces are not used to explicitly disambiguate the
@@ -107,11 +107,11 @@ void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 // represenation of expression as it was passed into the EXPECT_TRUE.
 #define PAT_TEST_BOOLEAN(expression, text, actual, expected, fail) \
   PAT_UNAMBIGUOUS_ELSE_BLOCKER \
-  if (const skymizer::testing::AssertionResult _ar_ = \
-      skymizer::testing::AssertionResult(expression)) \
+  if (const pat::testing::AssertionResult _ar_ = \
+      pat::testing::AssertionResult(expression)) \
     PAT_SUCCESS(""); \
   else \
-    fail(skymizer::testing::GetBoolAssertionFailureMessage(\
+    fail(pat::testing::GetBoolAssertionFailureMessage(\
         _ar_, text, #actual, #expected))
 
 //===----------------------------------------------------------------------===//
@@ -140,11 +140,11 @@ class TestFactoryBase
 {
 public:
   virtual ~TestFactoryBase() { }
-  virtual skymizer::Test* CreateTest() = 0;
+  virtual pat::Test* CreateTest() = 0;
 };
 
 template<typename SingleTest> struct TestFactory : public TestFactoryBase {
-  virtual skymizer::Test* CreateTest() { return new SingleTest; }
+  virtual pat::Test* CreateTest() { return new SingleTest; }
 };
 
 /** \class PerfIterator
@@ -242,7 +242,7 @@ private:
  *
  *  TestResult concludes the result of a single test in summary.
  */
-class SKY_PUBLIC TestResult : private skymizer::testing::internal::Uncopyable
+class SKY_PUBLIC TestResult : private pat::testing::internal::Uncopyable
 {
 public:
   typedef std::vector<const TestPartResult*> Reliability;
@@ -584,7 +584,7 @@ private:
  *  The only one time you derive from Test is when defining a test fixture
  *  to be used a PERFORM_F. For example:
  *
- *  class FooTest : public skymizer::Test
+ *  class FooTest : public pat::Test
  *  {
  *  public:
  *    virtual void SetUp() { ... }
@@ -595,9 +595,9 @@ private:
  *  PAT_C( FooTest, Bar1) { ... }
  *  PAT_C( FooTest, Bar2) { ... }
  */
-class SKY_PUBLIC Test : private skymizer::testing::internal::Uncopyable
+class SKY_PUBLIC Test : private pat::testing::internal::Uncopyable
 {
-friend class skymizer::testing::TestInfo;
+friend class pat::testing::TestInfo;
 private:
   void run();
 
@@ -639,7 +639,7 @@ public:
 // A test fixture class must be declared earlier.  The user should put
 // his test code between braces after using this macro.  Example:
 //
-//   class FooTest : public skymizer::Test {
+//   class FooTest : public pat::Test {
 //    protected:
 //     virtual void SetUp() { m_B.AddElement(3); }
 //
@@ -655,7 +655,7 @@ public:
   PAT_TEST_CASE(test_fixture, test_name, test_fixture)
 
 #define PAT_F(test_fixture, test_name) \
-  PAT_TEST_CASE(test_fixture, test_name, skymizer::Test)
+  PAT_TEST_CASE(test_fixture, test_name, pat::Test)
 
 // Boolean assertions.
 #define EXPECT_TRUE(condition) \
@@ -671,9 +671,9 @@ public:
   PAT_TEST_BOOLEAN(!(condition), #condition, true, false, \
                       PAT_FATAL_FAILURE)
 
-#define PERFORM for(skymizer::testing::PerfIterator __loop(__FILE__, __LINE__) \
+#define PERFORM for(pat::testing::PerfIterator __loop(__FILE__, __LINE__) \
                         ; __loop.next() ; )
 
-} // namespace of skymizer
+} // namespace of pat
 
 #endif
