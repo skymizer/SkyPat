@@ -19,7 +19,7 @@
 #include <cstdio>
 #include <time.h>
 
-#include <pat/Support/config.h>
+#include <pat/Config/config.h>
 
 using namespace pat;
 
