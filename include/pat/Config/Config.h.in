@@ -1,4 +1,4 @@
-/* include/pat/Config/config.h.in.  Generated from configure.ac by autoheader.  */
+/* include/pat/Config/Config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* Enable clock_gettime */
 #undef ENABLE_CLOCK_GETTIME
