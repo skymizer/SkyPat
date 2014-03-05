@@ -27,16 +27,16 @@ using namespace skymizer;
 // Config
 //===----------------------------------------------------------------------===//
 /* Define if this is Unixish platform */
-#define SKYMIZER_ON_UNIX 1
+#define PAT_ON_UNIX 1
 
 /* Define if this is Win32ish platform */
-/* #undef SKYMIZER_ON_WIN32 */
+/* #undef PAT_ON_WIN32 */
 
 /* Define if this is SkyDragon platform */
-/* #undef SKYMIZER_ON_DRAGON */
+/* #undef PAT_ON_DRAGON */
 
 /* Define the numebr of iteration of performance loop */
-#define SKYMIZER_PERFORM_LOOP_TIMES 1
+#define PAT_PERFORM_LOOP_TIMES 1
 
 //===----------------------------------------------------------------------===//
 // Support
@@ -523,10 +523,10 @@ private:
 //===----------------------------------------------------------------------===//
 // Timer Implementation
 //===----------------------------------------------------------------------===//
-#if defined(SKYMIZER_ON_WIN32)
+#if defined(PAT_ON_WIN32)
 #include "Windows/Timer.inc"
 #endif
-#if defined(SKYMIZER_ON_UNIX)
+#if defined(PAT_ON_UNIX)
 
 #include <time.h>
 #include <unistd.h>
@@ -612,7 +612,7 @@ std::string Timer::unit()
 }
 
 #endif
-#if defined(SKYMIZER_ON_DRAGON)
+#if defined(PAT_ON_DRAGON)
 #include "Dragon/Timer.inc"
 #endif
 
@@ -738,7 +738,7 @@ testing::PerfIterator::~PerfIterator()
 bool testing::PerfIterator::next()
 {
   ++m_Counter;
-  if (m_Counter >= SKYMIZER_PERFORM_LOOP_TIMES) {
+  if (m_Counter >= PAT_PERFORM_LOOP_TIMES) {
     return false;
   }
   return true;

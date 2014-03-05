@@ -6,8 +6,8 @@
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#ifndef SKYMIZER_PAT_H
-#define SKYMIZER_PAT_H
+#ifndef PAT_PAT_H
+#define PAT_PAT_H
 #include <stdint.h>
 #include <string>
 #include <vector>
