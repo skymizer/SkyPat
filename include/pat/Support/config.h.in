@@ -157,13 +157,13 @@
 #undef PTHREAD_CREATE_JOINABLE
 
 /* default target triple */
-#undef SKYMIZER_DEFAULT_TARGET_TRIPLE
+#undef PAT_DEFAULT_TARGET_TRIPLE
 
 /* Define if this is Unixish platform */
-#undef SKYMIZER_ON_UNIX
+#undef PAT_ON_UNIX
 
 /* Define if this is Win32ish platform */
-#undef SKYMIZER_ON_WIN32
+#undef PAT_ON_WIN32
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
