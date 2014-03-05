@@ -15,8 +15,8 @@
 
 #define PAT_VERNUM 0x24
 
-#define SKY_PUBLIC __attribute__ ((visibility ("default")))
-#define SKY_LOCAL  __attribute__ ((visibility ("hidden")))
+#define PAT_PUBLIC __attribute__ ((visibility ("default")))
+#define PAT_LOCAL  __attribute__ ((visibility ("hidden")))
 
 
 namespace pat {
@@ -120,13 +120,13 @@ void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 /// Interval - the unit of time.
 typedef uint64_t Interval;
 
-SKY_PUBLIC
+PAT_PUBLIC
 TestInfo* MakeAndRegisterTestInfo(
     const char* pCaseName,
     const char* pTestName,
     TestFactoryBase* pFactory);
 
-SKY_PUBLIC
+PAT_PUBLIC
 std::string GetBoolAssertionFailureMessage(
     const AssertionResult& pAssertionResult,
     const char* pExpressionText,
@@ -151,7 +151,7 @@ template<typename SingleTest> struct TestFactory : public TestFactoryBase {
  *  \brief PerfIterator is used to calculate the computing time of a
  *  performance test.
  */
-class SKY_PUBLIC PerfIterator
+class PAT_PUBLIC PerfIterator
 {
 public:
   /// @param pFileName the source file name.
@@ -174,7 +174,7 @@ private:
 /** \class PartResult
  *  \brief The partial result of a single test
  */
-class SKY_PUBLIC PartResult
+class PAT_PUBLIC PartResult
 {
 public:
   PartResult(const std::string& pFileName, int pLoC);
@@ -202,7 +202,7 @@ protected:
 /** \class TestPartResult
  *  \brief The partial result of a single test
  */
-class SKY_PUBLIC TestPartResult : public PartResult
+class PAT_PUBLIC TestPartResult : public PartResult
 {
 public:
   enum Type {
@@ -224,7 +224,7 @@ private:
 /** \class TestPerfPartResult
  *  \brief The performance result
  */
-class SKY_PUBLIC PerfPartResult : public PartResult
+class PAT_PUBLIC PerfPartResult : public PartResult
 {
 public:
   PerfPartResult(const std::string& pFileName, int pLoC);
@@ -242,7 +242,7 @@ private:
  *
  *  TestResult concludes the result of a single test in summary.
  */
-class SKY_PUBLIC TestResult : private pat::testing::internal::Uncopyable
+class PAT_PUBLIC TestResult : private pat::testing::internal::Uncopyable
 {
 public:
   typedef std::vector<const TestPartResult*> Reliability;
@@ -280,7 +280,7 @@ private:
 /** \class TestCase
  *  \brief The information of a test case (a set of tests)
  */
-class SKY_PUBLIC TestCase
+class PAT_PUBLIC TestCase
 {
 private:
   typedef std::vector<testing::TestInfo*> InfoList;
@@ -317,7 +317,7 @@ private:
  *  TestInfo stores the information of a single test. A test case contains
  *  multiple tests which is represented by TestInfos.
  */
-class SKY_PUBLIC TestInfo
+class PAT_PUBLIC TestInfo
 {
 public:
   TestInfo(TestCase* pTestCase,
@@ -361,7 +361,7 @@ private:
 /** \class AssertionResult
  *  \brief The result of an assertion.
  */
-class SKY_PUBLIC AssertionResult
+class PAT_PUBLIC AssertionResult
 {
 public:
   AssertionResult(const AssertionResult& other);
@@ -389,7 +389,7 @@ private:
 /** \class AssertHelper
  *  \brief AssertHelper carries all information to UnitTest.
  */
-class SKY_PUBLIC AssertHelper
+class PAT_PUBLIC AssertHelper
 {
 public:
   AssertHelper(TestPartResult::Type pType,
@@ -411,7 +411,7 @@ private:
 /** \class Listener
  *  \brief Listener provides interfaces for objects who wants UnitTest's events.
  */
-class SKY_PUBLIC Listener
+class PAT_PUBLIC Listener
 {
 public:
   virtual ~Listener() { }
@@ -453,7 +453,7 @@ public:
   virtual void OnTestProgramEnd(const UnitTest& pUnitTest) {}
 };
 
-class SKY_PUBLIC Log
+class PAT_PUBLIC Log
 {
 public:
   enum Severity {
@@ -484,7 +484,7 @@ private:
 /** \class Repeater
  *  \brief Repeater dispatches events to all listeners.
  */
-class SKY_PUBLIC Repeater : public Listener
+class PAT_PUBLIC Repeater : public Listener
 {
 public:
   typedef std::vector<Listener*> ListenerList;
@@ -523,7 +523,7 @@ private:
 //===----------------------------------------------------------------------===//
 // UnitTest
 //===----------------------------------------------------------------------===//
-class SKY_PUBLIC UnitTest
+class PAT_PUBLIC UnitTest
 {
 private:
   // TODO: Performance
@@ -595,7 +595,7 @@ private:
  *  PAT_C( FooTest, Bar1) { ... }
  *  PAT_C( FooTest, Bar2) { ... }
  */
-class SKY_PUBLIC Test : private pat::testing::internal::Uncopyable
+class PAT_PUBLIC Test : private pat::testing::internal::Uncopyable
 {
 friend class pat::testing::TestInfo;
 private:
