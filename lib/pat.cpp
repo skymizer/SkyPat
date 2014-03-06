@@ -7,6 +7,7 @@
 //
 //===----------------------------------------------------------------------===//
 #include <pat/pat.h>
+#include "Support/Timer.h"
 #include <vector>
 #include <cassert>
 #include <cstdlib>
@@ -497,28 +498,6 @@ BasicOStrStream<CharT, Traits, Alloc>::BasicOStrStream(string_type& pStr,
 
 namespace testing {
 namespace internal {
-
-//===----------------------------------------------------------------------===//
-// Timer
-//===----------------------------------------------------------------------===//
-class Timer
-{
-public:
-  Timer();
-  ~Timer();
-
-  bool isActive() const { return m_bIsActive; }
-  testing::Interval interval() const { return m_Interval; }
-
-  void start();
-  void stop();
-
-  static std::string unit();
-
-private:
-  testing::Interval m_Interval;
-  bool m_bIsActive;
-};
 
 //===----------------------------------------------------------------------===//
 // Timer Implementation
