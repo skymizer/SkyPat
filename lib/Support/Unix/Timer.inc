@@ -70,6 +70,9 @@ long TimerImpl::g_ClkTick = -1;
 
 static ManagedStatic<TimerImpl> g_Timer;
 
+//===----------------------------------------------------------------------===//
+// Timer
+//===----------------------------------------------------------------------===//
 Timer::Timer()
   : m_Interval(0), m_bIsActive(false) {
 }

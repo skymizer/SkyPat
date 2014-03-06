@@ -24,18 +24,6 @@
 
 using namespace pat;
 
-//===----------------------------------------------------------------------===//
-// Config
-//===----------------------------------------------------------------------===//
-/* Define if this is Unixish platform */
-#define PAT_ON_UNIX 1
-
-/* Define if this is Win32ish platform */
-/* #undef PAT_ON_WIN32 */
-
-/* Define if this is SkyDragon platform */
-/* #undef PAT_ON_DRAGON */
-
 /* Define the numebr of iteration of performance loop */
 #define PAT_PERFORM_LOOP_TIMES 1
 

@@ -86,8 +86,8 @@ dnl This is used by lib/Support to determine the basic kind of implementation
 dnl to use.
 case $pat_cv_host_platform_type in
 Unix)
-  AC_DEFINE([pat_ON_UNIX],[1],[Define if this is Unixish platform])
-  AC_SUBST(pat_ON_PLATFORM,[PAT_ON_UNIX])
+  AC_DEFINE([PAT_ON_UNIX],[1],[Define if this is Unixish platform])
+  AC_SUBST(PAT_ON_PLATFORM,[PAT_ON_UNIX])
 ;;
 Win32)
   AC_DEFINE([PAT_ON_WIN32],[1],[Define if this is Win32ish platform])
