@@ -8,6 +8,7 @@
 //===----------------------------------------------------------------------===//
 #ifndef PAT_SUPPORT_TIMER_H
 #define PAT_SUPPORT_TIMER_H
+#include <pat/pat.h>
 
 namespace pat {
 namespace testing {
