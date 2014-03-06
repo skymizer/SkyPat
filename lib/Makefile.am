@@ -1,10 +1,12 @@
 SOURCE = pat.cpp \
+	Support/ManagedStatic.cpp \
 	Support/Timer.cpp
 
 ANDROID_CPPFLAGS=-fno-rtti -fno-exceptions -Waddress -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreorder -Wreturn-type -Wsequence-point -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var
 
 SKYMIZER_INCLUDES = -I${abs_top_srcdir}/include \
-                    -I${abs_top_builddir}/include
+                    -I${abs_top_builddir}/include \
+                    -I${abs_top_srcdir}/lib
 
 if ENABLE_OPTIMIZE
 SKYMIZER_CPPFLAGS = -O2

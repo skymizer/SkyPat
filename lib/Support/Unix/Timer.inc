@@ -6,6 +6,7 @@
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
+#include "Support/ManagedStatic.h"
 #include <time.h>
 #include <unistd.h>
 #include <sys/times.h>
