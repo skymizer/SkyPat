@@ -152,21 +152,24 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
+/* Define to necessary symbol if this constant uses a non-standard name on
+   your system. */
+#undef PTHREAD_CREATE_JOINABLE
+
 /* default target triple */
 #undef PAT_DEFAULT_TARGET_TRIPLE
+
+/* Define if this is Unixish platform */
+#undef PAT_ON_UNIX
 
 /* Define if this is Win32ish platform */
 #undef PAT_ON_WIN32
 
-/* Define to necessary symbol if this constant uses a non-standard name on
-   your system. */
-#undef PTHREAD_CREATE_JOINABLE
+/* Define if this is Dragonish platform */
+#undef PAT_ON_DRAGON
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
 /* Version number of package */
 #undef VERSION
-
-/* Define if this is Unixish platform */
-#undef pat_ON_UNIX
