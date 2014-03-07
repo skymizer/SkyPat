@@ -2,7 +2,7 @@ SOURCE = pat.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
 	ADT/Color.h \
-	Support/OStream.cpp \
+	Support/OStrStream.cpp \
 	Listeners/PrettyResultPrinter.cpp \
 	Core/Test.cpp
 

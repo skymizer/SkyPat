@@ -41,7 +41,7 @@ pat::BasicOStringBuf<CharT, Traits, Alloc>::doSync(char_type* pBase, size_type p
 }
 
 template<typename CharT, typename Traits, typename Alloc>
-typename BasicOStringBuf<CharT, Traits, Alloc>::string_type
+typename pat::BasicOStringBuf<CharT, Traits, Alloc>::string_type
 pat::BasicOStringBuf<CharT, Traits, Alloc>::str() const
 {
   return m_String;
@@ -126,5 +126,3 @@ pat::BasicOStrStream<CharT, Traits, Alloc>::BasicOStrStream(string_type& pStr,
   : ostream_type(), m_StringBuf(pStr, pMode | std::ios_base::out) {
   this->init(&m_StringBuf);
 }
-
-} // namespace of pat

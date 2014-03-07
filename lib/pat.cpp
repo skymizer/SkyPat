@@ -9,7 +9,7 @@
 #include <pat/pat.h>
 #include "Support/Timer.h"
 #include "Support/ManagedStatic.h"
-#include "Support/OStream.h"
+#include "Support/OStrStream.h"
 #include <vector>
 #include <cassert>
 #include <cstdlib>
