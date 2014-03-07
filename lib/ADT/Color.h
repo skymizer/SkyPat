@@ -8,7 +8,10 @@
 //===----------------------------------------------------------------------===//
 #ifndef PAT_SUPPORT_COLOR_H
 #define PAT_SUPPORT_COLOR_H
+#include <iosfwd>
+#include <iomanip>
 
+namespace pat {
 //===----------------------------------------------------------------------===//
 // Color
 //===----------------------------------------------------------------------===//
@@ -68,5 +71,23 @@ private:
   kColor m_Color : 24;
   kType m_Type : 8;
 };
+
+template<typename CharT, typename Traits>
+static inline
+::std::basic_ostream<CharT, Traits>&
+operator<<(::std::basic_ostream<CharT, Traits>& pOS, Color pColor) {
+  pColor.setColor(pOS);
+  return pOS;
+}
+
+template<typename CharT, typename Traits>
+static inline
+::std::basic_ostream<CharT, Traits>&
+operator<<(::std::basic_ostream<CharT, Traits>& pOS, Color::kColor pColor) {
+  Color(pColor).setColor(pOS);
+  return pOS;
+}
+
+} // namespace of pat
 
 #endif

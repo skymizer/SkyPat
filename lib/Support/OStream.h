@@ -8,58 +8,11 @@
 //===----------------------------------------------------------------------===//
 #ifndef PAT_SUPPORT_OSTREAM_H
 #define PAT_SUPPORT_OSTREAM_H
-
-#include <ios>
+#include "Support/IOSFwd.h"
+#include <iosfwd>
 #include <ostream>
-#include <iostream>
-#include "../ADT/Color.h"
 
 namespace pat {
-
-template<typename CharT, typename Traits>
-static inline
-::std::basic_ostream<CharT, Traits>&
-operator<<(::std::basic_ostream<CharT, Traits>& pOS, Color pColor) {
-  pColor.setColor(pOS);
-  return pOS;
-}
-
-template<typename CharT, typename Traits>
-static inline
-::std::basic_ostream<CharT, Traits>&
-operator<<(::std::basic_ostream<CharT, Traits>& pOS, Color::kColor pColor) {
-  Color(pColor).setColor(pOS);
-  return pOS;
-}
-
-//===----------------------------------------------------------------------===//
-// Stream Forwarding
-//===----------------------------------------------------------------------===//
-template<typename CharT, typename Traits = std::char_traits<CharT> >
-  class BasicOStream;
-
-template<typename CharT, typename Traits = std::char_traits<CharT> >
-  class BasicFileBuf;
-
-template<typename CharT, typename Traits = std::char_traits<CharT> >
-  class BasicOFStream;
-
-template<typename CharT, typename Traits = std::char_traits<CharT>,
-         typename Alloc = std::allocator<CharT> >
-  class BasicOStringBuf;
-
-template<typename CharT, typename Traits = std::char_traits<CharT>,
-         typename Alloc = std::allocator<CharT> >
-  class BasicOStrStream;
-
-/// @defgroup I/O Forward Declaration
-/// @{
-typedef BasicOStream<char>    OStream;
-typedef BasicFileBuf<char>    FileBuf;
-typedef BasicOFStream<char>   OFStream;
-typedef BasicOStringBuf<char> OStringBuf;
-typedef BasicOStrStream<char> OStrStream;
-/// @}
 
 //===----------------------------------------------------------------------===//
 // Support::OStrStream
@@ -147,6 +100,6 @@ private:
   stringbuf_type m_StringBuf;
 };
 
-
 } // namespace of pat
+
 #endif

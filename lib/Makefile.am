@@ -2,7 +2,9 @@ SOURCE = pat.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
 	ADT/Color.h \
-	Support/OStream.cpp
+	Support/OStream.cpp \
+	Listeners/PrettyResultPrinter.cpp \
+	Core/Test.cpp
 
 ANDROID_CPPFLAGS=-fno-rtti -fno-exceptions -Waddress -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreorder -Wreturn-type -Wsequence-point -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var
 
