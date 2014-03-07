@@ -1,6 +1,7 @@
 SOURCE = pat.cpp \
 	Support/ManagedStatic.cpp \
-	Support/Timer.cpp
+	Support/Timer.cpp \
+	ADT/Color.h
 
 ANDROID_CPPFLAGS=-fno-rtti -fno-exceptions -Waddress -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreorder -Wreturn-type -Wsequence-point -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var
 
