@@ -6,10 +6,10 @@
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#ifndef PAT_SUPPORT_OSTREAM_H
-#define PAT_SUPPORT_OSTREAM_H
+#ifndef PAT_SUPPORT_OSTRSTREAM_H
+#define PAT_SUPPORT_OSTRSTREAM_H
 #include "Support/IOSFwd.h"
-#include <iosfwd>
+#include <string>
 #include <ostream>
 
 namespace pat {
@@ -101,5 +101,7 @@ private:
 };
 
 } // namespace of pat
+
+#include "OStrStream.tcc"
 
 #endif
