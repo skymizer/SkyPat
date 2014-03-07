@@ -12,9 +12,7 @@
 #include <iomanip>
 
 namespace pat {
-//===----------------------------------------------------------------------===//
-// Color
-//===----------------------------------------------------------------------===//
+
 /** \class Color
  *  \brief Color is a std::ostream manipulator for changing the color.
  */
@@ -42,52 +40,26 @@ public:
   };
 
 public:
-  Color(kColor pColor = BLACK, kType pType = NORMAL)
-    : m_Color(pColor), m_Type(pType)
-  {}
+  Color(kColor pColor = BLACK, kType pType = NORMAL);
 
-  static Color Bold(kColor pColor) {
-    return Color(pColor, BOLD);
-  }
-  static Color BackGround(kColor pColor) {
-    return Color(pColor, BACKGROUND);
-  }
+  static Color Bold(kColor pColor);
 
-  template<typename CharT, typename Traits>
-  void setColor(::std::basic_ostream<CharT, Traits>& pOS) {
-    pOS << "\033[";
-    if (m_Color != RESET) {
-      if (m_Type == BOLD) {
-        pOS << "1;";
-      }
-      // TODO: Turn off bold mode;
-      int base_color = m_Type == BACKGROUND ? 40 : 30;
-      pOS << (base_color + m_Color);
-    }
-    pOS << 'm';
-  }
+  static Color BackGround(kColor pColor);
+
+  void setColor(std::ostream& pOS);
 
 private:
   kColor m_Color : 24;
   kType m_Type : 8;
 };
 
-template<typename CharT, typename Traits>
-static inline
-::std::basic_ostream<CharT, Traits>&
-operator<<(::std::basic_ostream<CharT, Traits>& pOS, Color pColor) {
-  pColor.setColor(pOS);
-  return pOS;
-}
-
-template<typename CharT, typename Traits>
-static inline
-::std::basic_ostream<CharT, Traits>&
-operator<<(::std::basic_ostream<CharT, Traits>& pOS, Color::kColor pColor) {
-  Color(pColor).setColor(pOS);
-  return pOS;
-}
-
 } // namespace of pat
+
+namespace std {
+
+ostream& operator<<(ostream& pOS, pat::Color pColor);
+ostream& operator<<(ostream& pOS, pat::Color::kColor pColor);
+
+} // namespace of std
 
 #endif

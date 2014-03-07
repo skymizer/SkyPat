@@ -1,8 +1,7 @@
 SOURCE = pat.cpp \
+	ADT/Color.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
-	ADT/Color.h \
-	Support/OStrStream.cpp \
 	Listeners/PrettyResultPrinter.cpp \
 	Core/Test.cpp
 
