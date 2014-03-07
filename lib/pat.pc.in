@@ -4,7 +4,7 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: pat
-Description: Performance And Testing Framework 
+Description: Performance Analysis Toolkit
 Requires:
 Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -lpat
