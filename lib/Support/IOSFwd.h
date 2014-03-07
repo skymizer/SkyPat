@@ -9,6 +9,7 @@
 #ifndef PAT_SUPPORT_IOSFWD_H
 #define PAT_SUPPORT_IOSFWD_H
 #include <string>
+#include <ios>
 
 namespace pat {
 
