@@ -91,3 +91,5 @@ include/pat/Config/Config.h
 include/pat/Config/stamp-h1
 lib/Support/.deps/
 lib/Support/.dirstamp
+lib/Support/*.lo
+lib/Support/.libs/
