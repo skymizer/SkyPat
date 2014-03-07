@@ -6,24 +6,20 @@
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include "OStream.h"
+#include "Support/OStrStream.h"
 
-namespace pat {
-
-//===----------------------------------------------------------------------===//
-// Support::OStrStream::Details
 //===----------------------------------------------------------------------===//
 // BasicOStringBuf
 //===----------------------------------------------------------------------===//
 template<typename CharT, typename Traits, typename Alloc>
-BasicOStringBuf<CharT, Traits, Alloc>::BasicOStringBuf(string_type& pStr,
+pat::BasicOStringBuf<CharT, Traits, Alloc>::BasicOStringBuf(string_type& pStr,
                                                   std::ios_base::openmode pMode)
   : streambuf_type(), m_Mode(), m_String(pStr) {
   BasicOStringBufInit(pMode);
 }
 
 template<typename CharT, typename Traits, typename Alloc> void
-BasicOStringBuf<CharT, Traits, Alloc>::BasicOStringBufInit(
+pat::BasicOStringBuf<CharT, Traits, Alloc>::BasicOStringBufInit(
                                                   std::ios_base::openmode pMode)
 {
   m_Mode = pMode;
@@ -37,7 +33,7 @@ BasicOStringBuf<CharT, Traits, Alloc>::BasicOStringBufInit(
 /// doSync - Internal function for correctly updating the internal buffer
 /// for particular m_String.
 template<typename CharT, typename Traits, typename Alloc> void
-BasicOStringBuf<CharT, Traits, Alloc>::doSync(char_type* pBase, size_type pO)
+pat::BasicOStringBuf<CharT, Traits, Alloc>::doSync(char_type* pBase, size_type pO)
 {
   char_type* endp = pBase + m_String.capacity();
   this->setp(pBase, endp);
@@ -46,14 +42,14 @@ BasicOStringBuf<CharT, Traits, Alloc>::doSync(char_type* pBase, size_type pO)
 
 template<typename CharT, typename Traits, typename Alloc>
 typename BasicOStringBuf<CharT, Traits, Alloc>::string_type
-BasicOStringBuf<CharT, Traits, Alloc>::str() const
+pat::BasicOStringBuf<CharT, Traits, Alloc>::str() const
 {
   return m_String;
 }
 
 template<typename CharT, typename Traits, typename Alloc>
-typename BasicOStringBuf<CharT, Traits, Alloc>::int_type
-BasicOStringBuf<CharT, Traits, Alloc>::overflow(int_type pC)
+typename pat::BasicOStringBuf<CharT, Traits, Alloc>::int_type
+pat::BasicOStringBuf<CharT, Traits, Alloc>::overflow(int_type pC)
 {
   const bool testout = this->m_Mode & std::ios_base::out;
   if (!testout)
@@ -91,8 +87,8 @@ BasicOStringBuf<CharT, Traits, Alloc>::overflow(int_type pC)
 }
 
 template<typename CharT, typename Traits, typename Alloc> std::streamsize
-BasicOStringBuf<CharT, Traits, Alloc>::xsputn(const char_type* pS,
-                                              std::streamsize pN)
+pat::BasicOStringBuf<CharT, Traits, Alloc>::xsputn(const char_type* pS,
+                                                   std::streamsize pN)
 {
   std::streamsize result = 0;
   while (result < pN) {
@@ -125,7 +121,7 @@ BasicOStringBuf<CharT, Traits, Alloc>::xsputn(const char_type* pS,
 // BasicOStrStream
 //===----------------------------------------------------------------------===//
 template<typename CharT, typename Traits, typename Alloc>
-BasicOStrStream<CharT, Traits, Alloc>::BasicOStrStream(string_type& pStr,
+pat::BasicOStrStream<CharT, Traits, Alloc>::BasicOStrStream(string_type& pStr,
                                                   std::ios_base::openmode pMode)
   : ostream_type(), m_StringBuf(pStr, pMode | std::ios_base::out) {
   this->init(&m_StringBuf);
