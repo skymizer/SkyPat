@@ -374,8 +374,8 @@ void pat::testing::AssertHelper::operator=(bool pValue) const
 // Log
 //===----------------------------------------------------------------------===//
 testing::Log::Log(Severity pSeverity,
-                                const std::string& pFileName,
-                                int pLoC)
+                  const std::string& pFileName,
+                  int pLoC)
   : m_Severity(pSeverity) {
   const char* const mesg =
     kInfo    == pSeverity ? "[  INFO ]" :
