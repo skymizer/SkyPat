@@ -19,14 +19,6 @@ config.status
 Makefile
 stamp-h1
 .libs
-examples/assertion/assertion
-examples/fall/fall
-examples/multi_assert/multi_assert
-examples/multi_case/multi_case
-examples/multi_expect/multi_expect
-examples/pat_c/pat_c
-examples/performance/performance
-examples/smoke/smoke
 lib/libpat.la
 lib/pat.pc
 libtool
