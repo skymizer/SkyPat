@@ -38,3 +38,4 @@ scripts/
 include/pat/Support/config.h.in
 include/pat/Config/Config.h
 include/pat/Config/stamp-h1
+Config.h.in~
