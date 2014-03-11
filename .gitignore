@@ -30,5 +30,4 @@ examples/smoke/smoke
 lib/libpat.la
 lib/pat.pc
 libtool
-scripts/
 Config.h.in~
