@@ -16,4 +16,4 @@ autoheader
 ${LIBTOOLIZE} --force
 automake --add-missing
 autoconf
-rm -rf include/skymizer/Config/Config.h.in~
+rm -rf include/pat/Config/Config.h.in~
