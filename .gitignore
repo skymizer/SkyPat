@@ -17,8 +17,8 @@ config.status
 *.o
 *.lo
 Makefile
+stamp-h1
 .libs
-examples/*/SampleMakefile
 examples/assertion/assertion
 examples/fall/fall
 examples/multi_assert/multi_assert
@@ -27,15 +27,8 @@ examples/multi_expect/multi_expect
 examples/pat_c/pat_c
 examples/performance/performance
 examples/smoke/smoke
-include/pat/Support/config.h
-include/pat/Support/stamp-h1
-include/pat/Support/config.h
-include/pat/Support/stamp-h1
 lib/libpat.la
 lib/pat.pc
 libtool
 scripts/
-include/pat/Support/config.h.in
-include/pat/Config/Config.h
-include/pat/Config/stamp-h1
 Config.h.in~
