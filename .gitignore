@@ -19,7 +19,5 @@ config.status
 Makefile
 stamp-h1
 .libs
-lib/libpat.la
-lib/pat.pc
 libtool
-Config.h.in~
+*~
