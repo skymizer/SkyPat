@@ -7,7 +7,7 @@
 //
 //===----------------------------------------------------------------------===//
 #include <pat/pat.h>
-#include "Listeners/PrettyResultPrinter.h"
+#include <pat/Listeners/PrettyResultPrinter.h>
 #include <time.h>
 
 using namespace pat;

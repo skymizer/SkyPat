@@ -8,8 +8,7 @@ SOURCE = pat.cpp \
 ANDROID_CPPFLAGS=-fno-rtti -fno-exceptions -Waddress -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreorder -Wreturn-type -Wsequence-point -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var
 
 PAT_INCLUDES = -I${abs_top_srcdir}/include \
-                    -I${abs_top_builddir}/include \
-                    -I${abs_top_srcdir}/lib
+                    -I${abs_top_builddir}/include
 
 if ENABLE_OPTIMIZE
 PAT_CPPFLAGS = -O2

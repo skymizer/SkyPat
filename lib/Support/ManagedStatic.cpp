@@ -6,7 +6,7 @@
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include "ManagedStatic.h"
+#include <pat/Support/ManagedStatic.h>
 
 using namespace pat;
 

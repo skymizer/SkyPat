@@ -7,9 +7,9 @@
 //
 //===----------------------------------------------------------------------===//
 #include <pat/pat.h>
-#include "Support/Timer.h"
-#include "Support/ManagedStatic.h"
-#include "Support/OStrStream.h"
+#include <pat/Support/Timer.h>
+#include <pat/Support/ManagedStatic.h>
+#include <pat/Support/OStrStream.h>
 #include <vector>
 #include <cassert>
 #include <cstdlib>

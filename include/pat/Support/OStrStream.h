@@ -8,7 +8,7 @@
 //===----------------------------------------------------------------------===//
 #ifndef PAT_SUPPORT_OSTRSTREAM_H
 #define PAT_SUPPORT_OSTRSTREAM_H
-#include "Support/IOSFwd.h"
+#include <pat/Support/IOSFwd.h>
 #include <string>
 #include <ostream>
 
