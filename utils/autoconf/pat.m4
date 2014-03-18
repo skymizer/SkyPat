@@ -6,6 +6,9 @@ dnl   PAT_CFLAGS="-I${pat_path}/include"
 dnl   PAT_CPPFLAGS="-I${pat_path}/include"
 dnl   PAT_LDFLAGS="-L${pat_path}/lib -lpat"
 dnl
+dnl This macro is used to check if pat is already installed in the system. If
+dnl you want to integrate pat in your own project, please use SETUP_PAT.
+dnl
 dnl Luba Tang <luba@skymizer.com>
 dnl
 
