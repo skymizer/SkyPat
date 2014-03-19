@@ -1,5 +1,5 @@
 ===================================
-"pat" Version @PAT_VERSION@
+"pat" Version @PACKAGE_VERSION@
 ===================================
 Versioning Format:
   [MAJOR].[MINOR].[AGE]
