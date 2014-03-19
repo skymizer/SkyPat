@@ -28,7 +28,7 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 ####################
 #  Versioning, see VERSION
 CURRENT_VERSION=2
-REVISION_VERSION=5
+REVISION_VERSION=6
 AGE_VERSION=2
 BUILD_VERSION=chungho
 
