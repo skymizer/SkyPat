@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <pat/Support/OStrStream.h>
 
 #define PAT_VERNUM 0x24
 
@@ -114,24 +115,21 @@ void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
     fail(pat::testing::GetBoolAssertionFailureMessage(\
         _ar_, text, #actual, #expected))
 
+// Implements Predicate test assertions such as EXPECT_EQ.
+#define PAT_TEST_PREDICATE(expression, text, actual, expected, fail) \
+  PAT_UNAMBIGUOUS_ELSE_BLOCKER \
+  if (const pat::testing::AssertionResult _ar_ = \
+      pat::testing::AssertionResult(expression)) \
+    PAT_SUCCESS(""); \
+  else \
+    fail(pat::testing::GetPredAssertionFailureMessage(\
+        _ar_, text, actual, #actual, expected, #expected))
+
 //===----------------------------------------------------------------------===//
 // Supports
 //===----------------------------------------------------------------------===//
 /// Interval - the unit of time.
 typedef uint64_t Interval;
-
-PAT_PUBLIC
-TestInfo* MakeAndRegisterTestInfo(
-    const char* pCaseName,
-    const char* pTestName,
-    TestFactoryBase* pFactory);
-
-PAT_PUBLIC
-std::string GetBoolAssertionFailureMessage(
-    const AssertionResult& pAssertionResult,
-    const char* pExpressionText,
-    const char* pActualPredicateValue,
-    const char* pExpectedPredicateValue);
 
 //===----------------------------------------------------------------------===//
 // Core
@@ -405,6 +403,37 @@ private:
   TestPartResult m_Result;
 };
 
+PAT_PUBLIC
+TestInfo* MakeAndRegisterTestInfo(
+    const char* pCaseName,
+    const char* pTestName,
+    TestFactoryBase* pFactory);
+
+PAT_PUBLIC
+std::string GetBoolAssertionFailureMessage(
+    const AssertionResult& pAssertionResult,
+    const char* pExpressionText,
+    const char* pActualPredicateValue,
+    const char* pExpectedPredicateValue);
+
+template<typename T1, typename T2>
+std::string GetPredAssertionFailureMessage(
+    const AssertionResult& pAssertionResult,
+    const char* pExpressionText,
+    const T1& pActualPredicateValue,
+    const char* pActualPredicate,
+    const T2& pExpectedPredicateValue,
+    const char* pExpectedPredicate)
+{
+  std::string result;
+  OStrStream OS(result);
+  OS << "Value of: " << pExpressionText
+     << "\n  Actual:   " << pActualPredicateValue;
+  if (pAssertionResult.hasMessage())
+    OS << "(" << pAssertionResult.message() << ")";
+  OS << "\n  Expected: " << pExpectedPredicateValue;
+  return result;
+}
 //===----------------------------------------------------------------------===//
 // Listener
 //===----------------------------------------------------------------------===//
@@ -670,6 +699,42 @@ public:
 #define ASSERT_FALSE(condition) \
   PAT_TEST_BOOLEAN(!(condition), #condition, true, false, \
                       PAT_FATAL_FAILURE)
+
+#define PAT_EXPECT_PRED(condition, actual, expected) \
+  PAT_TEST_PREDICATE(condition, #condition, \
+                     actual, expected, \
+                     PAT_NONFATAL_FAILURE)
+
+#define PAT_ASSERT_PRED(condition, actual, expected) \
+  PAT_TEST_PREDICATE(condition, #condition, \
+                     actual, expected, \
+                     PAT_FATAL_FAILURE)
+
+#define EXPECT_EQ(actual, expected) \
+  PAT_EXPECT_PRED((actual == expected), actual, expected)
+#define EXPECT_NE(actual, expected) \
+  PAT_EXPECT_PRED((actual != expected), actual, expected)
+#define EXPECT_LE(actual, expected) \
+  PAT_EXPECT_PRED((actual <= expected), actual, expected)
+#define EXPECT_LT(actual, expected) \
+  PAT_EXPECT_PRED((actual < expected), actual, expected)
+#define EXPECT_GE(actual, expected) \
+  PAT_EXPECT_PRED((actual >= expected), actual, expected)
+#define EXPECT_GT(actual, expected) \
+  PAT_EXPECT_PRED((actual > expected), actual, expected)
+
+#define ASSERT_EQ(actual, expected) \
+  PAT_ASSERT_PRED((actual == expected), actual, expected)
+#define ASSERT_NE(actual, expected) \
+  PAT_ASSERT_PRED((actual != expected), actual, expected)
+#define ASSERT_LE(actual, expected) \
+  PAT_ASSERT_PRED((actual <= expected), actual, expected)
+#define ASSERT_LT(actual, expected) \
+  PAT_ASSERT_PRED((actual < expected), actual, expected)
+#define ASSERT_GE(actual, expected) \
+  PAT_ASSERT_PRED((actual >= expected), actual, expected)
+#define ASSERT_GT(actual, expected) \
+  PAT_ASSERT_PRED((actual > expected), actual, expected)
 
 #define PERFORM for(pat::testing::PerfIterator __loop(__FILE__, __LINE__) \
                         ; __loop.next() ; )
