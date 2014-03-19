@@ -66,6 +66,16 @@ PAT_F(MyCase, factorial_test)
   }
 }
 
+PAT_F(MyCase, factorial_test_2)
+{
+  EXPECT_EQ(factorial(5), 360);
+  EXPECT_NE(factorial(5), 120);
+  EXPECT_LE(factorial(5), 119);
+  EXPECT_LT(factorial(5), 119);
+  EXPECT_GE(factorial(5), 121);
+  EXPECT_GT(factorial(5), 121);
+}
+
 // Step 3. Call RunAll() in main().
 //
 // This runs all the tests you've defined, prints the result and
