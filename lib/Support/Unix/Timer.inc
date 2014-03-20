@@ -9,6 +9,7 @@
 #include <pat/Support/ManagedStatic.h>
 #include <time.h>
 #include <unistd.h>
+#include <cassert>
 
 #if defined(HAVE_SYS_TIME_H) && defined(ENABLE_GETTIMEOFDAY)
 #include <sys/time.h>

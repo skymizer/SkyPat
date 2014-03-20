@@ -7,6 +7,7 @@
 //
 //===----------------------------------------------------------------------===//
 #include <pat/Support/ManagedStatic.h>
+#include <cassert>
 
 using namespace pat;
 
@@ -48,7 +49,7 @@ void ManagedStaticBase::destroy() const
 //===----------------------------------------------------------------------===//
 // Non-member functions
 //===----------------------------------------------------------------------===//
-void shutdown()
+void pat::shutdown()
 {
   while (StaticList)
     StaticList->destroy();

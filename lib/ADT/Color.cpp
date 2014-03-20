@@ -7,6 +7,7 @@
 //
 //===----------------------------------------------------------------------===//
 #include <pat/ADT/Color.h>
+#include <ostream>
 
 using namespace pat;
 

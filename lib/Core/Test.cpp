@@ -9,6 +9,7 @@
 #include <pat/pat.h>
 #include <pat/Listeners/PrettyResultPrinter.h>
 #include <time.h>
+#include <cassert>
 
 using namespace pat;
 
