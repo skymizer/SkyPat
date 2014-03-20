@@ -11,6 +11,10 @@
 #include <unistd.h>
 #include <cassert>
 
+#if defined(HAVE_SYS_TIMES_H)
+#include <sys/times.h>
+#endif
+
 #if defined(HAVE_SYS_TIME_H) && defined(ENABLE_GETTIMEOFDAY)
 #include <sys/time.h>
 #endif
