@@ -99,6 +99,18 @@ case $pat_cv_host_platform_type in
 Unix)
   AC_DEFINE([PAT_ON_UNIX],[1],[Define if this is Unixish platform])
   AC_SUBST(PAT_ON_PLATFORM,[PAT_ON_UNIX])
+  AC_CHECK_HEADERS([sys/time.h])
+  AC_CHECK_HEADERS([sys/times.h])
+  AC_SEARCH_LIBS([clock_gettime], [rt], [
+    AC_DEFINE(HAVE_CLOCK_GETTIME, 1,[Have clock_gettime])
+  ])
+  AC_CHECK_FUNCS([gettimeofday])
+
+  AC_CHECK_TYPES([int8_t, int16_t, int32_t, int64_t, intptr_t])
+  AC_CHECK_TYPES([uint8_t, uint16_t, uint32_t, uint64_t, uintptr_t])
+  AC_CHECK_TYPES([long double, long long, long long int, unsigned long long int])
+  AC_CHECK_TYPES([off_t, size_t, ssize_t])
+  AC_TYPE_LONG_DOUBLE_WIDER
 ;;
 Win32)
   AC_DEFINE([PAT_ON_WIN32],[1],[Define if this is Win32ish platform])
