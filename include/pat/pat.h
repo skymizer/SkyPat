@@ -16,10 +16,6 @@
 
 #define PAT_VERNUM 0x24
 
-#define PAT_PUBLIC __attribute__ ((visibility ("default")))
-#define PAT_LOCAL  __attribute__ ((visibility ("hidden")))
-
-
 namespace pat {
 class Test;
 
@@ -149,7 +145,7 @@ template<typename SingleTest> struct TestFactory : public TestFactoryBase {
  *  \brief PerfIterator is used to calculate the computing time of a
  *  performance test.
  */
-class PAT_PUBLIC PerfIterator
+class PerfIterator
 {
 public:
   /// @param pFileName the source file name.
@@ -172,7 +168,7 @@ private:
 /** \class PartResult
  *  \brief The partial result of a single test
  */
-class PAT_PUBLIC PartResult
+class PartResult
 {
 public:
   PartResult(const std::string& pFileName, int pLoC);
@@ -200,7 +196,7 @@ protected:
 /** \class TestPartResult
  *  \brief The partial result of a single test
  */
-class PAT_PUBLIC TestPartResult : public PartResult
+class TestPartResult : public PartResult
 {
 public:
   enum Type {
@@ -222,7 +218,7 @@ private:
 /** \class TestPerfPartResult
  *  \brief The performance result
  */
-class PAT_PUBLIC PerfPartResult : public PartResult
+class PerfPartResult : public PartResult
 {
 public:
   PerfPartResult(const std::string& pFileName, int pLoC);
@@ -240,7 +236,7 @@ private:
  *
  *  TestResult concludes the result of a single test in summary.
  */
-class PAT_PUBLIC TestResult : private pat::testing::internal::Uncopyable
+class TestResult : private pat::testing::internal::Uncopyable
 {
 public:
   typedef std::vector<const TestPartResult*> Reliability;
@@ -278,7 +274,7 @@ private:
 /** \class TestCase
  *  \brief The information of a test case (a set of tests)
  */
-class PAT_PUBLIC TestCase
+class TestCase
 {
 private:
   typedef std::vector<testing::TestInfo*> InfoList;
@@ -315,7 +311,7 @@ private:
  *  TestInfo stores the information of a single test. A test case contains
  *  multiple tests which is represented by TestInfos.
  */
-class PAT_PUBLIC TestInfo
+class TestInfo
 {
 public:
   TestInfo(TestCase* pTestCase,
@@ -359,7 +355,7 @@ private:
 /** \class AssertionResult
  *  \brief The result of an assertion.
  */
-class PAT_PUBLIC AssertionResult
+class AssertionResult
 {
 public:
   AssertionResult(const AssertionResult& other);
@@ -387,7 +383,7 @@ private:
 /** \class AssertHelper
  *  \brief AssertHelper carries all information to UnitTest.
  */
-class PAT_PUBLIC AssertHelper
+class AssertHelper
 {
 public:
   AssertHelper(TestPartResult::Type pType,
@@ -403,13 +399,11 @@ private:
   TestPartResult m_Result;
 };
 
-PAT_PUBLIC
 TestInfo* MakeAndRegisterTestInfo(
     const char* pCaseName,
     const char* pTestName,
     TestFactoryBase* pFactory);
 
-PAT_PUBLIC
 std::string GetBoolAssertionFailureMessage(
     const AssertionResult& pAssertionResult,
     const char* pExpressionText,
@@ -440,7 +434,7 @@ std::string GetPredAssertionFailureMessage(
 /** \class Listener
  *  \brief Listener provides interfaces for objects who wants UnitTest's events.
  */
-class PAT_PUBLIC Listener
+class Listener
 {
 public:
   virtual ~Listener() { }
@@ -482,7 +476,7 @@ public:
   virtual void OnTestProgramEnd(const UnitTest& pUnitTest) {}
 };
 
-class PAT_PUBLIC Log
+class Log
 {
 public:
   enum Severity {
@@ -513,7 +507,7 @@ private:
 /** \class Repeater
  *  \brief Repeater dispatches events to all listeners.
  */
-class PAT_PUBLIC Repeater : public Listener
+class Repeater : public Listener
 {
 public:
   typedef std::vector<Listener*> ListenerList;
@@ -552,7 +546,7 @@ private:
 //===----------------------------------------------------------------------===//
 // UnitTest
 //===----------------------------------------------------------------------===//
-class PAT_PUBLIC UnitTest
+class UnitTest
 {
 private:
   // TODO: Performance
@@ -624,7 +618,7 @@ private:
  *  PAT_C( FooTest, Bar1) { ... }
  *  PAT_C( FooTest, Bar2) { ... }
  */
-class PAT_PUBLIC Test : private pat::testing::internal::Uncopyable
+class Test : private pat::testing::internal::Uncopyable
 {
 friend class pat::testing::TestInfo;
 private:

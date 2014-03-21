@@ -16,8 +16,6 @@ else
 PAT_CPPFLAGS = -g
 endif
 
-PAT_CPPFLAGS += -fvisibility=hidden
-
 AM_CPPFLAGS = ${PAT_INCLUDES} ${PAT_CPPFLAGS} ${ANDROID_CPPFLAGS}
 
 #############################
