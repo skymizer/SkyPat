@@ -54,5 +54,3 @@ void pat::shutdown()
   while (StaticList)
     StaticList->destroy();
 }
-
-
