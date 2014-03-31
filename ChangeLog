@@ -1,3 +1,21 @@
+2014-03-31 Luba Tang <luba@skymizer.com>
+	* Executive Summary:
+	1. Add predicate assertion macros - ASSERT_EQ/NE/LT/LE/GT/GE.
+	2. Enhance the ability to integrate with the other projects via
+	providing m4 scripts.
+	3. Change all Skymizer trade mark to `pat`.
+	4. Enhance building system
+
+	* Ehance building system and directory structure:
+	1. Add build.sh script to help user to dance with auto tools.
+	2. Turn the dirctory structure from single file (pat.h/pat.cpp) to
+	multiple files.
+	3. Clean up .gitignore
+
+	* Improve usability:
+	1. Add predicate assertions - ASSERT/EXPECT_EQ/NE/LT/LE/GT/GE
+	2. Add check_pat.m4 and setup_pat.m4 scripts
+
 2014-02-28 Peter <peter@skymizer.com>
 	Release in open.
 

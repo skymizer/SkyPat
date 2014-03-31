@@ -11,7 +11,7 @@
 #  Autoconf/Automake Initialization
 
 dnl AC_INIT(PKG_NAME, BUILD_VERSION, BUG_REPORTER)
-AC_INIT([pat],[ChungHo],[pat-dev@@googlegroups.com])
+AC_INIT([pat],[bt],[pat-dev@@googlegroups.com])
 AC_PREREQ(2.59)
 
 AC_CONFIG_SRCDIR([LICENSE])
@@ -28,9 +28,10 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 ####################
 #  Versioning, see VERSION
 CURRENT_VERSION=2
-REVISION_VERSION=6
-AGE_VERSION=2
-BUILD_VERSION=chungho
+REVISION_VERSION=7
+AGE_VERSION=0
+FULL_VERSION_NAME=Black-throated
+BUILD_VERSION=bt
 
 PAT_VERSION=$CURRENT_VERSION:$REVISION_VERSION:$AGE_VERSION
 PACKAGE_VERSION=$CURRENT_VERSION.$REVISION_VERSION.$AGE_VERSION-$BUILD_VERSION
