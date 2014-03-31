@@ -2,6 +2,7 @@ SOURCE = pat.cpp \
 	ADT/Color.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
+	Support/Unix/Timer.inc \
 	Listeners/PrettyResultPrinter.cpp \
 	Core/Test.cpp
 
