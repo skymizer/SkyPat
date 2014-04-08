@@ -1,0 +1,17 @@
+We introduce a brand new C++ performance analysis toolkit on Linux, called "pat".
+"pat" combines perf_events and unit tests together and gives programmers the power of fine-grained performance analysis via writing typical test cases.
+
+"pat" can use assertion to check the correctness of unit test. 
+User can set several fatal or non-fatal conditions.
+When executing, the test will stop if it faces fatal failure.
+After executing, the result can display on screen to help user varify conditions.
+
+Besides, "pat" integrates precise timer, symbol tables, and call-graph. 
+User only has to write a unit test for their program by "pat". 
+"pat" analyzes running time of each process of the program without effect from scheduler. 
+"pat" also provides call-graph analysis to help user to find out the bottleneck of their program. 
+Besides, we also provide visualize environment to provide more friendly interface.
+
+With the help of "pat", we hope people can analyze their program more easiler.
+We have open source "pat" under the new BSD license. 
+We hope we can have a chance to introduce "pat" on Linux Symposium.
