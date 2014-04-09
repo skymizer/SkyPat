@@ -1,17 +1,18 @@
 This paper introduces "pat", a C++ performance analysis toolkit on Linux.
 "pat" combines perf_events and unit tests together and gives programmers the power of fine-grained performance analysis via writing typical test cases.
 
-"pat" integrates precise timer, symbol tables, and call-graph. 
-User only has to write a unit test for their program by "pat". 
-"pat" analyzes running time of each process of the program without effect from scheduler. 
+"pat" has power of fine-grained performance analysis by integrating precise timer, symbol tables, and call-graph.
+In the past, performance analysis tools usually used sampling-based or instrumentation-based method to get running time of program. But, sampling-based method cannot get precise time without effect from scheduler. Instrumentation-based method cannot provide precise running time of regions of program. It only provides function-level running time. 
+"pat" provides ability to let user can measure precise running time of regions of program and generate call-graph with precise running-time of each region or function. 
+With these information, user can find out the popularity of every regions to let user know the bottleneck of their program.
+
+User can use "pat" to evaluate correctness and performance of their program by writing test-cases.
+"pat" uses assertion to check the correctness of unit test. 
+User can set several fatal or non-fatal conditions in their test-cases.
+With the help of perf_event of Linux kernel, "pat" can analyze running time of each region, which can be defined by user on their program, of the program without effect from scheduler. 
 "pat" also provides call-graph analysis to help user to find out the bottleneck of their program. 
-Besides, we also provide visualize environment to provide more friendly interface.
+Meanwhile, "pat" also provides visualize environment to provide more friendly interface.
 
-Additional, "pat" can use assertion to check the correctness of unit test. 
-User can set several fatal or non-fatal conditions.
-When executing, the test will stop if it faces fatal failure.
-After executing, the result can display on screen to help user varify conditions.
-
-With the help of "pat", we hope people can analyze their program more easiler.
-We have open source "pat" under the new BSD license. 
-We hope we can have a chance to introduce "pat" on Linux Symposium.
+"pat" has opened source under the new BSD license. 
+"pat" has also been accepted by "bold" project as its performance analysis tool.
+We hope we could have a chance to introduce "pat" on Linux Symposium.
