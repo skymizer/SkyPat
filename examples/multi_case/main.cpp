@@ -45,28 +45,28 @@
 // of a variable of a test is fixed.
 PAT_F(Fibonacci, fibonacci_result)
 {
-	int result;
+  int result;
 
-	PERFORM {
-		result = fibonacci(5);
-	}
+  PERFORM {
+    result = fibonacci(5);
+  }
 
   EXPECT_TRUE(result == 8);
 
-	PERFORM {
-		result = fibonacci(10);
-	}
+  PERFORM {
+    result = fibonacci(10);
+  }
 
   EXPECT_TRUE(result == 89);
 }
 
 PAT_F(Fibonacci, fibonacci_special_case)
 {
-	int result;
+  int result;
 
-	PERFORM {
-		result = fibonacci(-1);
-	}
+  PERFORM {
+    result = fibonacci(-1);
+  }
 
   EXPECT_TRUE(result == 1);
 }
@@ -74,28 +74,28 @@ PAT_F(Fibonacci, fibonacci_special_case)
 
 PAT_F(Factorial, factorial_result)
 {
-	int result;
+  int result;
 
-	PERFORM {
-		result = factorial(5);
-	}
+  PERFORM {
+    result = factorial(5);
+  }
 
   EXPECT_TRUE(result == 120);
 
-	PERFORM {
-		result = factorial(10);
-	}
+  PERFORM {
+    result = factorial(10);
+  }
 
   EXPECT_TRUE(result == 3628800);
 }
 
 PAT_F(Factorial, factorial_special_case)
 {
-	int result;
+  int result;
 
-	PERFORM {
-		result = factorial(-1);
-	}
+  PERFORM {
+    result = factorial(-1);
+  }
 
   EXPECT_TRUE(result == 1);
 }
