@@ -2,7 +2,9 @@ This paper introduces "pat", a C++ performance analysis toolkit on Linux.
 "pat" combines perf_events and unit tests together and gives programmers the power of fine-grained performance analysis via writing typical test cases.
 
 "pat" has power of fine-grained performance analysis by integrating precise timer, symbol tables, and call-graph.
-In the past, performance analysis tools usually used sampling-based or instrumentation-based method to get running time of program. But, sampling-based method cannot get precise time without effect from scheduler. Instrumentation-based method cannot provide precise running time of regions of program. It only provides function-level running time. 
+Performance analysis tools usually uses sampling-based or instrumentation-based method to get running time of program.
+But, sampling-based method cannot get precise time without effect from scheduler.
+Instrumentation-based method cannot provide precise running time of regions of program. It only provides function-level running time. 
 "pat" provides ability to let user can measure precise running time of regions of program and generate call-graph with precise running-time of each region or function. 
 With these information, user can find out the popularity of every regions to let user know the bottleneck of their program.
 
