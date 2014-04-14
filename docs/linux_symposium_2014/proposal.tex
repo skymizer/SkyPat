@@ -6,14 +6,14 @@ Performance analysis tools usually uses sampling-based or instrumentation-based 
 But, sampling-based method cannot get precise time without effect from scheduler.
 Instrumentation-based method cannot provide precise running time of regions of program.
 It only provides function-level running time. 
-"pat" provides ability to let user can measure precise running time of regions of program and generate call-graph with precise running-time of each region or function. 
-With these information, user can find out the popularity of every regions to let user know the bottleneck of their program.
+"pat" provides ability to let users can measure precise running time of regions of program and generate call-graph with precise running-time of each region or function. 
+With these information, users can find out the popularity of every regions to let users know the bottleneck of their program.
 
 Users can use "pat" to evaluate correctness and performance of their program by writing test-cases.
 "pat" uses assertion to check the correctness of unit test. 
 Users can set several fatal or non-fatal conditions in their test-cases.
-With the help of perf_event of Linux kernel, "pat" can analyze running time of each region, which can be defined by user on their program, of the program without effect from scheduler. 
-"pat" also provides call-graph analysis to help user to find out the bottleneck of their program. 
+With the help of perf_event of Linux kernel, "pat" can analyze running time of each region, which can be defined by users on their program, of the program without effect from scheduler. 
+"pat" also provides call-graph analysis to help users to find out the bottleneck of their program. 
 Meanwhile, "pat" also provides visualize environment to provide more friendly interface.
 
 "pat" has opened source under the new BSD license. 
