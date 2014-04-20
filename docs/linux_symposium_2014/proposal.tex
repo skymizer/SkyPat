@@ -1,20 +1,17 @@
 This paper introduces "pat", a C++ performance analysis toolkit on Linux.
-"pat" combines perf_events and unit tests together and gives programmers the power of fine-grained performance analysis via writing typical test cases.
+"pat" combines perf_events and unit tests together and gives programmers the power of white-box performance analysis via writing typical test cases.
 
-"pat" has power of fine-grained performance analysis by integrating precise timer, symbol tables, and call-graph.
-Performance analysis tools usually uses sampling-based or instrumentation-based method to get program's execution time.
-But, sampling-based method cannot get precise time without effect from scheduler.
-Instrumentation-based method cannot provide precise running time of regions of program.
-It only provides function-level running time. 
-"pat" provides ability to let users can measure precise running time of regions of program and generate call-graph with precise running-time of each region or function. 
+"pat" has power of white-box performance analysis by providing evaluation on performance and correctness of some pieces of code.
+Tranditional performance analysis tools usually only provide black-box evaluation and function-level information.
+"pat" provides ability to let users can measure precise running time of regions of program. The region of code can be defined by users by assert the macros. 
 With these information, users can find out the popularity of every regions to let users know the bottleneck of their program.
 
 Users can use "pat" to evaluate correctness and performance of their program by writing test-cases.
 "pat" uses assertion to check the correctness of unit test. 
 Users can set several fatal or non-fatal conditions in their test-cases.
-With the help of perf_event of Linux kernel, "pat" can analyze running time of each region, which can be defined by users on their program, of the program without effect from scheduler. 
-"pat" also provides call-graph analysis to help users to find out the bottleneck of their program. 
+With the help of perf_event of Linux kernel, "pat" can analyze running time of each region of the program without effect from scheduler. 
 Meanwhile, "pat" also provides visualize environment to provide more friendly interface.
+"pat" can help programs who need precise execution time, like system softwares, can get more run-time information.
 
 "pat" has opened source under the new BSD license. 
 "pat" has also been accepted by "bold" project as its performance analysis tool.
