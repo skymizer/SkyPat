@@ -1,11 +1,11 @@
-This paper introduces "pat", a C++ performance analysis toolkit on Linux.
-"pat" combines unit tests and perf_event to give programmers the power of white-box performance analysis.
+This paper introduces SkyPat, a C++ performance analysis toolkit on Linux.
+SkyPat combines unit tests and perf_event to give programmers the power of white-box performance analysis.
 
-"pat" behaves like a normal unit test library.
+SkyPat behaves like a normal unit test library.
 It provides macros and assertions to ensure correctness and to evaluate performance of a region of code.
 We want to point out that, under the high reliability, the evaluation is precise.
-With perf_event, "pat" can analyze running time of a region without interference to scheduler. 
-Moreover, perf_event also gives "pat" precise cycle counts that is useful for tools who are sensitive to variance of timing, such as compilers.
-With pure and precise timing information, "pat" helps to measure the bottleneck of regions of a program.
+With perf_event, SkyPat can analyze running time of a region without interference to scheduler. 
+Moreover, perf_event also gives SkyPat precise cycle counts that is useful for tools who are sensitive to variance of timing, such as compilers.
+With pure and precise timing information, SkyPat helps to measure the bottleneck of regions of a program.
 
-We develop "pat" under the new BSD license, and it's also the unit-test library of the "bold" project.
+We develop SkyPat under the new BSD license, and it's also the unit-test library of the "bold" project.
