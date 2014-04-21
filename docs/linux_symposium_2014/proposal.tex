@@ -3,9 +3,9 @@ This paper introduces "pat", a C++ performance analysis toolkit on Linux.
 
 "pat" behaves like a normal unit test library.
 It provides macros and assertions to ensure correctness and to evaluate performance of a region of code.
-That is, under the high reliability, the evaluation is precise.
+We want to point out that, under the high reliability, the evaluation is precise.
 With perf_event, "pat" can analyze running time of a region without interference to scheduler. 
-Moreover, perf_event also gives "pat" precise cycle counts, that is useful for tools who are sensitive to variance of timing, such as compilers.
+Moreover, perf_event also gives "pat" precise cycle counts that is useful for tools who are sensitive to variance of timing, such as compilers.
 With pure and precise timing information, "pat" helps to measure the bottleneck of regions of a program.
 
 We develop "pat" under the new BSD license, and it's also the unit-test library of the "bold" project.
