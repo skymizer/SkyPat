@@ -97,5 +97,6 @@ AC_CONFIG_FILES([examples/performance/Makefile])
 AC_CONFIG_FILES([examples/smoke/Makefile])
 AC_CONFIG_FILES([examples/fall/Makefile])
 AC_CONFIG_FILES([examples/pat_c/Makefile])
+AC_CONFIG_FILES([examples/thread/Makefile])
 
 AC_OUTPUT
