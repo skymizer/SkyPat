@@ -11,11 +11,11 @@ Homepage: <insert the upstream URL, if relevant>
 Package: pat-dev
 Section: libdevel
 Architecture: any
-Depends: patBROKEN (= ${binary:Version})
+Depends: pat (= ${binary:Version})
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
 
-Package: patBROKEN
+Package: pat
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
