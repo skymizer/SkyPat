@@ -25,3 +25,4 @@ $(eval $(call gen_sample_make, pat_c, ${SKY_SOURCES}))
 
 dist_pat_c_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile

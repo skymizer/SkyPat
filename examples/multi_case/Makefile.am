@@ -25,3 +25,4 @@ $(eval $(call gen_sample_make, multi_case, ${SKY_SOURCES}))
 
 dist_multi_case_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile

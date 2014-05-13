@@ -25,3 +25,4 @@ $(eval $(call gen_sample_make, performance, ${SKY_SOURCES}))
 
 dist_performance_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile

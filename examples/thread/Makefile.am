@@ -24,3 +24,4 @@ $(eval $(call gen_sample_make, thread, ${SKY_SOURCES}))
 
 dist_thread_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile

@@ -25,3 +25,4 @@ $(eval $(call gen_sample_make, assertion, ${SKY_SOURCES}))
 
 dist_assertion_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile

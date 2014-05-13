@@ -25,3 +25,4 @@ $(eval $(call gen_sample_make, smoke, ${SKY_SOURCES}))
 
 dist_smoke_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile

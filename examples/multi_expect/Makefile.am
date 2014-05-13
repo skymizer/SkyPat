@@ -25,3 +25,4 @@ $(eval $(call gen_sample_make, multi_expect, ${SKY_SOURCES}))
 
 dist_multi_expect_DATA = ${SKY_SOURCES} SampleMakefile
 
+DISTCLEANFILES = SampleMakefile
