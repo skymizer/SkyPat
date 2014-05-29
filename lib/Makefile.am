@@ -41,4 +41,4 @@ pkgconfig_DATA = pat.pc
 
 # Remove temporary *.la files
 install-exec-hook:
-	rm -f $(libdir)/libpat.la
+	rm -f $(DESTDIR)$(libdir)/libpat.la
