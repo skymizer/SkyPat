@@ -10,7 +10,6 @@
 #include <time.h>
 #include <unistd.h>
 #include <cassert>
-#include <iostream>
 
 #if defined(HAVE_SYS_TIMES_H)
 #include <sys/times.h>
@@ -23,7 +22,7 @@
 #if defined(HAVE_LINUX_PERF_EVENT_H)
 #include <linux/perf_event.h>
 #include <sys/ioctl.h>
-#include <string.h>
+#include <cstring>
 #include <stdlib.h>
 #ifndef __NR_perf_event_open
 #define __NR_perf_event_open 364
@@ -64,7 +63,6 @@ public:
 #if defined(HAVE_LINUX_PERF_EVENT_H)
      unsigned long long cycle;
      int r = read(m_Fd, &cycle, sizeof(unsigned long long));
-     //std::cout<<"cycle="<<cycle<<std::endl;
      return cycle;
 #elif defined(HAVE_CLOCK_GETTIME) && defined(ENABLE_CLOCK_GETTIME)
      struct timespec ts;
