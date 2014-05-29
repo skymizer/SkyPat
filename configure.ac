@@ -57,6 +57,7 @@ CXX_FLAG_CHECK([-Wno-variadic-macros])
 ####################
 # Check for headers
 AC_CHECK_HEADERS([sys/time.h])
+AC_CHECK_HEADERS([linux/perf_event.h])
 
 ####################
 # Check for functions
