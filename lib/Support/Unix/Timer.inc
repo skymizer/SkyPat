@@ -19,6 +19,14 @@
 #include <sys/time.h>
 #endif
 
+#if defined(HAVE_LINUX_PERF_EVENT_H)
+#include <linux/perf_event.h>
+#include <sys/ioctl.h>
+#ifndef __NR_perf_event_open
+#define __NR_perf_event_open 364
+#endif
+#endif 
+
 namespace pat {
 namespace testing {
 namespace internal {
@@ -33,11 +41,28 @@ public:
     if (-1 == g_ClkTick) {
       g_ClkTick = sysconf(_SC_CLK_TCK);
       assert((0 < g_ClkTick) && "sysconf error");
+#if defined(HAVE_LINUX_PERF_EVENT_H)
+     struct perf_event_attr attr;
+     
+     memset(&attr, 0, sizeof(attr));
+
+     attr.inherit = 1;
+     attr.disabled = 1;
+     attr.type = PERF_TYPE_HARDWARE;
+     attr.config = PERF_COUNT_HW_CPU_CYCLES;
+     attr->size = sizeof(*attr);
+
+     m_Fd = syscall(__NR_perf_event_open, &attr, 0, -1, -1, 0);
+#endif
     }
   }
 
    testing::Interval ns() {
-#if defined(HAVE_CLOCK_GETTIME) && defined(ENABLE_CLOCK_GETTIME)
+#if defined(HAVE_LINUX_PERF_EVENT_H)
+     int cycle;
+     int r = read(m_Fd, &cycle, sizeof(unsigned long long));
+     return r == -1 ? -1 : cycle;
+#elif defined(HAVE_CLOCK_GETTIME) && defined(ENABLE_CLOCK_GETTIME)
      struct timespec ts;
      int r = clock_gettime(CLOCK_MONOTONIC, &ts);
      return r == -1 ? -1 : ts.tv_sec * 1000000000LL + ts.tv_nsec;
@@ -54,10 +79,16 @@ public:
 
   void start() {
     assert(-1 != (m_Start = ns()) && "fail to get starting time");
+#if defined(HAVE_LINUX_PERF_EVENT_H)
+    ioctl(m_Fd, PERF_EVENT_IOC_ENABLE);
+#endif
   }
 
   void stop() {
     assert(-1 != (m_End = ns()) && "fail to get elapsed time");
+#if defined(HAVE_LINUX_PERF_EVENT_H)
+    ioctl(fd, PERF_EVENT_IOC_DISABLE);
+#endif
   }
 
   testing::Interval clock() const {
@@ -69,6 +100,8 @@ private:
   testing::Interval m_End;
 
   static long g_ClkTick;
+
+  int m_Fd;
 };
 
 long TimerImpl::g_ClkTick = -1;
