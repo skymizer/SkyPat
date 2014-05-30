@@ -23,7 +23,7 @@
 #include <linux/perf_event.h>
 #include <sys/ioctl.h>
 #include <cstring>
-#include <stdlib.h>
+#include <cstdlib>
 #ifndef __NR_perf_event_open
 #define __NR_perf_event_open 364
 #endif
@@ -50,20 +50,25 @@ public:
 
      attr.inherit = 1;
      attr.disabled = 1;
-     attr.type = PERF_TYPE_HARDWARE;
-     attr.config = PERF_COUNT_HW_CPU_CYCLES;
+     attr.type = PERF_TYPE_SOFTWARE;
+     attr.config = PERF_COUNT_SW_TASK_CLOCK;
      attr.size = sizeof(attr);
 
      m_Fd = syscall(__NR_perf_event_open, &attr, 0, -1, -1, 0);
 #endif
     }
   }
+  ~TimerImpl() {
+#if defined(HAVE_LINUX_PERF_EVENT_H)
+    close(m_Fd);
+#endif
+  }
 
    testing::Interval ns() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
-     unsigned long long cycle;
-     int r = read(m_Fd, &cycle, sizeof(unsigned long long));
-     return cycle;
+     unsigned long long runtime;
+     read(m_Fd, &runtime, sizeof(unsigned long long));
+     return runtime;
 #elif defined(HAVE_CLOCK_GETTIME) && defined(ENABLE_CLOCK_GETTIME)
      struct timespec ts;
      int r = clock_gettime(CLOCK_MONOTONIC, &ts);
