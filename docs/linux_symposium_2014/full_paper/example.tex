@@ -51,15 +51,45 @@
 %\thispagestyle{empty} % Do not use \thispagestyle in your paper.
 
 \begin{abstract}
-This paper introduces SkyPat, a C++ performance analysis toolkit on Linux. SkyPat combines unit tests and perf\_event to give programmers the power of white-box performance analysis.
+This paper introduces SkyPat, a C++ performance analysis toolkit on Linux. 
+SkyPat combines unit tests and perf\_event to give programmers the power of white-box performance analysis.
 
-SkyPat behaves like a normal unit test library. It provides macros and assertions to ensure correctness and to evaluate performance of a region of code. We want to point out that, under the high reliability, the evaluation is precise. With perf\_event, SkyPat can analyze running time of a region without interference to scheduler. Moreover, perf\_event also gives SkyPat precise cycle counts that are useful for tools who are sensitive to variance of timing, such as compilers. With pure and precise timing information, SkyPat helps to measure the bottleneck of regions of a program.
+SkyPat behaves like a normal unit test library. 
+It provides macros and assertions to ensure correctness and to evaluate performance of a region of code. 
+We want to point out that, under the high reliability, the evaluation is precise. 
+With perf\_event, SkyPat can analyze running time of a region without interference to scheduler. 
+Moreover, perf\_event also gives SkyPat precise cycle counts that are useful for tools who are sensitive to variance of timing, such as compilers.
+With pure and precise timing information, SkyPat helps to measure the bottleneck of regions of a program.
 
 We develop SkyPat under the new BSD license, and it's also the unit-test library of the "bold" project.
 \end{abstract}
 
 \section{Introduction}
+Accuracy and performance evaluation are two important issues for programmers.
+First, accuracy ensures that program can behave like what programmer wants it behaves and it is not easy to be ensured. 
+For example, if a compiler compiles source-code fast but its result contains lots of error, this compiler is useless.
+In order to ensure accuracy, programmers usually write lots of unit-tests to verify their program.
+Second, performance evaluation is another important issues for programmers.
+Programmers always hope program executing as fast as possible.
+Using performance evaluation tool can evaluate its runtime behavior. 
+Performance evaluation tool, such as \textit{perf} \cite{perf-tools}, can evaluate runtime behavior with the help of OS-support and hardware-support.
 
+In the past, unit-test tool and performance evaluation tool are different tools. 
+For example, \textit{GoogleTest} \cite{Google-test} is well-known C++ unit-test framework.
+GoogleTest can evaluate accuracy but cannot evaluate performance. 
+Meanwhile, \textit{perf} is well-known performance evaluation toolkit in Linux. 
+\textit{perf} can evaluate performance of programs, including its running time, cycles and so on.
+Although \textit{perf} can evaluate whole program, \textit{perf} cannot evaluate performance of region of code.
+
+In this paper, we introduces SkyPat, which combines unit tests and performance evaluation.
+Programmer only need to write and execute unit-tests and they can get accuracy and performance.
+Furthermore, with the help of perf\_event of Linux kernel, SkyPat can provide cycle-level accuracy precise timer.
+
+The rest of this paper will be organized as follows. 
+Related works is discussed in Section 2. 
+Our design and implementation is presented in Section 3.
+Evaluation is shown in Section 4.
+At last, we conclude this paper in Section 5.
 
 \section{Related work}
 
@@ -76,8 +106,12 @@ We develop SkyPat under the new BSD license, and it's also the unit-test library
 
 \begin{thebibliography}{99}  % The section of reference
 \addcontentsline{toc}{section}{Reference}  % Add ``Reference'' into the table of contents
-\bibitem{kvm-for-arm}
-Christoffer Dall and Jason Nieh Columbia University, ``KVM for ARM,'' in \emph{the proceeding of Linux Symposium 2011}
+\bibitem{perf-tools}
+Arnaldo Carvalho de Melo, Redhat, ``The New Linux `perf' tools'' in \emph{17 International Linux System Technology Conference (Linux Kongress), 2010}
+
+\bibitem{Google-test}
+GoogleTest, Google, \texttt{\small https://code.google.com/p/googletest/}
+
 \end{thebibliography}
 
 \end{document}
