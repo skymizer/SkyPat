@@ -1,0 +1,83 @@
+% Linux Symposium sample paper
+
+\documentclass[final]{ols}
+\usepackage{color,framed,url,zrl}
+\usepackage[colorlinks=true]{hyperref}
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
+\ifpdf\usepackage[pdftex]{graphicx}\else\usepackage{graphicx}\fi
+
+% Obfuscated addesses in hopes of defeating spam-harvesters
+\providecommand{\XFname}{OLS}
+\providecommand{\XFuname}{papers2010}
+\providecommand{\XFaddr}{linuxsymposium}
+\providecommand{\XFyear}{2010}
+\providecommand{\XFjwlA}{ols-sponsors}
+\providecommand{\XFrbA}{robyn.bergeron}
+\providecommand{\XFjwlDomA}{fedoraproject.org}
+\providecommand{\XFrbDomA}{gmail.com}
+
+\begin{document}
+
+\title{SkyPat: C++ Performance Analysis and Testing Framework}
+\subtitle{}
+
+\author{
+	Ping-Hao Chang \\
+	{\em Skymizer}\\
+	{\tt\small peter@skymizer.com}\\
+\and
+	Luba Tang\\
+	{\em Skymizer}\\
+	{\tt\small luba@skymizer.com}\\
+\and
+	Kuan-Hung Kuo\\
+	{\em Skymizer}\\
+	{\tt\small ggm@skymizer.com}\\
+\and
+	Der-Yu Tsai\\
+	{\em Skymizer}\\
+	{\tt\small a127a127@skymizer.com}\\
+\and
+	Kevin Chen\\
+	{\em Skymizer}\\
+	{\tt\small kevin@skymizer.com}
+}
+\shortauthor{P.H.\ Chang \& L.\ Tang \& K.H.\ Kuo \& D.Y.\ Tsai \& K.\ Chen}
+
+\date{} % Do not print the date
+
+\maketitle
+
+%\thispagestyle{empty} % Do not use \thispagestyle in your paper.
+
+\begin{abstract}
+This paper introduces SkyPat, a C++ performance analysis toolkit on Linux. SkyPat combines unit tests and perf\_event to give programmers the power of white-box performance analysis.
+
+SkyPat behaves like a normal unit test library. It provides macros and assertions to ensure correctness and to evaluate performance of a region of code. We want to point out that, under the high reliability, the evaluation is precise. With perf\_event, SkyPat can analyze running time of a region without interference to scheduler. Moreover, perf\_event also gives SkyPat precise cycle counts that are useful for tools who are sensitive to variance of timing, such as compilers. With pure and precise timing information, SkyPat helps to measure the bottleneck of regions of a program.
+
+We develop SkyPat under the new BSD license, and it's also the unit-test library of the "bold" project.
+\end{abstract}
+
+\section{Introduction}
+
+
+\section{Related work}
+
+\subsection{perf}
+
+\subsection{GoogleTest}
+
+
+\section{Design and Implemenation}
+
+\section{Evaluation}
+
+\section{Conclusion}
+
+\begin{thebibliography}{99}  % The section of reference
+\addcontentsline{toc}{section}{Reference}  % Add ``Reference'' into the table of contents
+\bibitem{kvm-for-arm}
+Christoffer Dall and Jason Nieh Columbia University, ``KVM for ARM,'' in \emph{the proceeding of Linux Symposium 2011}
+\end{thebibliography}
+
+\end{document}
