@@ -105,7 +105,14 @@ With the help of SkyPat, programmers who wants to analyze their program, only ne
 That is to say, SkyPat integrates unit-test framework and performance evaluation tool together.
 Besides, SkyPat also provides friendly command-line based user-interface to let user use it easily. 
 
-SkyPat provides several macro to integrate your test cases and your main program, including ASSERT/EXPECT for accuracy and PERFROM for performance.
+SkyPat provides several macro to integrate test cases and main program, including ASSERT/EXPECT for accuracy and PERFROM for performance.
+ASSERT and EXPECT are assertions for condition testing and PERFORM wraps a block of code for performance testing. 
+ASSERT is assertion for fatal condition testing. 
+That is to say, if the condition of ASSERT fails, the test fails and stops immediately.
+EXPECT is non-fatal assertion. 
+When the condition of EXPECT fails, it displays on screen to indicate that is a non-fatal failure. The whole test keeps running and is not considered as a failure.
+PERFORM evaluates performance rather than correctness. With the help of PERFORM, user can measure the performance of code within a test.
+
 
 \section{Evaluation}
 
@@ -120,7 +127,7 @@ Arnaldo Carvalho de Melo, Redhat, ``The New Linux `perf' tools'' in \emph{17 Int
 GoogleTest, Google, \texttt{\small https://code.google.com/p/googletest/}
 
 \bibitem{oprofile}
-Oprofile, \texttt{\small http://oprofile.sourceforge.net/about/}
+Oprofile, \texttt{\small \newline http://oprofile.sourceforge.net/about/}
 
 \bibitem{performance-counter-linux}
 Ingo Molnar, ``Performance Counters for Linux'' in \emph{Linux Weekly News, 2009}, \texttt{\small http://lwn.net/Articles/337493/}
