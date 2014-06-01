@@ -71,7 +71,7 @@ Although \textit{perf} can evaluate whole program, \textit{perf} cannot evaluate
 
 In this paper, we introduces SkyPat, which combines unit-test and performance evaluation.
 Programmer only need to write and execute unit-tests and they can get accuracy and performance.
-Furthermore, with the help of perf\_event of Linux kernel, SkyPat can provide cycle-level accuracy precise timer.
+Furthermore, with the help of perf\_event of Linux kernel, SkyPat can provide precise timer with cycle-level accuracy .
 By integrating unit-test and performance evaluation, SkyPat can let programmer evaluate performance and accuracy more easier than before.
 
 The rest of this paper will be organized as follows. 
@@ -88,7 +88,7 @@ Oprofile is performance evaluation tool for whole system and single program.
 Oprofile was based on sampling-based by creating a daemon to collect runtime information for versions 0.9.7 and earlier.
 Because sampling-based daemon will waste system resource, Linux community added new interface, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event'' in later version.
 With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called ``perf'', based on ``Performance Counter''. 
-``perf'' is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, the value of ``vruntime'' in scheduler, call-graph, branch-miss, cache-miss, and so on.
+``perf'' is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, call-graph, branch-miss, cache-miss, and so on.
 Because ``perf'' gets runtime information by kernel rather than collecting from daemon, ``perf'' doesn't create lots of overhead for profiling.
 Although these performance evaluation tool can evaluate program's performance, they cannot monitor the performance of the region of code and cannot integrate with unit-test system.
 
@@ -98,7 +98,7 @@ With the help of providing ASSERT and EXPECT macros, GoogleTest let programmer b
 When executing test-cases, program will stop if it faces fatal error. 
 If program faces non-fatal error, program will show the runtime value and expected value on the screen to programmer.
 
-\section{Design and Implementation}
+\section{Implementation}
 
 SkyPat is a C++ performance analyzing and testing framework on Linux platforms. We refer the concept of Google Test and extend its scope from testing framework into Performance Analysis Framework.
 With the help of SkyPat, programmers who wants to analyze their program, only need to write test cases via SkyPat, and SkyPat can analyze programs' correctness and performance. 
@@ -113,10 +113,21 @@ EXPECT is non-fatal assertion.
 When the condition of EXPECT fails, it displays on screen to indicate that is a non-fatal failure. The whole test keeps running and is not considered as a failure.
 PERFORM evaluates performance rather than correctness. With the help of PERFORM, user can measure the performance of code within a test.
 
+To get performance of the region of code, SkyPat uses macro to assemble ``perf\_event'' interface into the test-case.
+SkyPat uses ``perf\_event'' interface to register events to be monitored when program initials.
+When program executes at the beginning of the region of code to be monitored, SkyPat will send a system call to kernel to enable the counter to get process execution time.
+When program executes in the end of the region of code, SkyPat will send a system call to kernel to disable the counter to get process execution time.
+SkyPat will get the difference of time between begin and end to calculate the execution time in the region of code.
+Because SkyPat uses ``perf\_event'' rather than ``gettimeofday'' to get execution time, SkyPat can eliminate the effect from scheduling between processes.
+By this way, SkyPat can provide user precise timer information of the region of code which can be assigned by programmer.
 
 \section{Evaluation}
 
 \section{Conclusion}
+By integrating unit-test framework and performance evaluation tool, user can get accuracy and performance number by writing test-cases.
+Users can get the performance between region of code defined by themselves.
+For programs which needs high precise timing information, such as compiler, SkyPat can give them more ability to measure the bottleneck of regions of a program.
+
 
 \begin{thebibliography}{99}  % The section of reference
 \addcontentsline{toc}{section}{Reference}  % Add ``Reference'' into the table of contents
