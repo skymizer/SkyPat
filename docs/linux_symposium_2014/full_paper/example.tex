@@ -98,7 +98,14 @@ With the help of providing ASSERT and EXPECT macros, GoogleTest let programmer b
 When executing test-cases, program will stop if it faces fatal error. 
 If program faces non-fatal error, program will show the runtime value and expected value on the screen to programmer.
 
-\section{Design and Implemenation}
+\section{Design and Implementation}
+
+SkyPat is a C++ performance analyzing and testing framework on Linux platforms. We refer the concept of Google Test and extend its scope from testing framework into Performance Analysis Framework.
+With the help of SkyPat, programmers who wants to analyze their program, only need to write test cases via SkyPat, and SkyPat can analyze programs' correctness and performance. 
+That is to say, SkyPat integrates unit-test framework and performance evaluation tool together.
+Besides, SkyPat also provides friendly command-line based user-interface to let user use it easily. 
+
+SkyPat provides several macro to integrate your test cases and your main program, including ASSERT/EXPECT for accuracy and PERFROM for performance.
 
 \section{Evaluation}
 
