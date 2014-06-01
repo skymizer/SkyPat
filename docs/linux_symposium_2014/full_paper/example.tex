@@ -82,10 +82,21 @@ At last, we conclude this paper in Section 5.
 
 \section{Related work}
 
-\subsection{perf}
+There are several existing evaluation tools for performance and accuracy.
+Some tools focus on performance evaluation, such as Oprofile\cite{oprofile} and ``perf''. 
+Oprofile is performance evaluation tool for whole system and single program.
+Oprofile was based on sampling-based by creating a daemon to collect runtime information for versions 0.9.7 and earlier.
+Because sampling-based daemon will waste system resource, Linux community added new interface, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event'' in later version.
+With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called ``perf'', based on ``Performance Counter''. 
+``perf'' is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, the value of ``vruntime'' in scheduler, call-graph, branch-miss, cache-miss, and so on.
+Because ``perf'' gets runtime information by kernel rather than collecting from daemon, ``perf'' doesn't create lots of overhead for profiling.
+Although these performance evaluation tool can evaluate program's performance, they cannot monitor the performance of the region of code and cannot integrate with unit-test system.
 
-\subsection{GoogleTest}
-
+Other tools are unit-test framework focusing on accuracy, such as GoogleTest.
+GoogleTest is a xUnit test framework for C++ program.
+With the help of providing ASSERT and EXPECT macros, GoogleTest let programmer be able to verify program's accuracy by writing test-case.
+When executing test-cases, program will stop if it faces fatal error. 
+If program faces non-fatal error, program will show the runtime value and expected value on the screen to programmer.
 
 \section{Design and Implemenation}
 
@@ -100,6 +111,12 @@ Arnaldo Carvalho de Melo, Redhat, ``The New Linux `perf' tools'' in \emph{17 Int
 
 \bibitem{Google-test}
 GoogleTest, Google, \texttt{\small https://code.google.com/p/googletest/}
+
+\bibitem{oprofile}
+Oprofile, \texttt{\small http://oprofile.sourceforge.net/about/}
+
+\bibitem{performance-counter-linux}
+Ingo Molnar, ``Performance Counters for Linux'' in \emph{Linux Weekly News, 2009}, \texttt{\small http://lwn.net/Articles/337493/}
 
 \end{thebibliography}
 
