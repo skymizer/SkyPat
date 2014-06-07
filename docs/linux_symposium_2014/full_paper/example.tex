@@ -1,6 +1,7 @@
 \documentclass[final]{ols}
 \usepackage{color,framed,url,zrl}
 \usepackage[colorlinks=true]{hyperref}
+\usepackage{listings}
 \definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
 \ifpdf\usepackage[pdftex]{graphicx}\else\usepackage{graphicx}\fi
 
@@ -114,13 +115,78 @@ PERFORM evaluates performance rather than correctness. With the help of PERFORM,
 
 To get the performance of the region of code, SkyPat uses macro to assemble ``perf\_event'' interface into the test-case.
 SkyPat uses ``perf\_event'' interface to register events to be monitored when program initials.
-When program executes at the beginning of the region of code to be monitored, SkyPat will send a system call to kernel to enable the counter to get process execution time.
-When program executes in the end of the region of code, SkyPat will send a system call to kernel to disable the counter to get process execution time.
-SkyPat gets the difference of time between begin and end to calculate the execution time in the region of code.
-%Because SkyPat uses ``perf\_event'' rather than ``gettimeofday'' to get execution time, SkyPat can eliminate the effect from scheduling between processes.
-%By this way, SkyPat can provide user precise timer information of the region of code which can be assigned by programmer.
+When program executes at the beginning of the region of code to be monitored, SkyPat will send a system call to kernel to enable the counter to gather process's runtime information, such as execution time.
+When program executes in the end of the region of code, SkyPat will send a system call to kernel to disable the counter.
+SkyPat gets the difference of time between begin and end to calculate the value of runtime information during executing the region of code.
 
-\section{Evaluation}
+Because ASSERT/EXCEPT/PERFORM are macros, when user writing their test-case, they only have to let the region of code placed between braces of the macro.
+When user compiles their test-case, compiler will integrate all SkyPat framework to the test-case.
+
+\section{Unit-test framework}
+For those who wants to use SkyPat as unit-test and performance evaluation framework, there are three basic steps to use SkyPat:
+\begin{itemize}
+\item Writing test cases including ASSERT, EXPECT, and PERFORM macros
+\item Compiling these cases with your main program and the shared library of pat.
+\item Execute the binary file and you can get its correctness and performance.
+\end{itemize}
+This section shows how to use SkyPat to evaluate another program's correctness and performance.
+
+\subsection{Declare test-case and test function}
+
+SkyPat uses test-case to evaluate testee's correctness and performance. 
+Test-case is grouped by a bunch of "test functions".
+
+In Figure~\ref{aircraftcase}, it shows how to define test-case and test-function.
+
+\begin{figure}[h]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+PAT_F(AircraftCase, take_off_test)
+{
+   // Test Code
+}
+
+PAT_F(AircraftCase, landing_test)
+{
+   // Test Code
+}
+\end{lstlisting}
+\caption{Example for declaring a test}
+\label{aircraftcase}
+\end{figure}
+
+PAT\_F macro declare a test, with two parameters: test-case's name and test-function's name.
+In Figure~\ref{aircraftcase}, ``AircraftCase'' is the name of test-case. 
+``take\_off\_test'' and ``landing\_test'' are the names of test-function belongs to a test-case, ``AircraftCase''.
+User of SkyPat should put logically related tests into the same test-case.
+In test-function, user can evaluate correctness and reliability by inserting macros.
+Guide for these macros is described in following section.
+
+\subsection{Correctness evaluation}
+For correctness evaluation, user can assert fatal or non-fatal condition in the region of code in test-function.
+
+\begin{figure}[h]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+PAT_F(SeriesCase, fibonacci_test)
+{
+  ASSERT_TRUE(0 != fibonacci(10));
+  EXPECT_TRUE(2 == fibonacci(10));
+  ASSERT_TRUE(3 == fibonacci(10));
+}
+\end{lstlisting}
+\caption{Example for declaring a test}
+\label{assert_example}
+\end{figure}
+
+In Figure~\ref{assert_example}, it 
+
+\subsection{Performance evaluation}
+For performance evaluation, user can
+
+\subsection{Integrate all test-cases}
+
+
 
 \section{Conclusion and Future Works}
 By integrating unit-test framework and performance evaluation tool, user can get correctness and performance number of the region of code by writing test-cases.
