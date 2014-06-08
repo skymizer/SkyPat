@@ -165,6 +165,14 @@ Guide for these macros is described in following section.
 \subsection{Correctness evaluation}
 For correctness evaluation, user can assert fatal or non-fatal condition in the region of code in test-function.
 
+The macro for fatal condition is ASSERT.
+Programmer tests a class or a function by making ASSERT assertions about its behavior. 
+There are two kinds of ASSERT macros, ASSERT\_TRUE and ASSERT\_FALSE. 
+If the condition of ASSERT fails, the test will stop and exit the test immediately. 
+The macro for non-fatal condition is EXPECT.
+There are two kinds of EXPECT macros, EXPECT\_TRUE and EXPECT\_FALSE.
+If the condition of EXPECT fails, the test will not stop but keep execute and display the expected result and real result on screen.
+
 \begin{figure}[h]
 \lstset{language=C++}
 \begin{lstlisting}[frame=single]
@@ -175,14 +183,39 @@ PAT_F(SeriesCase, fibonacci_test)
   ASSERT_TRUE(3 == fibonacci(10));
 }
 \end{lstlisting}
-\caption{Example for declaring a test}
+\caption{Example for assertions}
 \label{assert_example}
 \end{figure}
 
-In Figure~\ref{assert_example}, it 
+In Figure~\ref{assert_example}, it shows how fatal and non-fatal assertions work.
+Function ``fibonacci'' is the testee function which can be replaced any function of testee program by user.
+There are three assertion, including fatal and non-fatal, and the condition of the second and third condition are fail.
+
+\begin{figure}[h]
+\lstset{language=sh}
+\begin{lstlisting}[frame=single]
+[ RUN      ] MyCase.fibonacci_test
+[  FAILED  ] 
+main.cpp:53: error: failed to expect
+Value of: 2 == fibonacci(10)
+  Actual:   false
+  Expected: true
+main.cpp:54: fatal: failed to assert
+Value of: 3 == fibonacci(10)
+  Actual:   false
+  Expected: true
+\end{lstlisting}
+\caption{Output of Figure~\ref{assert_example}}
+\label{assert_example_output}
+\end{figure}
+
+In Figure~\ref{assert_example_output}, it shows the output of Figure~\ref{assert_example}.
+When program executes EXPECT assertion, although its condition is fail, SkyPat displays its status as ``error: failed to expect'' and keep s executing following code.
+However, when program executes the last ASSERT assertion whose condtion is fail, because it is fatal assertion, the program stops immediately and displays its status as ``fatal: failed to assert''.
+With the help of these two assertions, user can insert them into their test-cases to verify correctness of their program.
 
 \subsection{Performance evaluation}
-For performance evaluation, user can
+%For performance evaluation, user can insert PERFROM macro into the region of code where user wants to evaluate its performance.
 
 \subsection{Integrate all test-cases}
 
