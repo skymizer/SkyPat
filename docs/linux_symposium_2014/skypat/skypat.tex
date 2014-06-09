@@ -40,7 +40,7 @@
 %\thispagestyle{empty} % Do not use \thispagestyle in your paper.
 
 \begin{abstract}
-This paper introduces SkyPat, a C++ performance analysis toolkit on Linux. 
+This paper introduces SkyPat, a C++ performance analysis toolkit on Linux.
 SkyPat combines unit tests and perf\_event to give programmers the power of white-box performance analysis.
 
 Unlike tranditional tools that manipulate entire program as a black-box, SkyPat works on a region of code like a white-box.
@@ -68,30 +68,29 @@ SkyPat is such library: by using SkyPat, users can evaluate correctness and perf
 
 Usually, unit-test tools and performance evaluation tools are separated tools.
 For example, \textit{GoogleTest} \cite{Google-test} is well-known C++ unit-test framework.
-\textit{GoogleTest} can evaluate correctness but cannot evaluate performance. 
-Besides, \textit{perf} \cite{perf-tools} is well-known performance evaluation toolkit in Linux. 
+\textit{GoogleTest} can evaluate correctness but cannot evaluate performance.
+Besides, \textit{perf} \cite{perf-tools} is well-known performance evaluation toolkit in Linux.
 \textit{perf} can evaluate performance of programs, including its running time, cycles and so on.
 Although \textit{perf} can evaluate whole program, using \textit{perf} to evaluate a region of code is difficult.
 
 In this paper, we introduces SkyPat, which combines unit-test and performance evaluation.
 Programmer only need to write and execute unit-tests and they can get correctness and performance.
-Furthermore, with the help of perf\_event of Linux kernel, SkyPat can provide precise timer and other runtime information to measure the region of code.
-By integrating unit-test and performance evaluation, SkyPat can let programmer evaluate performance and correctness more easier than before.
+With the help of perf\_event of Linux kernel, SkyPat can provide precise timer and additional runtime information to measure a region of code.
+By integrating unit-test and performance evaluation, SkyPat make evaluation of a region of code easier.
 
-The rest of this paper will be organized as follows. 
-Related works is discussed in Section 2. 
-Our design and implementation is presented in Section 3.
-Evaluation is shown in Section 4.
+The organization of this paper is as follows.
+Related work is in Section 2.
+We presents SkyPat's design and implementation in Section 3 and shows the evaluation results in Section 4.
 At last, we conclude this paper in Section 5.
 
 \section{Related work}
 
 There are several existing evaluation tools for performance and correctness.
-Some tools focus on performance evaluation, such as Oprofile\cite{oprofile} and \textit{perf}. 
+Some tools focus on performance evaluation, such as Oprofile\cite{oprofile} and \textit{perf}.
 Oprofile is performance evaluation tool for whole system and single program.
 Oprofile was based on sampling-based by creating a daemon to collect runtime information before versions 0.9.7 and earlier.
 Because sampling-based daemon will waste system resource, Linux community added new interface, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event'' in later version.
-With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter''. 
+With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter''.
 \textit{Perf} is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, call-graph, branch-miss, cache-miss, and so on.
 Because \textit{perf} gets runtime information by kernel rather than collecting by daemon, \textit{perf} does not create lots of overhead for profiling.
 Although these performance evaluation tool can evaluate program's performance, they cannot monitor the performance of the region of code and cannot integrate with unit-test system.
@@ -99,24 +98,24 @@ Although these performance evaluation tool can evaluate program's performance, t
 Other tools are unit-test framework focusing on correctness, such as \textit{GoogleTest}.
 \textit{GoogleTest} is a xUnit test framework for C++ program.
 With the help of providing ASSERT and EXPECT macros, \textit{GoogleTest} let programmer be able to verify program's correctness by writing test-case.
-When executing test-cases, program will stop if it faces fatal error. 
+When executing test-cases, program will stop if it faces fatal error.
 If program faces non-fatal error, program will show the runtime value and expected value on the screen to programmer.
 
 \section{Implementation}
 
-SkyPat is a C++ performance analyzing and testing framework on Linux platforms. 
+SkyPat is a C++ performance analyzing and testing framework on Linux platforms.
 We refer the concept of Google Test and extend its scope from testing framework into Performance Analysis Framework.
-With the help of SkyPat, programmers who wants to analyze their program, only need to write test cases via SkyPat, and SkyPat can analyze programs' correctness and performance. 
+With the help of SkyPat, programmers who wants to analyze their program, only need to write test cases via SkyPat, and SkyPat can analyze programs' correctness and performance.
 That is to say, SkyPat integrates unit-test framework and performance evaluation tool together.
 
 SkyPat provides several macro to integrate test cases and main program, including ASSERT/EXPECT for correctness and PERFROM for performance.
-ASSERT and EXPECT are assertions for condition testing and PERFORM wraps a block of code for performance testing. 
+ASSERT and EXPECT are assertions for condition testing and PERFORM wraps a block of code for performance testing.
 ASSERT is assertion for fatal condition testing and EXPECT is non-fatal assertion.
 That is to say, if the condition of ASSERT fails, the test fails and stops immediately.
- 
-When the condition of EXPECT fails, it displays on screen to indicate that is a non-fatal failure. 
+
+When the condition of EXPECT fails, it displays on screen to indicate that is a non-fatal failure.
 The whole test keeps running and is not considered as a failure.
-PERFORM evaluates performance rather than correctness. 
+PERFORM evaluates performance rather than correctness.
 With the help of PERFORM, user can measure the performance of code within a test.
 
 To get the performance of the region of code, SkyPat uses macro to assemble ``perf\_event'' interface into the test-case.
@@ -139,7 +138,7 @@ This section shows how to use SkyPat to evaluate another program's correctness a
 
 \subsection{Declare test-case and test function}
 
-SkyPat uses test-case to evaluate testee's correctness and performance. 
+SkyPat uses test-case to evaluate testee's correctness and performance.
 Test-case is grouped by a bunch of "test functions".
 
 In Figure~\ref{aircraftcase}, it shows how to define test-case and test-function.
@@ -162,7 +161,7 @@ PAT_F(AircraftCase, landing_test)
 \end{figure}
 
 PAT\_F macro declare a test, with two parameters: test-case's name and test-function's name.
-In Figure~\ref{aircraftcase}, ``AircraftCase'' is the name of test-case. 
+In Figure~\ref{aircraftcase}, ``AircraftCase'' is the name of test-case.
 ``take\_off\_test'' and ``landing\_test'' are the names of test-function belongs to a test-case, ``AircraftCase''.
 User of SkyPat should put logically related tests into the same test-case.
 In test-function, user can evaluate correctness and reliability by inserting macros.
@@ -173,9 +172,9 @@ We accept the concept from \textit{GoogleTest} for our correctness evaluation.
 For correctness evaluation, user can assert fatal or non-fatal condition in the region of code in test-function.
 
 The macro for fatal condition is ASSERT.
-Programmer tests a class or a function by making ASSERT assertions about its behavior. 
-There are two kinds of ASSERT macros, ASSERT\_TRUE and ASSERT\_FALSE. 
-If the condition of ASSERT fails, the test will stop and exit the test immediately. 
+Programmer tests a class or a function by making ASSERT assertions about its behavior.
+There are two kinds of ASSERT macros, ASSERT\_TRUE and ASSERT\_FALSE.
+If the condition of ASSERT fails, the test will stop and exit the test immediately.
 The macro for non-fatal condition is EXPECT.
 There are two kinds of EXPECT macros, EXPECT\_TRUE and EXPECT\_FALSE.
 If the condition of EXPECT fails, the test will not stop but keep execute and display the expected result and real result on screen.
@@ -202,7 +201,7 @@ There are three assertion, including fatal and non-fatal, and the condition of t
 \lstset{language=sh}
 \begin{lstlisting}[frame=single]
 [ RUN      ] MyCase.fibonacci_test
-[  FAILED  ] 
+[  FAILED  ]
 main.cpp:53: error: failed to expect
 Value of: 2 == fibonacci(10)
   Actual:   false
@@ -242,7 +241,7 @@ PAT_F(MyCase, fibonacci_perf_test)
 \end{figure}
 
 In Figure~\ref{perform_example}, it shows how to use PERFORM macro to write a test-function.
-It uses PERFORM to wrap the region of code, which is ``fibonacci(40)'' in this case. 
+It uses PERFORM to wrap the region of code, which is ``fibonacci(40)'' in this case.
 And SkyPat will use ``perf\_event'' to measure the runtime behavior during executing the region of code.
 
 \begin{figure}[h]
@@ -280,8 +279,8 @@ To integrate all test-case, user should call ``Initialize'' and ``RunAll'' in th
 Otherwise, user doesn't need to concern about register their test-case into SkyPat.
 
 ``Initialize(\&argc, argv)'' helps pat to initial the output interface of pat. If you do not call Initialize, you can not see the output of pat.
-And the ``RunAll()'' function magically knows about all the tests you defined. 
-``RunAll()'' runs all the tests you've declared, prints the results and returns zero only if all tests are succeed. Otherwise, it returns one. 
+And the ``RunAll()'' function magically knows about all the tests you defined.
+``RunAll()'' runs all the tests you've declared, prints the results and returns zero only if all tests are succeed. Otherwise, it returns one.
 
 \section{Conclusion and Future Works}
 By integrating unit-test framework and performance evaluation tool, user can get correctness and performance number of the region of code by writing test-cases.
