@@ -3,6 +3,8 @@ SOURCE = pat.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
 	Support/Unix/Timer.inc \
+	Support/Perf.cpp \
+	Support/Unix/Perf.inc \
 	Listeners/PrettyResultPrinter.cpp \
 	Core/Test.cpp \
 	Thread/Thread.cpp \
