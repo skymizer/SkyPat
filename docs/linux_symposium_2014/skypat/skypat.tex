@@ -53,8 +53,9 @@ We develop SkyPat under the new BSD license, and it is also the unit-test librar
 \end{abstract}
 
 \section{Introduction}
-Correctness and performance evaluation are two important issues for programmers.
-First, correctness ensures that program can behave like what programmer wants it behaves and it is not easy to be ensured. 
+SkyPat is developed by a group of the compiler developers to satisfy their needs.
+From compiler developers' view, correctness and performance evalution are two grand challenges for engineering.
+% compiler optimizations don't guarantee performance improvement, and the worst is: sometimes an optimization not only degrades performance but also introduce defeats in a program.
 For example, if a compiler compiles source-code fast but its result contains lots of error, this compiler is useless.
 In order to ensure correctness, programmers usually write lots of unit-tests to verify their program.
 Second, performance evaluation is another important issues for programmers.
