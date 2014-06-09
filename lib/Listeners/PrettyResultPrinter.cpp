@@ -116,6 +116,7 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
     testing::Log::getOStream() << Color::RESET << std::endl;
 
     // perf_event's results
+#if defined(HAVE_LINUX_PERF_EVENT_H)
     testing::Log::getOStream() << Color::Bold(Color::BLUE)
                                << "[CXT SWITCH]";
 
@@ -128,6 +129,7 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
       ++perf;
     }
     testing::Log::getOStream() << Color::RESET << std::endl;
+#endif
   }
 }
 
