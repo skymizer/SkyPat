@@ -99,6 +99,7 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
 
   // performance test results
   if (!pTestInfo.result().performance().empty()) {
+    // timer's result
     testing::Log::getOStream() << Color::Bold(Color::BLUE)
                                << "[ TIME (ns)]";
 
@@ -109,7 +110,21 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
 
     while (perf != pEnd) {
       testing::Log::getOStream() << " " << std::setw(7)
-                                 << (*perf)->getPerformance();
+                                 << (*perf)->getTimerNum();
+      ++perf;
+    }
+    testing::Log::getOStream() << Color::RESET << std::endl;
+
+    // perf_event's results
+    testing::Log::getOStream() << Color::Bold(Color::BLUE)
+                               << "[CXT SWITCH]";
+
+    perf = pTestInfo.result().performance().begin();
+    pEnd = pTestInfo.result().performance().end();
+
+    while (perf != pEnd) {
+      testing::Log::getOStream() << " " << std::setw(7)
+                                 << (*perf)->getPerfEventNum();
       ++perf;
     }
     testing::Log::getOStream() << Color::RESET << std::endl;
