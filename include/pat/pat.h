@@ -225,12 +225,14 @@ class PerfPartResult : public PartResult
 public:
   PerfPartResult(const std::string& pFileName, int pLoC);
 
-  Interval getPerformance() const;
+  Interval getTimerNum() const;
+  Interval getPerfEventNum() const;
 
-  void setPerformance(Interval pNum);
+  void setPerformance(Interval pTimerNum, Interval pEventNum);
 
 private:
-  Interval m_PerfNum;
+  Interval m_PerfTimerNum;
+  Interval m_PerfEventNum;
 };
 
 /** \class TestResult

@@ -142,11 +142,11 @@ testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
 testing::PerfIterator::~PerfIterator()
 {
   m_pTimer->stop();
-  m_pPerfResult->setPerformance(m_pTimer->interval());
-  delete m_pTimer;
-
   m_pPerf->stop();
-  //m_pPerfResult->setPerformance(m_pPerf->interval());
+
+  m_pPerfResult->setPerformance(m_pTimer->interval(), m_pPerf->interval());
+
+  delete m_pTimer;
   delete m_pPerf;
 }
 
@@ -190,16 +190,23 @@ testing::PerfPartResult::PerfPartResult(const std::string& pFileName,
   : PartResult(pFileName, pLoC) {
 }
 
-testing::Interval testing::PerfPartResult::getPerformance() const
+testing::Interval testing::PerfPartResult::getTimerNum() const
 {
-  return m_PerfNum;
+  return m_PerfTimerNum;
 }
 
-void testing::PerfPartResult::setPerformance(testing::Interval pNum)
+testing::Interval testing::PerfPartResult::getPerfEventNum() const
 {
-  m_PerfNum = pNum;
+  return m_PerfEventNum;
+}
+
+void testing::PerfPartResult::setPerformance(testing::Interval pTimerNum, 
+                                             testing::Interval pEventNum)
+{
+  m_PerfTimerNum = pTimerNum;
+  m_PerfEventNum = pEventNum;
   OStrStream os(m_Message);
-  os << pNum << " ns";
+  os << pTimerNum << " ns;";
 }
 
 //===----------------------------------------------------------------------===//

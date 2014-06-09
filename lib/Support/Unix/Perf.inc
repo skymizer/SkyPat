@@ -40,7 +40,7 @@ public:
     attr.inherit = 1;
     attr.disabled = 1;
     attr.type = PERF_TYPE_SOFTWARE;
-    attr.config = PERF_COUNT_SW_TASK_CLOCK;
+    attr.config = PERF_COUNT_SW_CONTEXT_SWITCHES;
     attr.size = sizeof(attr);
 
     m_Fd = syscall(__NR_perf_event_open, &attr, 0, -1, -1, 0);
@@ -52,11 +52,11 @@ public:
 #endif
   }
 
-   testing::Interval ns() {
+   testing::Interval getCounter() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
-     unsigned long long runtime;
-     read(m_Fd, &runtime, sizeof(unsigned long long));
-     return runtime;
+     unsigned long long counter;
+     read(m_Fd, &counter, sizeof(unsigned long long));
+     return counter;
 #endif
   }
 
@@ -64,17 +64,17 @@ public:
 #if defined(HAVE_LINUX_PERF_EVENT_H)
     ioctl(m_Fd, PERF_EVENT_IOC_ENABLE);
 #endif
-    assert(-1 != (m_Start = ns()) && "fail to get starting time");
+    assert(-1 != (m_Start = getCounter()) && "fail to get starting time");
   }
 
   void stop() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
     ioctl(m_Fd, PERF_EVENT_IOC_DISABLE);
 #endif
-    assert(-1 != (m_End = ns()) && "fail to get elapsed time");
+    assert(-1 != (m_End = getCounter()) && "fail to get elapsed time");
   }
 
-  testing::Interval clock() const {
+  testing::Interval getValue() const {
     return (m_End - m_Start);
   }
 
@@ -112,12 +112,12 @@ void Perf::stop()
 {
   g_Perf->stop();
   m_bIsActive = false;
-  m_Interval = g_Perf->clock();
+  m_Interval = g_Perf->getValue();
 }
 
 std::string Perf::unit()
 {
-  return "ns";
+  return "times";
 }
 
 } // namespace of internal
