@@ -93,12 +93,14 @@ After that, Oprofile is ``perf\_event''-based in the later version.
 
 By the success in ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter'', too.
 \textit{Perf} is a performance evaluation toolkit with no daemon to collect runtime information.
-Because \textit{perf} gets runtime information by kernel directly rather than collecting by daemon, \textit{perf} eliminates lots of overhead to bookkeep profiling information.
-Although these performance evaluation tool can evaluate program's performance, they cannot monitor the performance of the region of code and cannot integrate with unit-test system.
+\textit{perf} gets runtime information by kernel directly rather than collecting by daemon, therefore, \textit{perf} eliminates lots of overhead to bookkeep profiling information and becomes faster.
 
-Other tools are unit-test framework focusing on correctness, such as \textit{GoogleTest}.
+Both Oprofile and \textit{perf} evaluate performance of the entire program, not a region of code.
+And of course, it makes some efforts to integrate them with uni-test frameworks.
+
+Regarding unit-test frameworks, \textit{GoogleTest} becomes popular and adapted by many project recently.
 \textit{GoogleTest} is a xUnit test framework for C++ program.
-With the help of providing ASSERT and EXPECT macros, \textit{GoogleTest} let programmer be able to verify program's correctness by writing test-case.
+By providing ASSERT and EXPECT macros, \textit{GoogleTest} helps programmers to verify program's correctness by writing test-cases.
 When executing test-cases, program will stop if it faces fatal error.
 If program faces non-fatal error, program will show the runtime value and expected value on the screen to programmer.
 
