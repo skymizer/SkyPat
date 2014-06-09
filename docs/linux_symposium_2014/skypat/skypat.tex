@@ -66,12 +66,12 @@ We needs libraries that can evaluate only a region of code that optimization is 
 For compiler developers, integrating unit-test and performance evaluation libraries for a piece of code is very rational.
 SkyPat is such library: by using SkyPat, users can evaluate correctness and performance by writing test-cases to evaluate a region of code.
 
-Usually, unit-test tool and performance evaluation tool are separated tools.
+Usually, unit-test tools and performance evaluation tools are separated tools.
 For example, \textit{GoogleTest} \cite{Google-test} is well-known C++ unit-test framework.
 \textit{GoogleTest} can evaluate correctness but cannot evaluate performance. 
-Meanwhile, \textit{perf} \cite{perf-tools} is well-known performance evaluation toolkit in Linux. 
+Besides, \textit{perf} \cite{perf-tools} is well-known performance evaluation toolkit in Linux. 
 \textit{perf} can evaluate performance of programs, including its running time, cycles and so on.
-Although \textit{perf} can evaluate whole program, \textit{perf} cannot evaluate performance of region of code.
+Although \textit{perf} can evaluate whole program, using \textit{perf} to evaluate a region of code is difficult.
 
 In this paper, we introduces SkyPat, which combines unit-test and performance evaluation.
 Programmer only need to write and execute unit-tests and they can get correctness and performance.
