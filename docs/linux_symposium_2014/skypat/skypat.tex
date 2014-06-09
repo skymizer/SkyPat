@@ -54,11 +54,17 @@ We develop SkyPat under the new BSD license, and it is also the unit-test librar
 
 \section{Introduction}
 SkyPat is developed by a group of the compiler developers to satisfy compiler developers' needs.
-From compiler developers' view, correctness and performance evaluation are two grand challenges for engineering.
-Compiler optimizations have no guarantee of performance improvement, and the worst is: sometimes an optimization not only degrades performance but also introduces defeats in a program.
-Compiler developers need a tool to verify correctness and performance of each compiler optimizations to make sure whether compiler optimization works or not.
-As a result, SkyPat is developed for this kind of demand.
-By integrating unit-test and performance evaluation tool, user can use SkyPat to evaluate correctness and performance by writing test-cases.
+From compiler developers' view, correctness and performance evaluation are grand challenges for engineering.
+Compiler optimizations have no guarantee of performance improvement.
+Sometimes optimizations degrade performance, and sometimes they introduce new faults in a program.
+Compiler developers need a tool to verify correctness and performance of each compiler optimizations at the same time.
+
+Traditional tools that evaluation the whole program don't fit our demands.
+Compilers perform optimization based on knowledge it has to a region of code, such as loops or data flows.
+We needs libraries that can evaluate only a region of code that optimization is interesting in.
+
+For compiler developers, integrating unit-test and performance evaluation libraries for a piece of code is very rational.
+SkyPat is such library: by using SkyPat, users can evaluate correctness and performance by writing test-cases to evaluate a region of code.
 
 In the past, unit-test tool and performance evaluation tool are different tools. 
 For example, \textit{GoogleTest} \cite{Google-test} is well-known C++ unit-test framework.
