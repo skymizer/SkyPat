@@ -54,20 +54,16 @@ We develop SkyPat under the new BSD license, and it is also the unit-test librar
 
 \section{Introduction}
 SkyPat is developed by a group of the compiler developers to satisfy their needs.
-From compiler developers' view, correctness and performance evalution are two grand challenges for engineering.
+From compiler developers' view, correctness and performance evaluation are two grand challenges for engineering.
 Compiler optimizations have no guarantee of performance improvement, and the worst is: sometimes an optimization not only degrades performance but also introduces defeats in a program.
-
-For example, if a compiler compiles source-code fast but its result contains lots of error, this compiler is useless.
-In order to ensure correctness, programmers usually write lots of unit-tests to verify their program.
-Second, performance evaluation is another important issues for programmers.
-Programmers always hope program executing as fast as possible.
-Using performance evaluation tool can evaluate its runtime behavior. 
-Performance evaluation tool, such as \textit{perf} \cite{perf-tools}, can evaluate runtime behavior with the help of OS-support and hardware-support.
+Compiler developers need a tool to verify correctness and performance of each compiler optimizations to make sure whether compiler optimization works or not.
+As a result, SkyPat is developed for this kind of demand.
+By integrating unit-test and performance evaluation tool, user can use SkyPat to evaluate correctness and performance by writing test-cases.
 
 In the past, unit-test tool and performance evaluation tool are different tools. 
 For example, \textit{GoogleTest} \cite{Google-test} is well-known C++ unit-test framework.
-GoogleTest can evaluate correctness but cannot evaluate performance. 
-Meanwhile, \textit{perf} is well-known performance evaluation toolkit in Linux. 
+\textit{GoogleTest} can evaluate correctness but cannot evaluate performance. 
+Meanwhile, \textit{perf} \cite{perf-tools} is well-known performance evaluation toolkit in Linux. 
 \textit{perf} can evaluate performance of programs, including its running time, cycles and so on.
 Although \textit{perf} can evaluate whole program, \textit{perf} cannot evaluate performance of region of code.
 
@@ -85,18 +81,18 @@ At last, we conclude this paper in Section 5.
 \section{Related work}
 
 There are several existing evaluation tools for performance and correctness.
-Some tools focus on performance evaluation, such as Oprofile\cite{oprofile} and ``perf''. 
+Some tools focus on performance evaluation, such as Oprofile\cite{oprofile} and \textit{perf}. 
 Oprofile is performance evaluation tool for whole system and single program.
 Oprofile was based on sampling-based by creating a daemon to collect runtime information before versions 0.9.7 and earlier.
 Because sampling-based daemon will waste system resource, Linux community added new interface, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event'' in later version.
-With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called ``perf'', based on ``Performance Counter''. 
-``perf'' is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, call-graph, branch-miss, cache-miss, and so on.
-Because ``perf'' gets runtime information by kernel rather than collecting by daemon, ``perf'' does not create lots of overhead for profiling.
+With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter''. 
+\textit{Perf} is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, call-graph, branch-miss, cache-miss, and so on.
+Because \textit{perf} gets runtime information by kernel rather than collecting by daemon, \textit{perf} does not create lots of overhead for profiling.
 Although these performance evaluation tool can evaluate program's performance, they cannot monitor the performance of the region of code and cannot integrate with unit-test system.
 
-Other tools are unit-test framework focusing on correctness, such as GoogleTest.
-GoogleTest is a xUnit test framework for C++ program.
-With the help of providing ASSERT and EXPECT macros, GoogleTest let programmer be able to verify program's correctness by writing test-case.
+Other tools are unit-test framework focusing on correctness, such as \textit{GoogleTest}.
+\textit{GoogleTest} is a xUnit test framework for C++ program.
+With the help of providing ASSERT and EXPECT macros, \textit{GoogleTest} let programmer be able to verify program's correctness by writing test-case.
 When executing test-cases, program will stop if it faces fatal error. 
 If program faces non-fatal error, program will show the runtime value and expected value on the screen to programmer.
 
@@ -167,7 +163,7 @@ In test-function, user can evaluate correctness and reliability by inserting mac
 Guide for these macros is described in following section.
 
 \subsection{Correctness evaluation}
-We accept the concept from GoogleTest for our correctness evaluation.
+We accept the concept from \textit{GoogleTest} for our correctness evaluation.
 For correctness evaluation, user can assert fatal or non-fatal condition in the region of code in test-function.
 
 The macro for fatal condition is ASSERT.
@@ -256,7 +252,7 @@ And SkyPat will use ``perf\_event'' to measure the runtime behavior during execu
 
 Figure~\ref{perform_example_output} shows the result of Figure~\ref{perform_example}.
 It measures the execution time and the number of context-switch during the region of code.
-User does not need to control complicate ``perf'' program to monitor the region of code or even use ``perf\_event'' system by themselves.
+User does not need to control complicate \textit{perf} program to monitor the region of code or even use ``perf\_event'' system by themselves.
 User only needs to use macro, just likes what they custom in unit-test framework, and they can easily get the runtime information of the region of code.
 
 \subsection{Integrate all test-cases}
