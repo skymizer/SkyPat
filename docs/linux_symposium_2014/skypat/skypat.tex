@@ -91,7 +91,7 @@ Before versions 0.9.7 and earlier, it was based on sampling-based daemon that co
 Because sampling-based daemon wasted system resources, Linux community creates new interfaces, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event''.
 After that, Oprofile is ``perf\_event''-based in the later version.
 
-With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter''.
+By the success in ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter'', too.
 \textit{Perf} is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, call-graph, branch-miss, cache-miss, and so on.
 Because \textit{perf} gets runtime information by kernel rather than collecting by daemon, \textit{perf} does not create lots of overhead for profiling.
 Although these performance evaluation tool can evaluate program's performance, they cannot monitor the performance of the region of code and cannot integrate with unit-test system.
