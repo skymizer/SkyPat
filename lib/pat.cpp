@@ -8,6 +8,7 @@
 //===----------------------------------------------------------------------===//
 #include <pat/pat.h>
 #include <pat/Support/Timer.h>
+#include <pat/Support/Perf.h>
 #include <pat/Support/ManagedStatic.h>
 #include <pat/Support/OStrStream.h>
 #include <vector>
@@ -133,6 +134,9 @@ testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
   m_pPerfResult = testing::UnitTest::self()->addPerfPartResult(pFile, pLine);
   m_pTimer = new internal::Timer();
   m_pTimer->start();
+
+  m_pPerf = new internal::Perf();
+  m_pPerf->start();
 }
 
 testing::PerfIterator::~PerfIterator()
@@ -140,6 +144,10 @@ testing::PerfIterator::~PerfIterator()
   m_pTimer->stop();
   m_pPerfResult->setPerformance(m_pTimer->interval());
   delete m_pTimer;
+
+  m_pPerf->stop();
+  //m_pPerfResult->setPerformance(m_pPerf->interval());
+  delete m_pPerf;
 }
 
 bool testing::PerfIterator::next()
