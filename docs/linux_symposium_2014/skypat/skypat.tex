@@ -85,11 +85,10 @@ At last, we conclude this paper in Section 5.
 
 \section{Related work}
 
-There are several existing evaluation tools for performance and correctness.
-Some of them focus on performance evaluation, such as Oprofile\cite{oprofile} and \textit{perf}.
-Oprofile is performance evaluation tool for whole system and single program.
-Oprofile was based on sampling-based by creating a daemon to collect runtime information before versions 0.9.7 and earlier.
-Because sampling-based daemon will waste system resource, Linux community added new interface, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event'' in later version.
+Oprofile\cite{oprofile} and \textit{perf} are two most popular performance evaluation tools.
+Oprofile is capable to evaluate not only the whole system but also a single program.
+It was based on sampling-based by creating a daemon to collect runtime information before versions 0.9.7 and earlier.
+Because sampling-based daemon will waste system resources, Linux community added new interface, called ``Performance Counter''\cite{performance-counter-linux} or ``perf\_event'' in later version.
 With the help of ``Performance Counter'', Linux community builds another performance evaluation tool, called \textit{perf}, based on ``Performance Counter''.
 \textit{Perf} is a performance evaluation toolkit without daemon to collect runtime information, such as cycle-count, call-graph, branch-miss, cache-miss, and so on.
 Because \textit{perf} gets runtime information by kernel rather than collecting by daemon, \textit{perf} does not create lots of overhead for profiling.
