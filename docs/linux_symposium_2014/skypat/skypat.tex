@@ -125,12 +125,13 @@ SkyPat calculates the difference of time between the beginning and the end to ge
 
 Here are some examples to show how to use SkyPat to evaluate correctness and performance.
 
-\subsection{Declare test-case and test function}
+\subsection{Declare Test Cases and Test Functions}
 
-SkyPat uses test-case to evaluate testee's correctness and performance.
-Test-case is grouped by a bunch of "test functions".
+To create a test, users use the PAT\_F() macro to define a test function.
+A test function can be thought as a oridinary C function without return value.
+Several similar test functions for the same input data can be grouped as a test case.
 
-In Figure~\ref{aircraftcase}, it shows how to define test-case and test-function.
+Figure~\ref{aircraftcase} shows how to define a test-case and test-functions.
 
 \begin{figure}[h]
 \lstset{language=C++}
