@@ -115,14 +115,11 @@ ASSERT is assertion for fatal condition testing and EXPECT is non-fatal assertio
 That is to say, if a condition of ASSERT fails, the test fails and stops immediately.
 On the other hand, when the condition of EXPECT fails, it just shows messages on screen to indicate that is a non-fatal failure and the test keeps going on.
 
-PERFORM evaluates performance rather than correctness.
-With the help of PERFORM, user can measure the performance of code within a test.
-
-To get the performance of the region of code, SkyPat uses macro to assemble ``perf\_event'' interface into the test-case.
-SkyPat uses ``perf\_event'' interface to register events to be monitored when program initials.
-When program executes at the beginning of the region of code to be monitored, SkyPat will send a system call to kernel to enable the counter to gather process's runtime information, such as execution time.
-When program executes in the end of the region of code, SkyPat will send a system call to kernel to disable the counter.
-SkyPat gets the difference of time between begin and end to calculate the value of runtime information during executing the region of code.
+A PERFORM macro is used to arbitrarily wrap an block of code in a testee function.
+It invokes perf\_events at the beginning and the end of the block of code to measure the performance.
+When a program executes at the beginning of the region of code, the PERFORM macro calls a system call to kernel to register a performance monitor to gather process's runtime information, such as execution time.
+When program executes in the end of the region of code, a system call is sent to kernel automatically to disable the monitor.
+SkyPat calculates the difference of time between the beginning and the end to get the period of runtime information of the region of code.
 
 Because ASSERT/EXCEPT/PERFORM are macros, when user writing their test-case, they only have to let the region of code placed between braces of the macro.
 When user compiles their test-case, compiler will integrate all SkyPat framework to the test-case.
