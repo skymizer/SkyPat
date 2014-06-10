@@ -170,14 +170,14 @@ Figure~\ref{assert_example} shows how fatal and non-fatal assertions work.
 \begin{figure}[h]
 \lstset{language=C++}
 \begin{lstlisting}[frame=single]
-PAT_F(SeriesCase, fibonacci_test)
+PAT_F(MyCase, fibonacci_test)
 {
   ASSERT_TRUE(0 != fibonacci(10));
   EXPECT_EQ(fibonacci(10), 2);
   ASSERT_NE(fibonacci(10), 3);
 }
 
-PAT_F(SeriesCase, AP_test)
+PAT_F(MyCase, AP_test)
 {
   ...
 \end{lstlisting}
@@ -191,13 +191,13 @@ There are three assertions: two fatal and one non-fatal.
 \begin{figure}[h]
 \lstset{language=sh}
 \begin{lstlisting}[frame=single]
-[ RUN      ] SeriesCase.fibonacci_test
+[ RUN      ] MyCase.fibonacci_test
 [  FAILED  ]
 main.cpp:53: error: failed to expect
 Value of: 2 == fibonacci(10)
   Actual:   false
   Expected: true
-[ RUN      ] SeriesCase.AP_test
+[ RUN      ] MyCase.AP_test
 [      OK  ]
 \end{lstlisting}
 \caption{Output of Figure~\ref{assert_example}}
