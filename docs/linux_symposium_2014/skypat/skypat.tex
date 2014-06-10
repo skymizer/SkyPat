@@ -173,11 +173,11 @@ Figure~\ref{assert_example} shows how fatal and non-fatal assertions work.
 PAT_F(SeriesCase, fibonacci_test)
 {
   ASSERT_TRUE(0 != fibonacci(10));
-  EXPECT_EQ(fibonacci(10), 2); // fibonacci(10) == 2
-  ASSERT_NE(fibonacci(10), 3); // fibonacci(10) != 3
+  EXPECT_EQ(fibonacci(10), 2);
+  ASSERT_NE(fibonacci(10), 3);
 }
 
-PAT_F(SeriesCase, arithmetic_progression_test)
+PAT_F(SeriesCase, AP_test)
 {
   ...
 \end{lstlisting}
@@ -197,7 +197,7 @@ main.cpp:53: error: failed to expect
 Value of: 2 == fibonacci(10)
   Actual:   false
   Expected: true
-[ RUN      ] SeriesCase.arithmetic_progression__test
+[ RUN      ] SeriesCase.AP_test
 [      OK  ]
 \end{lstlisting}
 \caption{Output of Figure~\ref{assert_example}}
@@ -248,7 +248,7 @@ Users just use macros, just works like writing a test program, and they can easi
 For now, SkyPat measures few information such as the run-time clock cycles.
 We will add more features, such as cache miss and page faults, in the near future.
 
-\subsection{Run All Test-cases}
+\subsection{Run All Test Cases}
 
 \begin{figure}[h]
 \lstset{language=C++}
@@ -263,12 +263,10 @@ int main(int argc, char* argv[])
 \label{main_example}
 \end{figure}
 
-To integrate all test-case, user should call ``Initialize'' and ``RunAll'' in their main program.
-Otherwise, user doesn't need to concern about register their test-case into SkyPat.
-
-``Initialize(\&argc, argv)'' helps pat to initial the output interface of pat. If you do not call Initialize, you can not see the output of pat.
-And the ``RunAll()'' function magically knows about all the tests you defined.
-``RunAll()'' runs all the tests you've declared, prints the results and returns zero only if all tests are succeed. Otherwise, it returns one.
+To integrate all test-case, user should call ``Initialize'' and ``RunAll'' in their program.
+``Initialize(\&argc, argv)'' initializes outputs.
+``RunAll()'' runs all the tests you've declared and prints the results on screen.
+If any test is fall, then ``RunAll()'' returns non-zero value.
 
 \section{Conclusion and Future Works}
 By integrating unit-test framework and performance evaluation tool, user can get correctness and performance number of the region of code by writing test-cases.
