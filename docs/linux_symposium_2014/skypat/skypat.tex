@@ -153,9 +153,9 @@ PAT_F(AircraftCase, landing_test)
 Every PAT\_F macro declares a test, with two parameters: test-case's name and test-function's name.
 In Figure~\ref{aircraftcase}, ``AircraftCase'' is the name of test-case.
 ``take\_off\_test'' and ``landing\_test'' are the names of test-function belongs to ``AircraftCase'' test case.
-User of SkyPat should put logically related tests into the same test-case.
-In test-function, user can evaluate correctness and reliability by inserting macros.
-Guide for these macros is described in following section.
+Test functions grouped in the same test-case are meant to be logically related.
+Users put ASSERT/EXPECT and PERFORM macros in a test function to evaluate correctness and performance.
+Guide for these macros is described in the following section.
 
 \subsection{Correctness evaluation}
 We accept the concept from \textit{GoogleTest} for our correctness evaluation.
