@@ -205,9 +205,9 @@ Value of: 2 == fibonacci(10)
 \end{figure}
 
 Figure~\ref{assert_example_output} shows the output of Figure~\ref{assert_example}.
-When program executes EXPECT assertion, although its condition is fail, SkyPat displays its status as ``error: failed to expect'' and keep s executing following code.
-However, when program executes the last ASSERT assertion whose condtion is fail, because it is fatal assertion, the program stops immediately and displays its status as ``fatal: failed to assert''.
-With the help of these two assertions, user can insert them into their test-cases to verify correctness of their program.
+When a program executes EXPECT assertion, although its condition fails, SkyPat displays ``error: failed to expect'' and keeps execution.
+On the other side, when a program executes the last ASSERT assertion whose condtion is fall, because it is a fatal assertion, the program stops immediately and displays ``fatal: failed to assert''.
+With the helps of these assertions, user can verify correctness of their program.
 
 \subsection{Performance evaluation}
 For performance evaluation, user can insert PERFROM macro into the region of code where user wants to evaluate its performance.
