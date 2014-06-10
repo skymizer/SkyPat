@@ -240,10 +240,13 @@ SkyPat calculates and remembers the performance details whenever detaching a per
 \label{perform_example_output}
 \end{figure}
 
-Figure~\ref{perform_example_output} shows the result of Figure~\ref{perform_example}.
-It measures the execution time and the number of context-switch during the region of code.
-User does not need to control complicate \textit{perf} program to monitor the region of code or even use ``perf\_event'' system by themselves.
-User only needs to use macro, just likes what they custom in unit-test framework, and they can easily get the runtime information of the region of code.
+The result is shown in Figure~\ref{perform_example_output}.
+SkyPat measures the execution time and the number of context-switches during the region of code.
+It saves efforts at complicated interaction between \textit{perf} and the region of code.
+Users just use macros, just works like writing a test program, and they can easily get the runtime information of the region of code.
+
+For now, SkyPat measures few information such as the run-time clock cycles.
+We will add more features, such as cache miss and page faults, in the near future.
 
 \subsection{Integrate all test-cases}
 
