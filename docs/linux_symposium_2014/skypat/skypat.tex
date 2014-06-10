@@ -209,8 +209,8 @@ As we mentioned before, ASSERT assertions stop the execution immediately and EXP
 
 \subsection{Performance evaluation}
 
-PERFORM macro measure the performance of a block of code wrapped by it.
-SkyPat will evaluate its runtime behavior between two braces of PERFROM.
+A PERFORM macro measures the performance of a block of code which it wraps up.
+Figure~\ref{perform_example} shows how to use PERFORM macro.
 
 \begin{figure}[h]
 \lstset{language=C++}
@@ -226,9 +226,8 @@ PAT_F(MyCase, fibonacci_perf_test)
 \label{perform_example}
 \end{figure}
 
-In Figure~\ref{perform_example}, it shows how to use PERFORM macro to write a test-function.
-It uses PERFORM to wrap the region of code, which is ``fibonacci(40)'' in this case.
-And SkyPat will use ``perf\_event'' to measure the runtime behavior during executing the region of code.
+The PERFORM macro registers a performance monitor at the beginning of the code which its wraps up and detaches the monitor when leaving the block of code.
+SkyPat calculates and remembers the performance details whenever detaching a performance monitor.
 
 \begin{figure}[h]
 \lstset{language=sh}
