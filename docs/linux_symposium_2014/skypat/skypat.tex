@@ -160,13 +160,12 @@ Guide for these macros is described in the following section.
 \subsection{Correctness evaluation}
 We copy the concept from \textit{GoogleTest} for our correctness evaluation.
 
-The macro for fatal condition is ASSERT.
-Programmer tests a class or a function by making ASSERT assertions about its behavior.
-There are two kinds of ASSERT macros, ASSERT\_TRUE and ASSERT\_FALSE.
+There are several variants of ASSERT macros, ASSERT\_TRUE/FALSE, ASSERT\_EQ/NE (equal) and ASSERT\_GT/GE/LT/TE series.
 If the condition of ASSERT fails, the test will stop and exit the test immediately.
-The macro for non-fatal condition is EXPECT.
-There are two kinds of EXPECT macros, EXPECT\_TRUE and EXPECT\_FALSE.
+EXPECT macros, like ASSERT macros, there are also some similar variants.
 If the condition of EXPECT fails, the test will not stop but keep execute and display the expected result and real result on screen.
+
+Figure~\ref{assert_example} shows how fatal and non-fatal assertions work.
 
 \begin{figure}[h]
 \lstset{language=C++}
@@ -174,37 +173,38 @@ If the condition of EXPECT fails, the test will not stop but keep execute and di
 PAT_F(SeriesCase, fibonacci_test)
 {
   ASSERT_TRUE(0 != fibonacci(10));
-  EXPECT_TRUE(2 == fibonacci(10));
-  ASSERT_TRUE(3 == fibonacci(10));
+  EXPECT_EQ(fibonacci(10), 2); // fibonacci(10) == 2
+  ASSERT_NE(fibonacci(10), 3); // fibonacci(10) != 3
 }
+
+PAT_F(SeriesCase, arithmetic_progression_test)
+{
+  ...
 \end{lstlisting}
 \caption{Example of assertions}
 \label{assert_example}
 \end{figure}
 
-In Figure~\ref{assert_example}, it shows how fatal and non-fatal assertions work.
-Function ``fibonacci'' is the testee function which can be replaced any function of testee program by user.
-There are three assertion, including fatal and non-fatal, and the condition of the second and third condition are fail.
+``fibonacci'' is a testee for illustration.
+There are three assertions: two fatal and one non-fatal.
 
 \begin{figure}[h]
 \lstset{language=sh}
 \begin{lstlisting}[frame=single]
-[ RUN      ] MyCase.fibonacci_test
+[ RUN      ] SeriesCase.fibonacci_test
 [  FAILED  ]
 main.cpp:53: error: failed to expect
 Value of: 2 == fibonacci(10)
   Actual:   false
   Expected: true
-main.cpp:54: fatal: failed to assert
-Value of: 3 == fibonacci(10)
-  Actual:   false
-  Expected: true
+[ RUN      ] SeriesCase.arithmetic_progression__test
+[      OK  ]
 \end{lstlisting}
 \caption{Output of Figure~\ref{assert_example}}
 \label{assert_example_output}
 \end{figure}
 
-In Figure~\ref{assert_example_output}, it shows the output of Figure~\ref{assert_example}.
+Figure~\ref{assert_example_output} shows the output of Figure~\ref{assert_example}.
 When program executes EXPECT assertion, although its condition is fail, SkyPat displays its status as ``error: failed to expect'' and keep s executing following code.
 However, when program executes the last ASSERT assertion whose condtion is fail, because it is fatal assertion, the program stops immediately and displays its status as ``fatal: failed to assert''.
 With the help of these two assertions, user can insert them into their test-cases to verify correctness of their program.
