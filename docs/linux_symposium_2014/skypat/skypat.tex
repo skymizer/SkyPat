@@ -121,17 +121,9 @@ When a program executes at the beginning of the region of code, the PERFORM macr
 When program executes in the end of the region of code, a system call is sent to kernel automatically to disable the monitor.
 SkyPat calculates the difference of time between the beginning and the end to get the period of runtime information of the region of code.
 
-Because ASSERT/EXCEPT/PERFORM are macros, when user writing their test-case, they only have to let the region of code placed between braces of the macro.
-When user compiles their test-case, compiler will integrate all SkyPat framework to the test-case.
-
 \section{Unit-test framework}
-For those who wants to use SkyPat as unit-test and performance evaluation framework, there are three basic steps to use SkyPat:
-\begin{itemize}
-\item Writing test cases including ASSERT, EXPECT, and PERFORM macros
-\item Compiling these cases with your main program and the shared library of pat.
-\item Execute the binary file and you can get its correctness and performance.
-\end{itemize}
-This section shows how to use SkyPat to evaluate another program's correctness and performance.
+
+Here are some examples to show how to use SkyPat to evaluate correctness and performance.
 
 \subsection{Declare test-case and test function}
 
