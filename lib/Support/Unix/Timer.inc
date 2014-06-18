@@ -10,6 +10,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <cassert>
+#include <iostream>
 
 #if defined(HAVE_SYS_TIMES_H)
 #include <sys/times.h>
@@ -137,6 +138,7 @@ void Timer::stop()
   g_Timer->stop();
   m_bIsActive = false;
   m_Interval = g_Timer->clock();
+  std::cout<<m_Interval<<", ";
 }
 
 std::string Timer::unit()
