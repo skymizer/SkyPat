@@ -46,7 +46,6 @@ AC_LANG([C++])
 AC_CXX_STL_HASH
 AM_CONDITIONAL(GCC, test "$GCC" = yes)   # let the Makefile know if we're gcc
 AC_ENABLE_SHARED
-AC_DISABLE_STATIC
 LT_INIT
 
 ####################

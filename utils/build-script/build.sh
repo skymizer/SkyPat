@@ -25,11 +25,11 @@ function build
   ${VERSION}/autogen.sh
 
   if [ "${CONFIG}" = "dbg" ]; then
-    ${VERSION}/configure --prefix=${HOME}/Skymizer/SysRoot --enable-unittest --enable-static
+    ${VERSION}/configure --prefix=${HOME}/Skymizer/SysRoot --enable-unittest
   elif [ "${CONFIG}" = "opt" ]; then
-    ${VERSION}/configure --prefix=${HOME}/Skymizer/SysRoot --enable-optimize --enable-static
+    ${VERSION}/configure --prefix=${HOME}/Skymizer/SysRoot --enable-optimize
   else
-    ${VERSION}/configure --prefix=${HOME}/Skymizer/SysRoot --enable-static
+    ${VERSION}/configure --prefix=${HOME}/Skymizer/SysRoot
   fi
 
   make all install
