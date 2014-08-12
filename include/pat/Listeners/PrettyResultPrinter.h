@@ -12,7 +12,6 @@
 #include <pat/pat.h>
 
 namespace pat {
-
 namespace testing {
 
 class UnitTest;
