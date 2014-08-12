@@ -8,6 +8,8 @@ SOURCE = pat.cpp \
 	Listeners/PrettyResultPrinter.cpp \
 	Listeners/CSVResultPrinter.cpp \
 	Core/Test.cpp \
+	Core/Repeater.cpp \
+	Core/UnitTest.cpp \
 	Thread/Thread.cpp \
 	Thread/ThreadImpl.cpp \
 	Thread/Mutex.cpp \
