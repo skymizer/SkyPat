@@ -6,6 +6,7 @@ SOURCE = pat.cpp \
 	Support/Perf.cpp \
 	Support/Unix/Perf.inc \
 	Listeners/PrettyResultPrinter.cpp \
+	Listeners/CSVResultPrinter.cpp \
 	Core/Test.cpp \
 	Thread/Thread.cpp \
 	Thread/ThreadImpl.cpp \
