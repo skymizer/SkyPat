@@ -29,7 +29,7 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 #  Versioning, see VERSION
 CURRENT_VERSION=2
 REVISION_VERSION=7
-AGE_VERSION=0
+AGE_VERSION=1
 FULL_VERSION_NAME=Black-throated
 BUILD_VERSION=bt
 
