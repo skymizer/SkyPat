@@ -318,10 +318,12 @@ private:
 };
 
 /** \class TestInfo
- *  \brief The information of a single test
+ *  \brief The information of a single test.
  *
  *  TestInfo stores the information of a single test. A test case contains
  *  multiple tests which is represented by TestInfos.
+ *
+ *  TestInfo is created at static time and gathers partial results at run-time.
  */
 class TestInfo
 {
