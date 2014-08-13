@@ -3,7 +3,9 @@ SOURCE = pat.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
 	Support/Unix/Timer.inc \
+	Support/Path.cpp \
 	Support/Perf.cpp \
+	Support/Unix/Path.inc \
 	Support/Unix/Perf.inc \
 	Listeners/PrettyResultPrinter.cpp \
 	Listeners/CSVResultPrinter.cpp \

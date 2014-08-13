@@ -6,4 +6,5 @@ nobase_include_HEADERS = pat/pat.h \
 	pat/Support/ManagedStatic.h \
 	pat/Support/OStrStream.h \
 	pat/Support/OStrStream.tcc \
+	pat/Support/Path.h \
 	pat/Support/Timer.h
