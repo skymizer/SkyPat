@@ -301,12 +301,14 @@ pat::testing::AssertionResult::operator<<(
 // AssertHelper
 //===----------------------------------------------------------------------===//
 pat::testing::AssertHelper::AssertHelper(TestPartResult::Type pType,
-                                              const std::string& pFile,
-                                              int pLineOfCode,
-                                              const std::string& pMessage)
+                                         const std::string& pFile,
+                                         int pLineOfCode,
+                                         const std::string& pMessage)
   : m_Result(pType, pFile, pLineOfCode, pMessage) {
+  // m_Result is a TestPartResult
 }
 
+// Store a run-time result
 void pat::testing::AssertHelper::operator=(bool pValue) const
 {
   UnitTest::self()->addTestPartResult(m_Result);

@@ -75,19 +75,23 @@ pat::testing::TestInfo* const PAT_TEST_CLASS_NAME_(case_name, test_name)\
             PAT_TEST_CLASS_NAME_(case_name, test_name)>);\
 void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 
-// The message handling macros.
+// The message handling macros. The assignment is used to trigger recording a
+// partial result.
 #define PAT_MESSAGE_AT(file, line, message, result_type) \
   pat::testing::AssertHelper(result_type, file, line, message) = true\
 
 #define PAT_MESSAGE(message, result_type) \
   PAT_MESSAGE_AT(__FILE__, __LINE__, message, result_type)
 
+// PAT_FATAL_FAILURE is a run-time result of fatal error
 #define PAT_FATAL_FAILURE(message) \
   return PAT_MESSAGE(message, pat::testing::TestPartResult::kFatalFailure)
 
+// PAT_NON_FATAL_FAILURE is a run-time result of expectation error
 #define PAT_NONFATAL_FAILURE(message) \
   PAT_MESSAGE(message, pat::testing::TestPartResult::kNonFatalFailure)
 
+// PAT_SUCCESS is a run-time result of success.
 #define PAT_SUCCESS(message) \
   PAT_MESSAGE(message, pat::testing::TestPartResult::kSuccess)
 
@@ -103,6 +107,8 @@ void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 // Implements Boolean test assertions such as EXPECT_TRUE. expression can be
 // either a boolean expression or an AssertionResult. text is a textual
 // represenation of expression as it was passed into the EXPECT_TRUE.
+//
+// The last parameter 'fail' is the run-time result of the testing
 #define PAT_TEST_BOOLEAN(expression, text, actual, expected, fail) \
   PAT_UNAMBIGUOUS_ELSE_BLOCKER \
   if (const pat::testing::AssertionResult _ar_ = \
@@ -113,6 +119,8 @@ void PAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
         _ar_, text, #actual, #expected))
 
 // Implements Predicate test assertions such as EXPECT_EQ.
+//
+// The last parameter 'fail' is the run-time result of the testing
 #define PAT_TEST_PREDICATE(expression, text, actual, expected, fail) \
   PAT_UNAMBIGUOUS_ELSE_BLOCKER \
   if (const pat::testing::AssertionResult _ar_ = \
@@ -554,10 +562,12 @@ private:
 class UnitTest
 {
 private:
-  // TODO: Performance
   typedef std::map<std::string, testing::TestCase*> CaseMap;
   typedef CaseMap::const_iterator const_iterator;
   typedef CaseMap::iterator       iterator;
+
+  // RunCases stores all runnable cases
+  typedef std::vector<testing::TestCase*> RunCases;
 
 public:
   static UnitTest* self() {
@@ -599,6 +609,7 @@ private:
 
 private:
   CaseMap m_CaseMap;
+  RunCases m_RunCases;
   testing::Repeater m_Repeater;
   testing::TestInfo* m_pCurrentInfo;
   unsigned int m_NumOfTests;
