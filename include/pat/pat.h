@@ -604,11 +604,6 @@ private:
   UnitTest(const UnitTest& pCopy); // DO NOT IMPLEMENT
   UnitTest& operator=(const UnitTest& pCopy); // DO NOT IMPLEMENT
 
-  const testing::TestInfo* getCurrentInfo() const { return m_pCurrentInfo; }
-  testing::TestInfo*       getCurrentInfo()       { return m_pCurrentInfo; }
-
-  void setCurrentInfo(testing::TestInfo& pInfo) { m_pCurrentInfo = &pInfo; }
-
 private:
   CaseMap m_CaseMap;
   RunCases m_RunCases;
