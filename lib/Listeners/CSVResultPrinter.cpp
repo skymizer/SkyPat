@@ -8,6 +8,7 @@
 //===----------------------------------------------------------------------===//
 #include <pat/Listeners/CSVResultPrinter.h>
 #include <pat/ADT/Color.h>
+#include <iostream>
 
 using namespace pat;
 
@@ -20,7 +21,8 @@ CSVResultPrinter::CSVResultPrinter()
 
 CSVResultPrinter::~CSVResultPrinter()
 {
-  m_OStream.close();
+  if (m_OStream.is_open())
+    m_OStream.close();
 }
 
 bool CSVResultPrinter::open(const std::string& pFileName)
@@ -29,7 +31,7 @@ bool CSVResultPrinter::open(const std::string& pFileName)
     return false;
 
   m_OStream.open(pFileName.c_str(), std::ostream::out | std::ostream::app);
-  return m_OStream.is_open();
+  return m_OStream.good();
 }
 
 void CSVResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
@@ -39,11 +41,13 @@ void CSVResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
                                       pTestInfo.result().performance().begin();
     testing::TestResult::Performance::const_iterator pEnd =
                                       pTestInfo.result().performance().end();
+    m_OStream << pTestInfo.getTestName() << ",";
     while (perf != pEnd) {
       m_OStream << (*perf)->getTimerNum();
       ++perf;
       if (perf != pEnd)
         m_OStream << ",";
     }
+    m_OStream << std::endl;
   }
 }
