@@ -567,8 +567,6 @@ class UnitTest
 {
 private:
   typedef std::map<std::string, testing::TestCase*> CaseMap;
-  typedef CaseMap::const_iterator const_iterator;
-  typedef CaseMap::iterator       iterator;
 
   // RunCases stores all runnable cases
   typedef std::vector<testing::TestCase*> RunCases;
@@ -581,6 +579,7 @@ public:
 
   void RunAll();
 
+  /// addTestInfo - store a TestInfo at static-time
   testing::TestInfo* addTestInfo(const std::string& pCaseName,
                                  const std::string& pTestName,
                                  testing::TestFactoryBase& pFactory);
@@ -597,11 +596,6 @@ public:
   unsigned int getNumOfCases() const { return m_CaseMap.size(); }
   unsigned int getNumOfTests() const { return m_NumOfTests; }
   unsigned int getNumOfFails() const { return m_NumOfFails; }
-
-  const_iterator begin() const { return m_CaseMap.begin(); }
-  iterator       begin()       { return m_CaseMap.begin(); }
-  const_iterator end()   const { return m_CaseMap.end(); }
-  iterator       end()         { return m_CaseMap.end(); }
 
 private:
   UnitTest();

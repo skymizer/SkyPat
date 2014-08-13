@@ -63,9 +63,9 @@ void testing::UnitTest::RunAll()
 {
   m_Repeater.OnTestProgramStart(*this);
 
-  iterator iCase, iEnd = m_CaseMap.end();
-  for (iCase = m_CaseMap.begin(); iCase != iEnd; ++iCase) {
-    TestCase* test_case = iCase->second;
+  RunCases::iterator iCase, iEnd = m_RunCases.end();
+  for (iCase = m_RunCases.begin(); iCase != iEnd; ++iCase) {
+    TestCase* test_case = *iCase;
     m_Repeater.OnTestCaseStart(*test_case);
 
     TestCase::iterator it   = test_case->begin();

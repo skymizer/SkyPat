@@ -55,7 +55,7 @@ void Test::Initialize(int* pArgc, char* pArgv[])
       case 'h':
       default:
         help(*pArgc, pArgv);
-        exit(0);
+        return;
     }
   }
 
@@ -71,6 +71,8 @@ void Test::Initialize(int* pArgc, char* pArgv[])
   }
   else
     testing::UnitTest::self()->repeater().add(new PrettyResultPrinter());
+
+  // Choice runnable tests
 }
 
 void Test::RunAll()
