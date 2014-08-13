@@ -223,7 +223,6 @@ void testing::TestInfo::run()
 {
   UnitTest& unittest = *UnitTest::self();
   Repeater& repeater = unittest.repeater();
-  unittest.setCurrentInfo(*this);
   pat::Test* test = m_pFactory->CreateTest();
   if (NULL != test) {
     repeater.OnSetUpStart(unittest);

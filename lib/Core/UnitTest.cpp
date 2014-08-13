@@ -69,6 +69,7 @@ void testing::UnitTest::RunAll()
     TestCase::iterator it   = test_case->begin();
     TestCase::iterator iEnd = test_case->end();
     while (it != iEnd) {
+      setCurrentInfo(**it);
       (*it)->run();
       ++it;
     }
