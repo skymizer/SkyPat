@@ -1,3 +1,9 @@
+2014-08-14 Luba Tang <luba@skymizer.com>
+	* Executive Summary:
+	1. Allow program to run particular cases by changing the program name.
+	2. Add class Path
+	3. Allow -h to show the help manual.
+
 2014-03-31 Luba Tang <luba@skymizer.com>
 	* Executive Summary:
 	1. Add predicate assertion macros - ASSERT_EQ/NE/LT/LE/GT/GE.
