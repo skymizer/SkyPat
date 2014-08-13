@@ -579,6 +579,13 @@ public:
 
   void RunAll();
 
+  /// addRunCase - add the test case to run
+  /// @return true if the case exists (be stored at static-time).
+  bool addRunCase(const std::string& pCaseName);
+
+  /// addAllRunCase - add all test cases to run
+  void addAllRunCases();
+
   /// addTestInfo - store a TestInfo at static-time
   testing::TestInfo* addTestInfo(const std::string& pCaseName,
                                  const std::string& pTestName,
@@ -596,6 +603,8 @@ public:
   unsigned int getNumOfCases() const { return m_CaseMap.size(); }
   unsigned int getNumOfTests() const { return m_NumOfTests; }
   unsigned int getNumOfFails() const { return m_NumOfFails; }
+
+  unsigned int getNumOfRunCases() const { return m_RunCases.size(); }
 
 private:
   UnitTest();

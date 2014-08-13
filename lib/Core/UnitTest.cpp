@@ -25,6 +25,27 @@ testing::UnitTest::~UnitTest()
   }
 }
 
+/// addRunCase - add the test case to run
+/// @return true if the case exists (be stored at static-time).
+bool testing::UnitTest::addRunCase(const std::string& pCaseName)
+{
+  CaseMap::iterator iCase = m_CaseMap.find(pCaseName);
+  if (m_CaseMap.end() == iCase)
+    return false;
+
+  m_RunCases.push_back(iCase->second);
+  return true;
+}
+
+/// addAllRunCase - add all test cases to run
+void testing::UnitTest::addAllRunCases()
+{
+  CaseMap::iterator iCase, iEnd = m_CaseMap.end();
+  for (iCase = m_CaseMap.begin(); iCase != iEnd; ++iCase) {
+    m_RunCases.push_back(iCase->second);
+  }
+}
+
 testing::TestInfo*
 testing::UnitTest::addTestInfo(const std::string& pCaseName,
                                const std::string& pTestName,

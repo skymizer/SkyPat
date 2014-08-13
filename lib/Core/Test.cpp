@@ -9,6 +9,7 @@
 #include <pat/pat.h>
 #include <pat/Listeners/PrettyResultPrinter.h>
 #include <pat/Listeners/CSVResultPrinter.h>
+#include <pat/Support/Path.h>
 #include <time.h>
 #include <cassert>
 #include <unistd.h>
@@ -73,6 +74,11 @@ void Test::Initialize(int* pArgc, char* pArgv[])
     testing::UnitTest::self()->repeater().add(new PrettyResultPrinter());
 
   // Choice runnable tests
+  Path progname(pArgv[0]);
+  progname = progname.filename();
+
+  if (!testing::UnitTest::self()->addRunCase(progname.native()))
+    testing::UnitTest::self()->addAllRunCases();
 }
 
 void Test::RunAll()
