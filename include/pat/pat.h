@@ -305,8 +305,8 @@ public:
 
   ~TestCase();
 
-  void addTestInfo(const std::string& pTestName,
-                   testing::TestFactoryBase& pFactory);
+  testing::TestInfo* addTestInfo(const std::string& pTestName,
+                                 testing::TestFactoryBase& pFactory);
 
   const std::string& getCaseName() const { return m_CaseName; }
 
@@ -579,17 +579,12 @@ public:
 
   void RunAll();
 
-  void addTestInfo(const std::string& pCaseName,
-                   const std::string& pTestName,
-                   testing::TestFactoryBase& pFactory);
+  testing::TestInfo* addTestInfo(const std::string& pCaseName,
+                                 const std::string& pTestName,
+                                 testing::TestFactoryBase& pFactory);
 
   void addTestPartResult(const testing::TestPartResult& pPartResult);
   testing::PerfPartResult* addPerfPartResult(const char* pFile, int pLine);
-
-  const testing::TestInfo* getCurrentInfo() const { return m_pCurrentInfo; }
-  testing::TestInfo*       getCurrentInfo()       { return m_pCurrentInfo; }
-
-  void setCurrentInfo(testing::TestInfo& pInfo) { m_pCurrentInfo = &pInfo; }
 
   const Repeater& repeater() const { return m_Repeater; }
   Repeater&       repeater()       { return m_Repeater; }
@@ -608,6 +603,11 @@ private:
   ~UnitTest();
   UnitTest(const UnitTest& pCopy); // DO NOT IMPLEMENT
   UnitTest& operator=(const UnitTest& pCopy); // DO NOT IMPLEMENT
+
+  const testing::TestInfo* getCurrentInfo() const { return m_pCurrentInfo; }
+  testing::TestInfo*       getCurrentInfo()       { return m_pCurrentInfo; }
+
+  void setCurrentInfo(testing::TestInfo& pInfo) { m_pCurrentInfo = &pInfo; }
 
 private:
   CaseMap m_CaseMap;

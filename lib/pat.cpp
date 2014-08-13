@@ -36,8 +36,7 @@ testing::TestInfo*
 testing::MakeAndRegisterTestInfo(const char* pCaseName, const char* pTestName,
                                  testing::TestFactoryBase* pFactory)
 {
-  testing::UnitTest::self()->addTestInfo(pCaseName, pTestName, *pFactory);
-  return testing::UnitTest::self()->getCurrentInfo();
+  return testing::UnitTest::self()->addTestInfo(pCaseName, pTestName, *pFactory);
 }
 
 std::string testing::GetBoolAssertionFailureMessage(
@@ -187,11 +186,13 @@ testing::TestCase::~TestCase()
   }
 }
 
-void
+testing::TestInfo*
 testing::TestCase::addTestInfo(const std::string& pTestName,
                                testing::TestFactoryBase& pFactory)
 {
-  m_InfoList.push_back(new testing::TestInfo(this, pTestName, pFactory));
+  testing::TestInfo* info = new testing::TestInfo(this, pTestName, pFactory);
+  m_InfoList.push_back(info);
+  return info;
 }
 
 //===----------------------------------------------------------------------===//

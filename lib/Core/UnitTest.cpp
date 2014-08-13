@@ -25,9 +25,9 @@ testing::UnitTest::~UnitTest()
   }
 }
 
-void testing::UnitTest::addTestInfo(const std::string& pCaseName,
-                                    const std::string& pTestName,
-                                    testing::TestFactoryBase& pFactory)
+testing::TestInfo* testing::UnitTest::addTestInfo(const std::string& pCaseName,
+                                                  const std::string& pTestName,
+                                            testing::TestFactoryBase& pFactory)
 {
   CaseMap::iterator iCase = m_CaseMap.find(pCaseName);
   TestCase* test_case;
@@ -37,8 +37,9 @@ void testing::UnitTest::addTestInfo(const std::string& pCaseName,
     test_case = new TestCase(pCaseName);
     m_CaseMap.insert(make_pair(pCaseName, test_case));
   }
-  test_case->addTestInfo(pTestName, pFactory);
+  testing::TestInfo* info = test_case->addTestInfo(pTestName, pFactory);
   ++m_NumOfTests;
+  return info;
 }
 
 void testing::UnitTest::addTestPartResult(const TestPartResult& pPartResult)
