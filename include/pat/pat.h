@@ -583,7 +583,10 @@ public:
                                  const std::string& pTestName,
                                  testing::TestFactoryBase& pFactory);
 
+  /// addTestPartResult - add partial test result at run-time.
   void addTestPartResult(const testing::TestPartResult& pPartResult);
+
+  /// addPerfPartResult - add partial performance result at run-time.
   testing::PerfPartResult* addPerfPartResult(const char* pFile, int pLine);
 
   const Repeater& repeater() const { return m_Repeater; }
