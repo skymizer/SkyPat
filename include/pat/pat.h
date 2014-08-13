@@ -329,6 +329,7 @@ public:
   const std::string& getTestName() const { return m_TestName; }
   const TestResult& result() const { return m_Result; }
 
+  /// run - run a single test function and notifiy repeater.
   void run();
 
   void addTestPartResult(const TestPartResult& pResult);
