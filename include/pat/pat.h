@@ -165,8 +165,10 @@ public:
   ~PerfIterator();
 
   /// increase counter
+  PerfIterator& next();
+
   /// @return true if we should go to the next step.
-  bool next();
+  bool hasNext() const;
 
 private:
   int m_Counter;
@@ -753,8 +755,9 @@ public:
 #define ASSERT_GT(actual, expected) \
   PAT_ASSERT_PRED((actual > expected), actual, expected)
 
-#define PERFORM for(pat::testing::PerfIterator __loop(__FILE__, __LINE__) \
-                        ; __loop.next() ; )
+#define PERFORM for (pat::testing::PerfIterator __loop(__FILE__, __LINE__); \
+                                                __loop.hasNext(); \
+                                                __loop.next() )
 
 } // namespace of pat
 

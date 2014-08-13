@@ -80,13 +80,17 @@ testing::PerfIterator::~PerfIterator()
   delete m_pPerf;
 }
 
-bool testing::PerfIterator::next()
+bool testing::PerfIterator::hasNext() const
+{
+  if (m_Counter >= PAT_PERFORM_LOOP_TIMES)
+    return false;
+  return true;
+}
+
+testing::PerfIterator& testing::PerfIterator::next()
 {
   ++m_Counter;
-  if (m_Counter >= PAT_PERFORM_LOOP_TIMES) {
-    return false;
-  }
-  return true;
+  return *this;
 }
 
 //===----------------------------------------------------------------------===//
