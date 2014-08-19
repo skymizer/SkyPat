@@ -59,7 +59,7 @@ std::string testing::GetBoolAssertionFailureMessage(
 // PerfIterator
 //===----------------------------------------------------------------------===//
 testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
-  : m_Counter(-1) // -1 for the for-loop initial test.
+  : m_Counter(0) // 0 for the for-loop initial test.
 {
   m_pPerfResult = testing::UnitTest::self()->addPerfPartResult(pFile, pLine);
   m_pTimer = new internal::Timer();
