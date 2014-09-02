@@ -238,7 +238,8 @@ public:
   Interval getTimerNum() const;
   Interval getPerfEventNum() const;
 
-  void setPerformance(Interval pTimerNum, Interval pEventNum);
+  void setTimerNum(Interval pTime);
+  void setPerfEventNum(Interval pEventNum);
 
 private:
   Interval m_PerfTimerNum;

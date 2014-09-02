@@ -59,32 +59,32 @@ std::string testing::GetBoolAssertionFailureMessage(
 // PerfIterator
 //===----------------------------------------------------------------------===//
 testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
-  : m_Counter(0), m_pTimer(NULL), m_pPerf(NULL) // 0 for the for-loop initial test.
-{
-  m_pPerfResult = testing::UnitTest::self()->addPerfPartResult(pFile, pLine);
-  m_pTimer = new internal::Timer();
-  m_pTimer->start();
+  : m_Counter(0),
+    m_pTimer(new internal::Timer()),
+    m_pPerf(new internal::Perf()),
+    m_pPerfResult(testing::UnitTest::self()->addPerfPartResult(pFile, pLine)) {
 
-  m_pPerf = new internal::Perf();
+  m_pTimer->start();
   m_pPerf->start();
 }
 
 testing::PerfIterator::~PerfIterator()
 {
-  m_pTimer->stop();
-  m_pPerf->stop();
-
-  m_pPerfResult->setPerformance(m_pTimer->interval(), m_pPerf->interval());
-
   delete m_pTimer;
   delete m_pPerf;
 }
 
 bool testing::PerfIterator::hasNext() const
 {
-  if (m_Counter >= PAT_PERFORM_LOOP_TIMES)
-    return false;
-  return true;
+  if (m_Counter < PAT_PERFORM_LOOP_TIMES)
+    return true;
+
+  m_pTimer->stop();
+  m_pPerf->stop();
+
+  m_pPerfResult->setTimerNum(m_pTimer->interval());
+  m_pPerfResult->setPerfEventNum(m_pPerf->interval());
+  return false;
 }
 
 testing::PerfIterator& testing::PerfIterator::next()
@@ -134,13 +134,16 @@ testing::Interval testing::PerfPartResult::getPerfEventNum() const
   return m_PerfEventNum;
 }
 
-void testing::PerfPartResult::setPerformance(testing::Interval pTimerNum, 
-                                             testing::Interval pEventNum)
+void testing::PerfPartResult::setTimerNum(testing::Interval pTimerNum)
 {
   m_PerfTimerNum = pTimerNum;
-  m_PerfEventNum = pEventNum;
   OStrStream os(m_Message);
   os << pTimerNum << " ns;";
+}
+
+void testing::PerfPartResult::setPerfEventNum(testing::Interval pEventNum)
+{
+  m_PerfEventNum = pEventNum;
 }
 
 //===----------------------------------------------------------------------===//
