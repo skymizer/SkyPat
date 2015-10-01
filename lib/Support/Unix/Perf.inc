@@ -126,6 +126,7 @@ static ManagedStatic<PerfImpl> g_Perf;
 //===----------------------------------------------------------------------===//
 Perf::Perf()
   : m_Interval(0), m_bIsActive(false) {
+  g_Perf->init(COUNT, SOFTWARE, CONTEXT_SWITCHES);
 }
 
 Perf::Perf(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent)
