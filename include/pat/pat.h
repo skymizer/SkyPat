@@ -17,6 +17,19 @@
 #define PAT_VERNUM 0x24
 
 namespace pat {
+enum PerfFlavor {
+  COUNT = 1,
+  SAMPLE = 2
+};
+enum PerfType {
+  HARDWARE = 1,
+  SOFTWARE = 2
+};
+enum PerfEvent {
+  TASK_CLOCK = 1,
+  CONTEXT_SWITCHES = 2
+};
+
 class Test;
 
 namespace testing {
@@ -160,6 +173,14 @@ public:
   /// @param pFileName the source file name.
   /// @param pLoC the line of code.
   PerfIterator(const char* pFileName, int pLoC);
+
+  /// @param pFileName the source file name.
+  /// @param pLoC the line of code.
+  /// @param pFlavor the flavor of event (COUNT / SAMPLE)
+  /// @param pType the type of event (HW / SW)
+  /// @param pEvent the name of event
+  PerfIterator(const char* pFileName, int pLoC,\
+               enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent);
 
   /// Destructor. The place to sum up the time.
   ~PerfIterator();
@@ -760,6 +781,11 @@ public:
   PAT_ASSERT_PRED((actual > expected), actual, expected)
 
 #define PERFORM for (pat::testing::PerfIterator __loop(__FILE__, __LINE__); \
+                                                __loop.hasNext(); \
+                                                __loop.next() )
+
+#define PERFORM2(flavor, type, event) \
+  for (pat::testing::PerfIterator __loop(__FILE__, __LINE__, flavor, type, event); \
                                                 __loop.hasNext(); \
                                                 __loop.next() )
 

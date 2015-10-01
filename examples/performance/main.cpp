@@ -48,7 +48,7 @@ PAT_F(MyCase, fibonacci_test)
   int result = 0;
   // PERFORM macro is used to measure the performance of code within a test. The
   // code to be benchmark within a code block following this macro.
-  PERFORM {
+  PERFORM2(pat::COUNT, pat::SOFTWARE, pat::CONTEXT_SWITCHES) {
     fibonacci(10);
   }
 }

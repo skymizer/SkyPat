@@ -68,6 +68,18 @@ testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
   m_pPerf->start();
 }
 
+testing::PerfIterator::PerfIterator(const char* pFile, int pLine,\
+                                    enum PerfFlavor pFlavor, PerfType pType,\
+									enum PerfEvent pEvent)
+  : m_Counter(0),
+    m_pTimer(new internal::Timer()),
+    m_pPerf(new internal::Perf(pFlavor, pType, pEvent)),
+    m_pPerfResult(testing::UnitTest::self()->addPerfPartResult(pFile, pLine)) {
+
+  m_pTimer->start();
+  m_pPerf->start();
+}
+
 testing::PerfIterator::~PerfIterator()
 {
   delete m_pTimer;
