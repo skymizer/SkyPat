@@ -18,6 +18,7 @@
 
 // Step 1. Include necessary header files such that the stuff your test logic
 // needs is declared.
+#include <unistd.h>
 #include "pat/pat.h"
 #include "my_case.h"
 
@@ -57,9 +58,15 @@ PAT_F(MyCase, factorial_test)
 {
   PERFORM {
     factorial(5);
+    usleep(1);
+    factorial(5);
+    usleep(1);
+    factorial(5);
   }
   PERFORM {
     factorial(100);
+    usleep(1);
+    factorial(5);
   }
 }
 
