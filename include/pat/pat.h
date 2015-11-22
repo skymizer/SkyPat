@@ -18,16 +18,24 @@
 
 namespace pat {
 enum PerfFlavor {
-  COUNT = 1,
-  SAMPLE = 2
+  COUNT,
+  SAMPLE
 };
 enum PerfType {
-  HARDWARE = 1,
-  SOFTWARE = 2
+  HW,
+  SW
 };
 enum PerfEvent {
-  TASK_CLOCK = 1,
-  CONTEXT_SWITCHES = 2
+  CPU_CLOCK,
+  TASK_CLOCK,
+  PAGE_FAULTS,
+  CONTEXT_SWITCHES,
+  CPU_MIGRATIONS,
+  PAGE_FAULTS_MIN,
+  PAGE_FAULTS_MAJ,
+  ALIGNMENT_FAULTS,
+  EMULATION_FAULTS,
+  DUMMY
 };
 
 class Test;

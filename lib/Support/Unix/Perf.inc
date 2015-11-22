@@ -56,6 +56,16 @@ public:
 
   void init(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent) {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
+
+    static const decltype(perf_event_attr::config) \
+        count_sw_event_list[] = { \
+            PERF_COUNT_SW_CPU_CLOCK, PERF_COUNT_SW_TASK_CLOCK, \
+            PERF_COUNT_SW_PAGE_FAULTS, PERF_COUNT_SW_CONTEXT_SWITCHES, \
+            PERF_COUNT_SW_CPU_MIGRATIONS, PERF_COUNT_SW_PAGE_FAULTS_MIN, \
+            PERF_COUNT_SW_PAGE_FAULTS_MAJ, PERF_COUNT_SW_ALIGNMENT_FAULTS, \
+            PERF_COUNT_SW_EMULATION_FAULTS, PERF_COUNT_SW_DUMMY
+    };
+
     struct perf_event_attr attr;
      
     memset(&attr, 0, sizeof(attr));
@@ -66,25 +76,27 @@ public:
     switch(pFlavor) {
         case COUNT:
             switch(pType) {
-                case HARDWARE:
+                case HW:
                     // SkyPat does not support hardware measurement yet.
                     break;
-                case SOFTWARE:
+                case SW:
                     attr.type = PERF_TYPE_SOFTWARE;
-                    switch(pEvent) {
-                        case TASK_CLOCK:
-                            attr.config = PERF_COUNT_SW_TASK_CLOCK;
-                            break;
-                        case CONTEXT_SWITCHES:
-                            attr.config = PERF_COUNT_SW_CONTEXT_SWITCHES;
-                            break;
-                    }
+                    // do nothing with Wrong Event
+                    if(pEvent < 0 || pEvent >= sizeof(count_sw_event_list))
+                        return;
+                    attr.config = count_sw_event_list[pEvent];
                     break;
+                default:
+                    // do nothing with Wrong Type
+                    return;
             }
             break;
         case SAMPLE:
             // SkyPat does not support samping perf event yet.
             break;
+        default:
+            // do nothing with Wrong Flavor
+            return;
 	}
 
     attr.size = sizeof(attr);
@@ -129,7 +141,7 @@ static ManagedStatic<PerfImpl> g_Perf;
 //===----------------------------------------------------------------------===//
 Perf::Perf()
   : m_Interval(0), m_bIsActive(false) {
-  g_Perf->init(COUNT, SOFTWARE, CONTEXT_SWITCHES);
+  g_Perf->init(COUNT, SW, CONTEXT_SWITCHES);
 }
 
 Perf::Perf(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent)
