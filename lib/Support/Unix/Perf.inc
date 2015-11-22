@@ -57,12 +57,17 @@ public:
   void init(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent) {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
 
-    static const decltype(perf_event_attr::config) \
-        count_sw_event_list[] = { \
-            PERF_COUNT_SW_CPU_CLOCK, PERF_COUNT_SW_TASK_CLOCK, \
-            PERF_COUNT_SW_PAGE_FAULTS, PERF_COUNT_SW_CONTEXT_SWITCHES, \
-            PERF_COUNT_SW_CPU_MIGRATIONS, PERF_COUNT_SW_PAGE_FAULTS_MIN, \
-            PERF_COUNT_SW_PAGE_FAULTS_MAJ, PERF_COUNT_SW_ALIGNMENT_FAULTS, \
+    static const decltype(perf_event_attr::config)
+        event_list[] = {
+            PERF_COUNT_HW_CPU_CYCLES, PERF_COUNT_HW_INSTRUCTIONS,
+            PERF_COUNT_HW_CACHE_REFERENCES, PERF_COUNT_HW_CACHE_MISSES,
+            PERF_COUNT_HW_BRANCH_INSTRUCTIONS, PERF_COUNT_HW_BRANCH_MISSES,
+            PERF_COUNT_HW_BUS_CYCLES, PERF_COUNT_HW_STALLED_CYCLES_FRONTEND,
+            PERF_COUNT_HW_STALLED_CYCLES_BACKEND, PERF_COUNT_HW_REF_CPU_CYCLES,
+            PERF_COUNT_SW_CPU_CLOCK, PERF_COUNT_SW_TASK_CLOCK,
+            PERF_COUNT_SW_PAGE_FAULTS, PERF_COUNT_SW_CONTEXT_SWITCHES,
+            PERF_COUNT_SW_CPU_MIGRATIONS, PERF_COUNT_SW_PAGE_FAULTS_MIN,
+            PERF_COUNT_SW_PAGE_FAULTS_MAJ, PERF_COUNT_SW_ALIGNMENT_FAULTS,
             PERF_COUNT_SW_EMULATION_FAULTS, PERF_COUNT_SW_DUMMY
     };
 
@@ -73,18 +78,16 @@ public:
     attr.inherit = 1;
     attr.disabled = 1;
 
+    attr.config = event_list[pEvent];
+
     switch(pFlavor) {
         case COUNT:
             switch(pType) {
                 case HW:
-                    // SkyPat does not support hardware measurement yet.
+                    attr.type = PERF_TYPE_HARDWARE;
                     break;
                 case SW:
                     attr.type = PERF_TYPE_SOFTWARE;
-                    // do nothing with Wrong Event
-                    if(pEvent < 0 || pEvent >= sizeof(count_sw_event_list))
-                        return;
-                    attr.config = count_sw_event_list[pEvent];
                     break;
                 default:
                     // do nothing with Wrong Type
