@@ -96,6 +96,7 @@ bool testing::PerfIterator::hasNext() const
 
   m_pPerfResult->setTimerNum(m_pTimer->interval());
   m_pPerfResult->setPerfEventNum(m_pPerf->interval());
+  m_pPerfResult->setPerfEventType(m_pPerf->interval2());
   return false;
 }
 
@@ -146,6 +147,11 @@ testing::Interval testing::PerfPartResult::getPerfEventNum() const
   return m_PerfEventNum;
 }
 
+testing::Interval testing::PerfPartResult::getPerfEventType() const
+{
+  return m_PerfEventType;
+}
+
 void testing::PerfPartResult::setTimerNum(testing::Interval pTimerNum)
 {
   m_PerfTimerNum = pTimerNum;
@@ -156,6 +162,11 @@ void testing::PerfPartResult::setTimerNum(testing::Interval pTimerNum)
 void testing::PerfPartResult::setPerfEventNum(testing::Interval pEventNum)
 {
   m_PerfEventNum = pEventNum;
+}
+
+void testing::PerfPartResult::setPerfEventType(testing::Interval pEventType)
+{
+  m_PerfEventType = pEventType;
 }
 
 //===----------------------------------------------------------------------===//

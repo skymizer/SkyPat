@@ -266,13 +266,16 @@ public:
 
   Interval getTimerNum() const;
   Interval getPerfEventNum() const;
+  Interval getPerfEventType() const;
 
   void setTimerNum(Interval pTime);
   void setPerfEventNum(Interval pEventNum);
+  void setPerfEventType(Interval pEventType);
 
 private:
   Interval m_PerfTimerNum;
   Interval m_PerfEventNum;
+  Interval m_PerfEventType;
 };
 
 /** \class TestResult

@@ -115,9 +115,25 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
     }
     testing::Log::getOStream() << Color::RESET << std::endl;
 
+    // perf_event's types
+    testing::Log::getOStream() << Color::Bold(Color::BLUE)
+                               << "[EVENT TYPE]";
+
+    perf = pTestInfo.result().performance().begin();
+    pEnd = pTestInfo.result().performance().end();
+
+    while (perf != pEnd) {
+      testing::Log::getOStream() << " " << std::setw(7)
+                                 << std::hex << std::showbase
+                                 << (*perf)->getPerfEventType()
+                                 << std::dec << std::noshowbase;
+      ++perf;
+    }
+    testing::Log::getOStream() << Color::RESET << std::endl;
+
     // perf_event's results
     testing::Log::getOStream() << Color::Bold(Color::BLUE)
-                               << "[CXT SWITCH]";
+                               << "[RESULT NUM]";
 
     perf = pTestInfo.result().performance().begin();
     pEnd = pTestInfo.result().performance().end();
