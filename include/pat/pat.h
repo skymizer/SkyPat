@@ -17,6 +17,8 @@
 #define PAT_VERNUM 0x24
 
 namespace pat {
+// PerfFlavor and PerfType are deprecated
+/*
 enum PerfFlavor {
   COUNT,
   SAMPLE
@@ -25,8 +27,10 @@ enum PerfType {
   HW,
   SW
 };
+*/
 enum PerfEvent {
-  CPU_CYCLES,
+// type is PERF_TYPE_HARDWARE
+  CPU_CYCLES, // = 0
   INSTRUCTIONS,
   CACHE_REFERENCES,
   CACHE_MISSES,
@@ -35,8 +39,9 @@ enum PerfEvent {
   BUS_CYCLES,
   STALLED_CYCLES_FRONTEND,
   STALLED_CYCLES_BACKEND,
-  REF_CPU_CYCLES,
-  CPU_CLOCK,
+  REF_CPU_CYCLES, // = 9
+// type is PERF_TYPE_SOFTWARE
+  CPU_CLOCK, // = 10
   TASK_CLOCK,
   PAGE_FAULTS,
   CONTEXT_SWITCHES,
@@ -45,8 +50,15 @@ enum PerfEvent {
   PAGE_FAULTS_MAJ,
   ALIGNMENT_FAULTS,
   EMULATION_FAULTS,
-  DUMMY
+  DUMMY // = 19
 };
+
+enum PerfEventCache{
+// type is PERF_TYPE_HW_CACHE
+// TODO: add CPU cache events
+};
+
+extern char const *Perf_event_name[];
 
 class Test;
 
@@ -198,7 +210,7 @@ public:
   /// @param pType the type of event (HW / SW)
   /// @param pEvent the name of event
   PerfIterator(const char* pFileName, int pLoC,\
-               enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent);
+               enum PerfEvent pEvent);
 
   /// Destructor. The place to sum up the time.
   ~PerfIterator();
@@ -805,8 +817,8 @@ public:
                                                 __loop.hasNext(); \
                                                 __loop.next() )
 
-#define PERFORM2(flavor, type, event) \
-  for (pat::testing::PerfIterator __loop(__FILE__, __LINE__, flavor, type, event); \
+#define PERFORM2(event) \
+  for (pat::testing::PerfIterator __loop(__FILE__, __LINE__, event); \
                                                 __loop.hasNext(); \
                                                 __loop.next() )
 

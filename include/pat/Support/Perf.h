@@ -21,7 +21,7 @@ class Perf
 {
 public:
   Perf();
-  Perf(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent);
+  Perf(enum PerfEvent pEvent);
   ~Perf();
 
   bool isActive() const { return m_bIsActive; }

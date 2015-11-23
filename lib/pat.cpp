@@ -29,6 +29,22 @@ using namespace pat;
 /* Define the numebr of iteration of performance loop */
 #define PAT_PERFORM_LOOP_TIMES 1
 
+namespace pat{
+/* Establish perf event string array */
+char const *Perf_event_name[] = {
+  "CPU CYCLES", "INST   NUM",
+  "CACHE  REF", "CACHE MISS",
+  "BR    INST", "BR  MISSES",
+  "BUS CYCLES", "STALLFRONT",
+  "STALL BACK", "REF CYCLES",
+  "CPU  CLOCK", "TASK CLOCK",
+  "PAGEFAULTS", "CTX SWITCH",
+  "CPUMIGRATE", "PG FAULT m",
+  "PG FAULT M", "ALIGNFAULT",
+  "EMU  FAULT", "D U M M Y "
+};
+} // namespace of pat
+
 //===----------------------------------------------------------------------===//
 // Non-member function
 //===----------------------------------------------------------------------===//
@@ -69,11 +85,10 @@ testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
 }
 
 testing::PerfIterator::PerfIterator(const char* pFile, int pLine,\
-                                    enum PerfFlavor pFlavor, PerfType pType,\
 									enum PerfEvent pEvent)
   : m_Counter(0),
     m_pTimer(new internal::Timer()),
-    m_pPerf(new internal::Perf(pFlavor, pType, pEvent)),
+    m_pPerf(new internal::Perf(pEvent)),
     m_pPerfResult(testing::UnitTest::self()->addPerfPartResult(pFile, pLine)) {
 
   m_pTimer->start();

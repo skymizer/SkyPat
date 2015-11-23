@@ -54,7 +54,7 @@ public:
 #endif
   }
 
-  void init(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent) {
+  void init(enum PerfEvent pEvent) {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
 
     static const decltype(perf_event_attr::config)
@@ -80,27 +80,10 @@ public:
 
     attr.config = event_list[pEvent];
 
-    switch(pFlavor) {
-        case COUNT:
-            switch(pType) {
-                case HW:
-                    attr.type = PERF_TYPE_HARDWARE;
-                    break;
-                case SW:
-                    attr.type = PERF_TYPE_SOFTWARE;
-                    break;
-                default:
-                    // do nothing with Wrong Type
-                    return;
-            }
-            break;
-        case SAMPLE:
-            // SkyPat does not support samping perf event yet.
-            break;
-        default:
-            // do nothing with Wrong Flavor
-            return;
-	}
+    if(pEvent < PerfEvent::CPU_CLOCK)
+        attr.type = PERF_TYPE_HARDWARE;
+    else
+        attr.type = PERF_TYPE_SOFTWARE;
 
     attr.size = sizeof(attr);
 
@@ -143,13 +126,13 @@ static ManagedStatic<PerfImpl> g_Perf;
 // Perf
 //===----------------------------------------------------------------------===//
 Perf::Perf()
-  : m_Interval(0), m_Interval2(COUNT << 16 | SW << 8 | CONTEXT_SWITCHES), m_bIsActive(false) {
-  g_Perf->init(COUNT, SW, CONTEXT_SWITCHES);
+  : m_Interval(0), m_Interval2(PerfEvent::CONTEXT_SWITCHES), m_bIsActive(false) {
+  g_Perf->init(PerfEvent::CONTEXT_SWITCHES);
 }
 
-Perf::Perf(enum PerfFlavor pFlavor, enum PerfType pType, enum PerfEvent pEvent)
-  : m_Interval(0), m_Interval2(pFlavor << 16 | pType << 8 | pEvent), m_bIsActive(false) {
-  g_Perf->init(pFlavor, pType, pEvent);
+Perf::Perf(enum PerfEvent pEvent)
+  : m_Interval(0), m_Interval2(pEvent), m_bIsActive(false) {
+  g_Perf->init(pEvent);
 }
 
 Perf::~Perf()

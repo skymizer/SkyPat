@@ -109,7 +109,7 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
                                       pTestInfo.result().performance().end();
 
     while (perf != pEnd) {
-      testing::Log::getOStream() << " " << std::setw(7)
+      testing::Log::getOStream() << " " << std::setw(12)
                                  << (*perf)->getTimerNum();
       ++perf;
     }
@@ -123,10 +123,9 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
     pEnd = pTestInfo.result().performance().end();
 
     while (perf != pEnd) {
-      testing::Log::getOStream() << " " << std::setw(7)
-                                 << std::hex << std::showbase
-                                 << (*perf)->getPerfEventType()
-                                 << std::dec << std::noshowbase;
+      testing::Log::getOStream() << " [" << std::setw(10)
+                                 << pat::Perf_event_name[(*perf)->getPerfEventType()]
+                                 << "]";
       ++perf;
     }
     testing::Log::getOStream() << Color::RESET << std::endl;
@@ -139,7 +138,7 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
     pEnd = pTestInfo.result().performance().end();
 
     while (perf != pEnd) {
-      testing::Log::getOStream() << " " << std::setw(7)
+      testing::Log::getOStream() << " " << std::setw(12)
                                  << (*perf)->getPerfEventNum();
       ++perf;
     }
