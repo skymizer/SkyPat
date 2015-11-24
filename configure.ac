@@ -28,7 +28,7 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 ####################
 #  Versioning, see VERSION
 CURRENT_VERSION=2
-REVISION_VERSION=8
+REVISION_VERSION=9
 AGE_VERSION=0
 FULL_VERSION_NAME=Hachu
 BUILD_VERSION=hc

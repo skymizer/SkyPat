@@ -23,9 +23,9 @@ PAT_INCLUDES = -I${abs_top_srcdir}/include \
                     -I${abs_top_builddir}/include
 
 if ENABLE_OPTIMIZE
-PAT_CPPFLAGS = -O2 -std=c++11
+PAT_CPPFLAGS = -O2 -std=c++0x
 else
-PAT_CPPFLAGS = -g -std=c++11
+PAT_CPPFLAGS = -g -std=c++0x
 endif
 
 AM_CPPFLAGS = ${PAT_INCLUDES} ${PAT_CPPFLAGS} ${ANDROID_CPPFLAGS}

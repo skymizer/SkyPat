@@ -17,17 +17,6 @@
 #define PAT_VERNUM 0x24
 
 namespace pat {
-// PerfFlavor and PerfType are deprecated
-/*
-enum PerfFlavor {
-  COUNT,
-  SAMPLE
-};
-enum PerfType {
-  HW,
-  SW
-};
-*/
 enum PerfEvent {
 // type is PERF_TYPE_HARDWARE
   CPU_CYCLES, // = 0

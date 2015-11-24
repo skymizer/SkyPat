@@ -21,6 +21,9 @@
 /* the location of <unordered_set> or <hash_set> */
 #undef HASH_SET_H
 
+/* Define to 1 if you have the <asm/unistd.h> header file. */
+#undef HAVE_ASM_UNISTD_H
+
 /* Have clock_gettime */
 #undef HAVE_CLOCK_GETTIME
 
@@ -53,6 +56,9 @@
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <linux/perf_event.h> header file. */
+#undef HAVE_LINUX_PERF_EVENT_H
 
 /* Define to 1 if the system has the type `long double'. */
 #undef HAVE_LONG_DOUBLE
@@ -99,9 +105,6 @@
 
 /* Define to 1 if you have the <sys/time.h> header file. */
 #undef HAVE_SYS_TIME_H
-
-/* Define to 1 if you have the <sys/times.h> header file. */
-#undef HAVE_SYS_TIMES_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
