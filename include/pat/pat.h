@@ -38,8 +38,7 @@ enum PerfEvent {
   PAGE_FAULTS_MIN,
   PAGE_FAULTS_MAJ,
   ALIGNMENT_FAULTS,
-  EMULATION_FAULTS,
-  DUMMY // = 19
+  EMULATION_FAULTS // = 18
 };
 
 enum PerfEventCache{
@@ -806,7 +805,7 @@ public:
                                                 __loop.hasNext(); \
                                                 __loop.next() )
 
-#define PERFORM2(event) \
+#define COUNT(event) \
   for (pat::testing::PerfIterator __loop(__FILE__, __LINE__, event); \
                                                 __loop.hasNext(); \
                                                 __loop.next() )

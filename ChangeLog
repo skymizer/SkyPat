@@ -1,3 +1,7 @@
+2015-12-05 Owen <aoowweenn@skymizer.com>
+	* Executive Summary:
+	1. Change macro PERFORM2 -> COUNT
+	
 2015-11-24 Owen <aoowweenn@skymizer.com>
 	* Executive Summary:
 	1. Invoke perf_event_open once for each measurement.
