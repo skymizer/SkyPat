@@ -17,7 +17,7 @@ Build "pat"
   Dance with standard auto-tools.
 
   1.  clone Skymizer from the repositry
-      git clone https://code.google.com/p/pat/ ${PAT}
+      git clone git@github.com:skymizer/pat.git ${PAT}
 
   2.  Type `cd ${PAT}' to the directory containing the source code.
 
