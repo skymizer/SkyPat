@@ -1,19 +1,19 @@
-------------------------------------------------------------------------------
-                             The pat Team 
-------------------------------------------------------------------------------
-============
-Introduction
-============
+# The pat Team
+
+-----------------------------------------------------------------------------
+
+## Introduction
   "pat" is a C++ performance analyzing and testing framework on Android and
   Linux platforms. It combines perf_events and unit tests together and gives
   programmers the power of fine-grained performance analysis via writing
   typical test cases. 
 
-===================
-Directory Structure
-===================
+## Directory Structure
+
+```
 share/pat/README    - this document
 share/pat/LICENSE   - the License
 share/pat/examples/ - the place of examples
 include/            - include file, exported interface
 lib/                - libraries of exported interface
+```
