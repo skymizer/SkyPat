@@ -28,11 +28,14 @@ Download the source code into ${PAT_SRC} directory.
 
 #### Build by Dancing with Auto-tools
 
-If there are no `configure` shell script in the directory, use `./autogen.sh` to generate `configure` script.
+If there are no `configure` shell script in the directory,
+ use `./autogen.sh` to generate `configure` script.
 
     $ ./autogen.sh
 
-Use `./configure` to configure the package for your system. See [INSTALL](https://github.com/skymizer/pat/blob/master/INSTALL INSTALL) for more details.
+Use `./configure` to configure the package for your system. 
+See [INSTALL](https://github.com/skymizer/pat/blob/master/INSTALL INSTALL) for 
+more details.
 
     $ ./configure --prefix=${PAT_INSTALL}
 
@@ -46,7 +49,8 @@ Type `make install` to install the package into your system.
 
 ### Run Examples
 
-Examples of **pat** are installed at ${PAT_INSTALL}/share/pat/examples. You can go to any sub-directory and build it. For example:
+Examples of **pat** are installed at ${PAT_INSTALL}/share/pat/examples. 
+You can go to any sub-directory and build it. For example:
 
     cd ${PAT_INSTALL}/share/pat/examples/assertion
     make
