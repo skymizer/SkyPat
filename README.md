@@ -63,3 +63,8 @@ Then, if **pat** is successfully installed, you should see:
       [       OK ]
       [==========] 2 tests from 1 cases ran.
       [  PASSED  ] 2 tests.
+
+## User Guide
+
+For those who need more information about **pat**, please check out our
+ [UserGuide](https://github.com/skymizer/pat/wiki/HowToUse) on Github.
