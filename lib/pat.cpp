@@ -111,7 +111,7 @@ bool testing::PerfIterator::hasNext() const
 
   m_pPerfResult->setTimerNum(m_pTimer->interval());
   m_pPerfResult->setPerfEventNum(m_pPerf->interval());
-  m_pPerfResult->setPerfEventType(m_pPerf->interval2());
+  m_pPerfResult->setPerfEventType(m_pPerf->eventType());
   return false;
 }
 

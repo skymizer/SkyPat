@@ -57,6 +57,7 @@ public:
   void init(enum PerfEvent pEvent) {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
 
+    /* store the perf event numbers with the same order of pat:Perf_event_name */
     static const decltype(perf_event_attr::config)
         event_list[] = {
             PERF_COUNT_HW_CPU_CYCLES, PERF_COUNT_HW_INSTRUCTIONS,
@@ -131,12 +132,12 @@ static ManagedStatic<PerfImpl> g_Perf;
 // Perf
 //===----------------------------------------------------------------------===//
 Perf::Perf()
-  : m_Interval(0), m_Interval2(PerfEvent::CONTEXT_SWITCHES), m_bIsActive(false) {
+  : m_Interval(0), m_EventType(PerfEvent::CONTEXT_SWITCHES), m_bIsActive(false) {
   g_Perf->init(PerfEvent::CONTEXT_SWITCHES);
 }
 
 Perf::Perf(enum PerfEvent pEvent)
-  : m_Interval(0), m_Interval2(pEvent), m_bIsActive(false) {
+  : m_Interval(0), m_EventType(pEvent), m_bIsActive(false) {
   g_Perf->init(pEvent);
 }
 
