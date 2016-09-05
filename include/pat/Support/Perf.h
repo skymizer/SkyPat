@@ -21,10 +21,12 @@ class Perf
 {
 public:
   Perf();
+  Perf(enum PerfEvent pEvent);
   ~Perf();
 
   bool isActive() const { return m_bIsActive; }
   testing::Interval interval() const { return m_Interval; }
+  testing::Interval eventType() const { return m_EventType; }
 
   void start();
   void stop();
@@ -32,7 +34,7 @@ public:
   static std::string unit();
 
 private:
-  testing::Interval m_Interval;
+  testing::Interval m_Interval, m_EventType;
   bool m_bIsActive;
 };
 
