@@ -17,6 +17,37 @@
 #define PAT_VERNUM 0x24
 
 namespace pat {
+enum PerfEvent {
+// type is PERF_TYPE_HARDWARE
+  CPU_CYCLES, // = 0
+  INSTRUCTIONS,
+  CACHE_REFERENCES,
+  CACHE_MISSES,
+  BRANCH_INSTRUCTIONS,
+  BRANCH_MISSES,
+  BUS_CYCLES,
+  STALLED_CYCLES_FRONTEND,
+  STALLED_CYCLES_BACKEND,
+  REF_CPU_CYCLES, // = 9
+// type is PERF_TYPE_SOFTWARE
+  CPU_CLOCK, // = 10
+  TASK_CLOCK,
+  PAGE_FAULTS,
+  CONTEXT_SWITCHES,
+  CPU_MIGRATIONS,
+  PAGE_FAULTS_MIN,
+  PAGE_FAULTS_MAJ,
+  ALIGNMENT_FAULTS,
+  EMULATION_FAULTS // = 18
+};
+
+enum PerfEventCache{
+// type is PERF_TYPE_HW_CACHE
+// TODO: add CPU cache events
+};
+
+extern char const *Perf_event_name[];
+
 class Test;
 
 namespace testing {
@@ -161,6 +192,14 @@ public:
   /// @param pLoC the line of code.
   PerfIterator(const char* pFileName, int pLoC);
 
+  /// @param pFileName the source file name.
+  /// @param pLoC the line of code.
+  /// @param pFlavor the flavor of event (COUNT / SAMPLE)
+  /// @param pType the type of event (HW / SW)
+  /// @param pEvent the name of event
+  PerfIterator(const char* pFileName, int pLoC,\
+               enum PerfEvent pEvent);
+
   /// Destructor. The place to sum up the time.
   ~PerfIterator();
 
@@ -237,13 +276,16 @@ public:
 
   Interval getTimerNum() const;
   Interval getPerfEventNum() const;
+  Interval getPerfEventType() const;
 
   void setTimerNum(Interval pTime);
   void setPerfEventNum(Interval pEventNum);
+  void setPerfEventType(Interval pEventType);
 
 private:
   Interval m_PerfTimerNum;
   Interval m_PerfEventNum;
+  Interval m_PerfEventType;
 };
 
 /** \class TestResult
@@ -760,6 +802,11 @@ public:
   PAT_ASSERT_PRED((actual > expected), actual, expected)
 
 #define PERFORM for (pat::testing::PerfIterator __loop(__FILE__, __LINE__); \
+                                                __loop.hasNext(); \
+                                                __loop.next() )
+
+#define COUNT(event) \
+  for (pat::testing::PerfIterator __loop(__FILE__, __LINE__, event); \
                                                 __loop.hasNext(); \
                                                 __loop.next() )
 

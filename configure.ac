@@ -28,7 +28,7 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 ####################
 #  Versioning, see VERSION
 CURRENT_VERSION=2
-REVISION_VERSION=8
+REVISION_VERSION=9
 AGE_VERSION=0
 FULL_VERSION_NAME=Hachu
 BUILD_VERSION=hc
@@ -57,6 +57,7 @@ CXX_FLAG_CHECK([-Wno-variadic-macros])
 # Check for headers
 AC_CHECK_HEADERS([sys/time.h])
 AC_CHECK_HEADERS([linux/perf_event.h])
+AC_CHECK_HEADERS([asm/unistd.h])
 
 ####################
 # Check for functions

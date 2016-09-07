@@ -29,6 +29,22 @@ using namespace pat;
 /* Define the numebr of iteration of performance loop */
 #define PAT_PERFORM_LOOP_TIMES 1
 
+namespace pat{
+/* Establish perf event string array */
+char const *Perf_event_name[] = {
+  "CPU CYCLES", "INST   NUM",
+  "CACHE  REF", "CACHE MISS",
+  "BR    INST", "BR  MISSES",
+  "BUS CYCLES", "STALLFRONT",
+  "STALL BACK", "REF CYCLES",
+  "CPU  CLOCK", "TASK CLOCK",
+  "PAGEFAULTS", "CTX SWITCH",
+  "CPUMIGRATE", "PG FAULT m",
+  "PG FAULT M", "ALIGNFAULT",
+  "EMU  FAULT", "D U M M Y "
+};
+} // namespace of pat
+
 //===----------------------------------------------------------------------===//
 // Non-member function
 //===----------------------------------------------------------------------===//
@@ -68,6 +84,17 @@ testing::PerfIterator::PerfIterator(const char* pFile, int pLine)
   m_pPerf->start();
 }
 
+testing::PerfIterator::PerfIterator(const char* pFile, int pLine,\
+									enum PerfEvent pEvent)
+  : m_Counter(0),
+    m_pTimer(new internal::Timer()),
+    m_pPerf(new internal::Perf(pEvent)),
+    m_pPerfResult(testing::UnitTest::self()->addPerfPartResult(pFile, pLine)) {
+
+  m_pTimer->start();
+  m_pPerf->start();
+}
+
 testing::PerfIterator::~PerfIterator()
 {
   delete m_pTimer;
@@ -84,6 +111,7 @@ bool testing::PerfIterator::hasNext() const
 
   m_pPerfResult->setTimerNum(m_pTimer->interval());
   m_pPerfResult->setPerfEventNum(m_pPerf->interval());
+  m_pPerfResult->setPerfEventType(m_pPerf->eventType());
   return false;
 }
 
@@ -134,6 +162,11 @@ testing::Interval testing::PerfPartResult::getPerfEventNum() const
   return m_PerfEventNum;
 }
 
+testing::Interval testing::PerfPartResult::getPerfEventType() const
+{
+  return m_PerfEventType;
+}
+
 void testing::PerfPartResult::setTimerNum(testing::Interval pTimerNum)
 {
   m_PerfTimerNum = pTimerNum;
@@ -144,6 +177,11 @@ void testing::PerfPartResult::setTimerNum(testing::Interval pTimerNum)
 void testing::PerfPartResult::setPerfEventNum(testing::Interval pEventNum)
 {
   m_PerfEventNum = pEventNum;
+}
+
+void testing::PerfPartResult::setPerfEventType(testing::Interval pEventType)
+{
+  m_PerfEventType = pEventType;
 }
 
 //===----------------------------------------------------------------------===//
