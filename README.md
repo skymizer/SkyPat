@@ -1,9 +1,9 @@
-# The pat Team
+# The SkyPat Team
 
 -----------------------------------------------------------------------------
 
 ## Introduction
-  "pat" is a C++ performance analyzing and testing framework on Android and
+  "SkyPat" is a C++ performance analyzing and testing framework on Android and
   Linux platforms. It combines perf_events and unit tests together and gives
   programmers the power of fine-grained performance analysis via writing
   typical test cases. 
@@ -20,7 +20,7 @@ lib/                - libraries of exported interface
 
 ## Getting Started
 
-### Build pat From `git` Repository
+### Build SkyPat From `git` Repository
 
 Download the source code into ${PAT_SRC} directory.
 
@@ -49,13 +49,13 @@ Type `make install` to install the package into your system.
 
 ### Run Examples
 
-Examples of **pat** are installed at ${PAT_INSTALL}/share/pat/examples. 
+Examples of **SkyPat** are installed at ${PAT_INSTALL}/share/pat/examples. 
 You can go to any sub-directory and build it. For example:
 
     cd ${PAT_INSTALL}/share/pat/examples/assertion
     make
 
-Then, if **pat** is successfully installed, you should see:
+Then, if **SkyPat** is successfully installed, you should see:
 
     c++ -I../../../../include -L../../../../lib main.cpp my_case.cpp -lpat -o assertion
       LD_LIBRARY_PATH=../../../../lib ./assertion
@@ -70,5 +70,5 @@ Then, if **pat** is successfully installed, you should see:
 
 ## User Guide
 
-For those who need more information about **pat**, please check out our
+For those who need more information about **SkyPat**, please check out our
  [UserGuide](https://github.com/skymizer/pat/wiki/HowToUse) on Github.
