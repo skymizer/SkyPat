@@ -20,13 +20,24 @@ lib/                - libraries of exported interface
 
 ## Getting Started
 
-### Build SkyPat From `git` Repository
+## Download and build SkyPat
 
-Download the source code into ${PAT_SRC} directory.
 
-    $ git clone https://github.com/skymizer/pat.git
+You could download **SkyPat** either from the latest release tar-ball or from
+ our `git` repository.
 
-#### Build by Dancing with Auto-tools
+### Method 1: Download **SkyPat** from the latest release tar-ball
+Download the source code from the latest release tar-ball.
+
+    $ wget  http://file.skymizer.com/pat/pat-2.8.0.tar.gz
+    $ tar zxvf pat-2.8.0.tar.gz ${PAT_SRC}
+
+### Method 2: Download **SkyPat** from our `git` repository
+Download the source code from our `git` repository into ${PAT_SRC} directory.
+ 
+    $ git clone https://github.com/skymizer/pat.git ${PAT_SRC}
+
+### Build by Dancing with Auto-tools
 
 If there are no `configure` shell script in the directory,
  use `./autogen.sh` to generate `configure` script.
