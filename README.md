@@ -30,7 +30,7 @@ You could download **SkyPat** either from the latest release tar-ball or from
 Download the source code from the latest release tar-ball.
 
     $ wget  http://file.skymizer.com/pat/pat-2.8.0.tar.gz
-    $ tar zxvf pat-2.8.0.tar.gz ${PAT_SRC}
+    $ tar zxvf pat-2.8.0.tar.gz
 
 ### Method 2: Download **SkyPat** from our `git` repository
 Download the source code from our `git` repository into ${PAT_SRC} directory.
