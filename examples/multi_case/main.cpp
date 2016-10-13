@@ -45,7 +45,7 @@
 // of a variable of a test is fixed.
 PAT_F(Fibonacci, fibonacci_result)
 {
-  int result;
+  int result = 0;
 
   PERFORM {
     result = fibonacci(5);
@@ -62,7 +62,7 @@ PAT_F(Fibonacci, fibonacci_result)
 
 PAT_F(Fibonacci, fibonacci_special_case)
 {
-  int result;
+  int result = 0;
 
   PERFORM {
     result = fibonacci(-1);
@@ -74,7 +74,7 @@ PAT_F(Fibonacci, fibonacci_special_case)
 
 PAT_F(Factorial, factorial_result)
 {
-  int result;
+  int result = 0;
 
   PERFORM {
     result = factorial(5);
@@ -91,7 +91,7 @@ PAT_F(Factorial, factorial_result)
 
 PAT_F(Factorial, factorial_special_case)
 {
-  int result;
+  int result = 0;
 
   PERFORM {
     result = factorial(-1);
