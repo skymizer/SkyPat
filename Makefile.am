@@ -6,4 +6,4 @@ SUBDIRS = include lib examples
 
 EXTRA_DIST = ./autogen.sh ./LICENSE ./VERSION.in ./ChangeLog ./INSTALL
 
-dist_pkgdata_DATA = ./LICENSE ./README
+dist_pkgdata_DATA = ./LICENSE ./README.md
