@@ -101,14 +101,16 @@ public:
 #if defined(HAVE_LINUX_PERF_EVENT_H)
     ioctl(m_Fd, PERF_EVENT_IOC_ENABLE);
 #endif
-    assert(-1 != (m_Start = getCounter()) && "fail to get starting time");
+    m_Start = getCounter();
+    assert(-1 != m_Start && "fail to get starting time");
   }
 
   void stop() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
     ioctl(m_Fd, PERF_EVENT_IOC_DISABLE);
 #endif
-    assert(-1 != (m_End = getCounter()) && "fail to get elapsed time");
+    m_End = getCounter();
+    assert(-1 != m_End && "fail to get elapsed time");
   }
 
   testing::Interval getValue() const {
