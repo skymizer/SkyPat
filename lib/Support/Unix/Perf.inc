@@ -19,9 +19,6 @@
 #if defined(HAVE_ASM_UNISTD_H)
 #include <asm/unistd.h>
 #endif
-#ifndef __NR_perf_event_open
-#define __NR_perf_event_open 364
-#endif
 #endif 
 
 #ifndef PAT_PAT_H
