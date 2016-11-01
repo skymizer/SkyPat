@@ -95,7 +95,7 @@ PAT_C(MyCase, performance_turret_fire)
     ASSERT_TRUE( turret->isOn() );
 
     // Start performance test
-    PERFORM {
+    PERFORM(pat::CONTEXT_SWITCHES) {
        turret->fire();
     }
 }

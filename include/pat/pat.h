@@ -801,11 +801,7 @@ public:
 #define ASSERT_GT(actual, expected) \
   PAT_ASSERT_PRED((actual > expected), actual, expected)
 
-#define PERFORM for (pat::testing::PerfIterator __loop(__FILE__, __LINE__); \
-                                                __loop.hasNext(); \
-                                                __loop.next() )
-
-#define COUNT(event) \
+#define PERFORM(event) \
   for (pat::testing::PerfIterator __loop(__FILE__, __LINE__, event); \
                                                 __loop.hasNext(); \
                                                 __loop.next() )

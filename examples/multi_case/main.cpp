@@ -47,13 +47,13 @@ PAT_F(Fibonacci, fibonacci_result)
 {
   int result;
 
-  PERFORM {
+  PERFORM(pat::CONTEXT_SWITCHES) {
     result = fibonacci(5);
   }
 
   EXPECT_TRUE(result == 8);
 
-  PERFORM {
+  PERFORM(pat::CONTEXT_SWITCHES) {
     result = fibonacci(10);
   }
 
@@ -64,7 +64,7 @@ PAT_F(Fibonacci, fibonacci_special_case)
 {
   int result;
 
-  PERFORM {
+  PERFORM(pat::CONTEXT_SWITCHES) {
     result = fibonacci(-1);
   }
 
@@ -76,13 +76,13 @@ PAT_F(Factorial, factorial_result)
 {
   int result;
 
-  PERFORM {
+  PERFORM(pat::CONTEXT_SWITCHES) {
     result = factorial(5);
   }
 
   EXPECT_TRUE(result == 120);
 
-  PERFORM {
+  PERFORM(pat::CONTEXT_SWITCHES) {
     result = factorial(10);
   }
 
@@ -93,7 +93,7 @@ PAT_F(Factorial, factorial_special_case)
 {
   int result;
 
-  PERFORM {
+  PERFORM(pat::CONTEXT_SWITCHES) {
     result = factorial(-1);
   }
 
