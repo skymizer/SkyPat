@@ -46,7 +46,6 @@
 // of a variable of a test is fixed.
 PAT_F(MyCase, fibonacci_test)
 {
-  int result = 0;
   // PERFORM macro is used to measure the performance of code within a test. The
   // code to be benchmark within a code block following this macro.
   PERFORM(pat::CONTEXT_SWITCHES) {
