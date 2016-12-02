@@ -37,7 +37,7 @@ Download the source code from our `git` repository into ${PAT_SRC} directory.
  
     $ git clone https://github.com/skymizer/pat.git ${PAT_SRC}
 
-### Build by Dancing with Auto-tools
+### Build by Auto-tools
 
 If there are no `configure` shell script in the directory,
  use `./autogen.sh` to generate `configure` script.
