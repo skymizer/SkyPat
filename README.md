@@ -37,6 +37,21 @@ Download the source code from our `git` repository into ${PAT_SRC} directory.
  
     $ git clone https://github.com/skymizer/pat.git ${PAT_SRC}
 
+### Install required packages
+
+#### Ubuntu/Debian users
+
+Install following packages before you install **SkyPat**.
+
+    $ sudo apt-get install wget automake autoconf libtool build-essential
+
+#### Fedora/CentOS users
+
+Install following packages before you install **SkyPat**.
+
+    $ sudo yum install wget automake autoconf libtool make automake gcc gcc-c++
+    $ sudo yum install kernel-devel 
+
 ### Build by Auto-tools
 
 If there are no `configure` shell script in the directory,
