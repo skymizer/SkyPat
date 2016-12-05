@@ -18,6 +18,20 @@ include/            - include file, exported interface
 lib/                - libraries of exported interface
 ```
 
+## Supported platforms
+
+SkyPat supports macOS, Ubuntu/x86_64, Ubuntu/arm, Fedora/x86_64, Fedora/arm,
+ and CentOS/x86_64.
+
+Here is a list of verified versions:
+
+* Ubuntu
+  - 14.04 and later versions
+* Fedora
+  - 20 and later versions
+* CentOS
+  - 7 and later versions
+
 ## Getting Started
 
 ## Download and build SkyPat
