@@ -1,6 +1,6 @@
 Source: pat
 Priority: extra
-Maintainer: TDYa127 <a127a127@skymizer.com>
+Maintainer: Peter <peter@skymizer.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Section: libs
