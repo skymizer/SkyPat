@@ -1,3 +1,10 @@
+pat (3.0.0) unstable; urgency=low
+
+  * Support all perf_events.
+  * Change the interface of PERFORM macros.
+
+ -- Peter <peter@skymizer.com> Tue, 20 Dec 2016 15:57:00 +0800
+
 pat (2.7.0) unstable; urgency=low
 
   * Initial Release.
