@@ -1,6 +1,6 @@
 2016-12-20 Peter Chang <peter@skymizer.com>
 	* Executive Summary:
-	1. Support all perf_events.
+	1. Support all general perf_events.
 	2. Change the interface of PERFORM macros.
 
 2014-08-14 Luba Tang <luba@skymizer.com>
