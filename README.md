@@ -26,17 +26,19 @@ lib/                - libraries of exported interface
 
 ## Supported platforms
 
-SkyPat supports macOS, Ubuntu/x86_64, Ubuntu/arm, Fedora/x86_64, Fedora/arm,
+SkyPat supports macOS, Ubuntu/x86_64, Debian/arm, Fedora/x86_64, Fedora/arm,
  and CentOS/x86_64.
 
 Here is a list of verified versions:
 
-* Ubuntu
+* Ubuntu/x86_64
   - 14.04 and later versions
-* Fedora
+* Fedora/x86_64
   - 20 and later versions
-* CentOS
+* CentOS/x86_64
   - 7 and later versions
+* Debian/arm
+  - 8.6 and later versions
 
 ## Getting Started
 
