@@ -47,11 +47,11 @@ void Test::Initialize(int* pArgc, char* pArgv[])
 {
   // Choose user's printer
   int opt;
-  std::string csv_file;
+  std::string csvFile;
   while ((opt = getopt(*pArgc, pArgv, "c:h")) != -1 ) {
     switch (opt) {
       case 'c':
-        csv_file = optarg;
+        csvFile = optarg;
         break;
       case 'h':
       default:
@@ -60,13 +60,13 @@ void Test::Initialize(int* pArgc, char* pArgv[])
     }
   }
 
-  if (!csv_file.empty()) {
+  if (!csvFile.empty()) {
     CSVResultPrinter* printer = new CSVResultPrinter();
-    if (printer->open(csv_file)) {
+    if (printer->open(csvFile)) {
       testing::UnitTest::self()->repeater().add(printer);
     }
     else {
-      testing::Log::getOStream() << "Failed to open file `" << csv_file << "`\n";
+      testing::Log::getOStream() << "Failed to open file `" << csvFile << "`\n";
       delete printer;
     }
   }
