@@ -49,6 +49,7 @@ public:
      read(m_Fd, &counter, sizeof(unsigned long long));
      return counter;
 #endif
+     return -1;
   }
 
   void init(enum PerfEvent pEvent) {
@@ -99,7 +100,7 @@ public:
     ioctl(m_Fd, PERF_EVENT_IOC_ENABLE);
 #endif
     m_Start = getCounter();
-    assert(-1 != m_Start && "fail to get starting time");
+    assert(-1 != m_Start && "fail to get performance counters");
   }
 
   void stop() {
@@ -107,7 +108,7 @@ public:
     ioctl(m_Fd, PERF_EVENT_IOC_DISABLE);
 #endif
     m_End = getCounter();
-    assert(-1 != m_End && "fail to get elapsed time");
+    assert(-1 != m_End && "fail to get performance counters");
   }
 
   testing::Interval getValue() const {
