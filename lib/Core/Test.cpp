@@ -45,7 +45,7 @@ void Test::run()
 
 void Test::Initialize(int* pArgc, char* pArgv[])
 {
-  // Choice printer
+  // Choose user's printer
   int opt;
   std::string csv_file;
   while ((opt = getopt(*pArgc, pArgv, "c:h")) != -1 ) {
@@ -73,7 +73,7 @@ void Test::Initialize(int* pArgc, char* pArgv[])
   else
     testing::UnitTest::self()->repeater().add(new PrettyResultPrinter());
 
-  // Choice runnable tests
+  // Choose runnable tests
   Path progname(pArgv[0]);
   progname = progname.filename();
 
