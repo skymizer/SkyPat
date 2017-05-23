@@ -1,6 +1,6 @@
 //===- ThreadImpl.cpp -----------------------------------------------------===//
 //
-//                            The "pat" team 
+//                            The SkyPat team 
 //
 // This file is distributed under the New BSD License.
 // See LICENSE for details.

@@ -1,10 +1,10 @@
 ------------------------------------------------------------------------------
-                             The pat Team 
+                             The SkyPat Team 
 ------------------------------------------------------------------------------
 ============
 Introduction
 ============
-  "pat" is a precise performance test library.
+  SkyPat is a precise performance test library.
 
 ========================
 Compilation Instructions
@@ -12,21 +12,21 @@ Compilation Instructions
   The simplest way to compile this package is:
 
 --------------
-Build "pat" 
+Build SkyPat 
 --------------
   Dance with standard auto-tools.
 
   1.  clone Skymizer from the repositry
-      git clone git@github.com:skymizer/pat.git ${PAT}
+      git clone git@github.com:skymizer/skypat.git ${SKYPAT}
 
-  2.  Type `cd ${PAT}' to the directory containing the source code.
+  2.  Type `cd ${SKYPAT}' to the directory containing the source code.
 
   3.  If there are no `configure' shell script in the directory, type
       `./autogen.sh' to generate `configure' script.
 
   4.  Type `./configure` to configure the package for your system. See INSTALL
       for more details.
-      ./configure --prefix=${PAT_INSTALL} \
+      ./configure --prefix=${SKYPAT_INSTALL} \
 
   5.  Type `make` to compile the package
 

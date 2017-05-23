@@ -1,5 +1,5 @@
 #!/bin/bash
-#                       The pat Project
+#                       The SkyPat Project
 #
 #  This file is distributed under the New BSD License. 
 #  See LICENSE for details.

@@ -1,15 +1,15 @@
 //===- Color.cpp ------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/ADT/Color.h>
+#include <skypat/ADT/Color.h>
 #include <ostream>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // Color

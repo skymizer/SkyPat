@@ -1,13 +1,13 @@
 //===- my_case.cpp --------------------------------------------------------===//
 //
-//                              The pat Team
+//                              The SkyPat Team
 //
 // This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
 //
-// A sample program demonstrating using "pat" performance testing framework.
+// A sample program demonstrating using SkyPat performance testing framework.
 //
 // Author: Luba Tang <luba@skymizer.com>
 //===----------------------------------------------------------------------===//

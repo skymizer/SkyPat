@@ -1,12 +1,12 @@
 //===- Timer.inc ----------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Support/ManagedStatic.h>
+#include <skypat/Support/ManagedStatic.h>
 #include <time.h>
 #include <unistd.h>
 #include <cassert>
@@ -30,7 +30,7 @@
 #endif
 #endif 
 
-namespace pat {
+namespace skypat {
 namespace testing {
 namespace internal {
 
@@ -149,4 +149,4 @@ std::string Timer::unit()
 
 } // namespace of internal
 } // namespace of testing
-} // namespace of pat
+} // namespace of skypat

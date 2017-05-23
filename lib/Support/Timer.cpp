@@ -1,25 +1,25 @@
 //===- Timer.cpp ----------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Support/Timer.h>
-#include <pat/Config/Config.h>
+#include <skypat/Support/Timer.h>
+#include <skypat/Config/Config.h>
 
 //===----------------------------------------------------------------------===//
 // Timer Implementation
 //===----------------------------------------------------------------------===//
-#if defined(PAT_ON_WIN32)
+#if defined(SKYPAT_ON_WIN32)
 #include "Windows/Timer.inc"
 #endif
 
-#if defined(PAT_ON_UNIX)
+#if defined(SKYPAT_ON_UNIX)
 #include "Unix/Timer.inc"
 #endif
 
-#if defined(PAT_ON_DRAGON)
+#if defined(SKYPAT_ON_DRAGON)
 #include "Dragon/Timer.inc"
 #endif

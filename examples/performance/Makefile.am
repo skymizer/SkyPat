@@ -15,7 +15,7 @@ noinst_PROGRAMS = performance
 
 performance_LDFLAGS = ${SKYLDFLAGS}
 
-performance_LDADD = -lpat
+performance_LDADD = -lskypat
 
 dist_performance_SOURCES = ${SKY_SOURCES}
 

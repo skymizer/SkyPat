@@ -15,7 +15,7 @@ noinst_PROGRAMS = assertion
 
 assertion_LDFLAGS = ${SKYLDFLAGS}
 
-assertion_LDADD = -lpat
+assertion_LDADD = -lskypat
 
 assertion_SOURCES = ${SKY_SOURCES}
 

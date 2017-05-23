@@ -1,16 +1,16 @@
 //===- CSVResultPrinter.cpp -----------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Listeners/CSVResultPrinter.h>
-#include <pat/ADT/Color.h>
+#include <skypat/Listeners/CSVResultPrinter.h>
+#include <skypat/ADT/Color.h>
 #include <iostream>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // CSVResultPrinter

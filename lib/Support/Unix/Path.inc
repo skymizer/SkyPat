@@ -1,6 +1,6 @@
 //===- Path.inc -----------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
@@ -9,7 +9,7 @@
 #include <string>
 #include <stack>
 
-namespace pat {
+namespace skypat {
 
 const char Path::separator                 = '/';
 const char Path::preferred_separator       = '/';
@@ -123,4 +123,4 @@ bool is_separator(char value)
 }
 
 } // namespace of sys
-} // namespace of pat
+} // namespace of skypat

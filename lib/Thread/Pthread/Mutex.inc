@@ -1,6 +1,6 @@
 //===- Mutex.inc ----------------------------------------------------------===//
 //
-//                              The "pat" team 
+//                              The SkyPat team 
 //
 // This file is distributed under the New BSD License.
 // See LICENSE for details.
@@ -8,7 +8,7 @@
 //===----------------------------------------------------------------------===//
 #include <pthread.h>
 #include <errno.h>
-#include <pat/Thread/MutexImpl.h>
+#include <skypat/Thread/MutexImpl.h>
 #include <iostream>
 
 //===----------------------------------------------------------------------===//

@@ -1,15 +1,15 @@
 //===- ManagedStatic.h -----------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Support/ManagedStatic.h>
+#include <skypat/Support/ManagedStatic.h>
 #include <cassert>
 
-using namespace pat;
+using namespace skypat;
 
 static const ManagedStaticBase *StaticList = NULL;
 
@@ -49,7 +49,7 @@ void ManagedStaticBase::destroy() const
 //===----------------------------------------------------------------------===//
 // Non-member functions
 //===----------------------------------------------------------------------===//
-void pat::shutdown()
+void skypat::shutdown()
 {
   while (StaticList)
     StaticList->destroy();

@@ -1,28 +1,28 @@
 //===- Path.cpp -----------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Support/Path.h>
-#include <pat/Config/Config.h>
+#include <skypat/Support/Path.h>
+#include <skypat/Config/Config.h>
 #include <cstring>
 #include <cassert>
 
 // Include the truly platform-specific parts. 
-#if defined(PAT_ON_UNIX)
+#if defined(SKYPAT_ON_UNIX)
 #include "Unix/Path.inc"
 #endif
-#if defined(PAT_ON_WIN32)
+#if defined(SKYPAT_ON_WIN32)
 #include "Windows/Path.inc"
 #endif
-#if defined(PAT_ON_DRAGON)
+#if defined(SKYPAT_ON_DRAGON)
 #include "Dragon/Path.inc"
 #endif
 
-using namespace pat;
+using namespace skypat;
 
 const char Path::colon = ':';                                      
 const char Path::dot   = '.';
@@ -196,17 +196,17 @@ Path Path::extension() const
 //===--------------------------------------------------------------------===//
 // non-member functions
 //===--------------------------------------------------------------------===//
-bool pat::operator==(const Path& pLHS,const Path& pRHS)
+bool skypat::operator==(const Path& pLHS,const Path& pRHS)
 {
   return (pLHS.generic_string()==pRHS.generic_string());
 }
 
-bool pat::operator!=(const Path& pLHS,const Path& pRHS)
+bool skypat::operator!=(const Path& pLHS,const Path& pRHS)
 {
   return !(pLHS==pRHS);
 }
 
-Path pat::operator+(const Path& pLHS, const Path& pRHS)
+Path skypat::operator+(const Path& pLHS, const Path& pRHS)
 {
   Path result = pLHS;
   result.append(pRHS);

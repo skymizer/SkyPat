@@ -1,15 +1,15 @@
 //===- ThreadImpl.cpp -----------------------------------------------------===//
 //
-//                              The "pat" team 
+//                              The SkyPat team 
 //
 // This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Thread/ThreadImpl.h>
-#include <pat/Config/Config.h>
+#include <skypat/Thread/ThreadImpl.h>
+#include <skypat/Config/Config.h>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // ThreadData

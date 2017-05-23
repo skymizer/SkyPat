@@ -15,7 +15,7 @@ noinst_PROGRAMS = multi_case
 
 multi_case_LDFLAGS = ${SKYLDFLAGS}
 
-multi_case_LDADD = -lpat
+multi_case_LDADD = -lskypat
 
 dist_multi_case_SOURCES = ${SKY_SOURCES}
 

@@ -1,6 +1,6 @@
 ##############################################################################
 #
-#                              pat Configuration
+#                             SkyPat Configuration
 #
 #  This file is distributed under the New BSD License.
 #  See LICENSE for details. 
@@ -11,13 +11,13 @@
 #  Autoconf/Automake Initialization
 
 dnl AC_INIT(PKG_NAME, BUILD_VERSION, BUG_REPORTER)
-AC_INIT([pat],[aquavit],[pat-dev@@googlegroups.com])
+AC_INIT([skypat],[aquavit],[skypat-dev@@googlegroups.com])
 AC_PREREQ(2.59)
 
 AC_CONFIG_SRCDIR([LICENSE])
 AC_CONFIG_AUX_DIR([scripts])
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_HEADERS([include/pat/Config/Config.h])
+AC_CONFIG_HEADERS([include/skypat/Config/Config.h])
 
 ####################
 #  Check environments - `host`, `target` and `build`
@@ -33,10 +33,10 @@ AGE_VERSION=0
 FULL_VERSION_NAME=Aquavit
 BUILD_VERSION=aquavit
 
-PAT_VERSION=$CURRENT_VERSION:$REVISION_VERSION:$AGE_VERSION
+SKYPAT_VERSION=$CURRENT_VERSION:$REVISION_VERSION:$AGE_VERSION
 PACKAGE_VERSION=$CURRENT_VERSION.$REVISION_VERSION.$AGE_VERSION-$BUILD_VERSION
 AC_SUBST(PACKAGE_VERSION)
-AC_SUBST(PAT_VERSION)
+AC_SUBST(SKYPAT_VERSION)
 
 ####################
 #  Languages
@@ -88,7 +88,7 @@ CHECK_ENABLE_OPTION([gettimeofday], [yes], [ENABLE_GETTIMEOFDAY])
 AC_CONFIG_FILES([Makefile])
 AC_CONFIG_FILES([include/Makefile])
 AC_CONFIG_FILES([lib/Makefile])
-AC_CONFIG_FILES([lib/pat.pc])
+AC_CONFIG_FILES([lib/skypat.pc])
 AC_CONFIG_FILES([examples/Makefile])
 AC_CONFIG_FILES([examples/assertion/Makefile])
 AC_CONFIG_FILES([examples/multi_assert/Makefile])
@@ -97,7 +97,7 @@ AC_CONFIG_FILES([examples/multi_case/Makefile])
 AC_CONFIG_FILES([examples/performance/Makefile])
 AC_CONFIG_FILES([examples/smoke/Makefile])
 AC_CONFIG_FILES([examples/fall/Makefile])
-AC_CONFIG_FILES([examples/pat_c/Makefile])
+AC_CONFIG_FILES([examples/skypat_c/Makefile])
 AC_CONFIG_FILES([examples/thread/Makefile])
 
 AC_OUTPUT

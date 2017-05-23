@@ -1,12 +1,12 @@
 //===- Perf.inc ----------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Support/ManagedStatic.h>
+#include <skypat/Support/ManagedStatic.h>
 #include <time.h>
 #include <unistd.h>
 #include <cassert>
@@ -21,11 +21,11 @@
 #endif
 #endif 
 
-#ifndef PAT_PAT_H
-#include <pat/pat.h>
+#ifndef SKYPAT_SKYPAT_H
+#include <skypat/skypat.h>
 #endif
 
-namespace pat {
+namespace skypat {
 namespace testing {
 namespace internal {
 
@@ -55,7 +55,7 @@ public:
   void init(enum PerfEvent pEvent) {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
 
-    /* store the perf event numbers with the same order of pat:Perf_event_name */
+    /* store the perf event numbers with the same order of skypat:Perf_event_name */
     static const decltype(perf_event_attr::config)
         event_list[] = {
             PERF_COUNT_HW_CPU_CYCLES, PERF_COUNT_HW_INSTRUCTIONS,
@@ -165,4 +165,4 @@ std::string Perf::unit()
 
 } // namespace of internal
 } // namespace of testing
-} // namespace of pat
+} // namespace of skypat

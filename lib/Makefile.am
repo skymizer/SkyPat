@@ -1,4 +1,4 @@
-SOURCE = pat.cpp \
+SOURCE = skypat.cpp \
 	ADT/Color.cpp \
 	Support/ManagedStatic.cpp \
 	Support/Timer.cpp \
@@ -19,33 +19,33 @@ SOURCE = pat.cpp \
 
 ANDROID_CPPFLAGS=-fno-rtti -fno-exceptions -Waddress -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreorder -Wreturn-type -Wsequence-point -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var
 
-PAT_INCLUDES = -I${abs_top_srcdir}/include \
+SKYPAT_INCLUDES = -I${abs_top_srcdir}/include \
                     -I${abs_top_builddir}/include
 
 if ENABLE_OPTIMIZE
-PAT_CPPFLAGS = -O2 -std=c++11
+SKYPAT_CPPFLAGS = -O2 -std=c++11
 else
-PAT_CPPFLAGS = -g -std=c++11
+SKYPAT_CPPFLAGS = -g -std=c++11
 endif
 
-AM_CPPFLAGS = ${PAT_INCLUDES} ${PAT_CPPFLAGS} ${ANDROID_CPPFLAGS}
+AM_CPPFLAGS = ${SKYPAT_INCLUDES} ${SKYPAT_CPPFLAGS} ${ANDROID_CPPFLAGS}
 
 #############################
 # Build shared library
-lib_LTLIBRARIES = libpat.la
+lib_LTLIBRARIES = libskypat.la
 
-libpat_la_SOURCES = ${SOURCE}
+libskypat_la_SOURCES = ${SOURCE}
 
-libpat_la_LDFLAGS = -version-info @PAT_VERSION@
+libskypat_la_LDFLAGS = -version-info @SKYPAT_VERSION@
 
 if HAVE_PTHREADS
-libpat_la_LDFLAGS += -lpthread
+libskypat_la_LDFLAGS += -lpthread
 endif
 
 pkgconfigdir = $(libdir)/pkgconfig
 
-pkgconfig_DATA = pat.pc
+pkgconfig_DATA = skypat.pc
 
 # Remove temporary *.la files
 install-exec-hook:
-	rm -f $(DESTDIR)$(libdir)/libpat.la
+	rm -f $(DESTDIR)$(libdir)/libskypat.la

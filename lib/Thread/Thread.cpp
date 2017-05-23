@@ -1,17 +1,17 @@
 //===- Thread.cpp ---------------------------------------------------------===//
 //
-//                              The "pat" team 
+//                              The SkyPat team 
 //
 // This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Thread/Thread.h>
-#include <pat/Thread/ThreadImpl.h>
-#include <pat/Config/Config.h>
+#include <skypat/Thread/Thread.h>
+#include <skypat/Thread/ThreadImpl.h>
+#include <skypat/Config/Config.h>
 #include <cassert>
 
-using namespace pat; 
+using namespace skypat; 
 
 //===----------------------------------------------------------------------===//
 // Thread

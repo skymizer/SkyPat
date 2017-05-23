@@ -15,7 +15,7 @@ noinst_PROGRAMS = multi_expect
 
 multi_expect_LDFLAGS = ${SKYLDFLAGS}
 
-multi_expect_LDADD = -lpat
+multi_expect_LDADD = -lskypat
 
 dist_multi_expect_SOURCES = ${SKY_SOURCES}
 

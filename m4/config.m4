@@ -11,13 +11,13 @@ AC_DEFUN([SETUP_CONFIG_HEADER],
 AH_TOP([
 //===- Config.h.in --------------------------------------------------------===//
 //
-//                              The pat Team 
+//                              The SkyPat Team 
 // Copyright (C) 2012-
 // All rights reserved.
 //
 //===----------------------------------------------------------------------===//
-#ifndef PAT_CONFIG_CONFIG_H
-#define PAT_CONFIG_CONFIG_H
+#ifndef SKYPAT_CONFIG_CONFIG_H
+#define SKYPAT_CONFIG_CONFIG_H
 ])
 
 AH_BOTTOM([

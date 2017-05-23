@@ -15,7 +15,7 @@ noinst_PROGRAMS = fall
 
 fall_LDFLAGS = ${SKYLDFLAGS}
 
-fall_LDADD = -lpat
+fall_LDADD = -lskypat
 
 dist_fall_SOURCES = ${SKY_SOURCES}
 

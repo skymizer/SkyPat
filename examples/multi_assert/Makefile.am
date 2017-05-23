@@ -15,7 +15,7 @@ noinst_PROGRAMS = multi_assert
 
 multi_assert_LDFLAGS = ${SKYLDFLAGS}
 
-multi_assert_LDADD = -lpat
+multi_assert_LDADD = -lskypat
 
 dist_multi_assert_SOURCES = ${SKY_SOURCES}
 

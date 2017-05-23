@@ -1,14 +1,14 @@
 //===- UnitTest.cpp -------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/pat.h>
+#include <skypat/skypat.h>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // Details of UnitTest

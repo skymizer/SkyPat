@@ -1,22 +1,22 @@
 //===- Test.cpp -----------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/pat.h>
-#include <pat/Listeners/PrettyResultPrinter.h>
-#include <pat/Listeners/CSVResultPrinter.h>
-#include <pat/Support/Path.h>
+#include <skypat/skypat.h>
+#include <skypat/Listeners/PrettyResultPrinter.h>
+#include <skypat/Listeners/CSVResultPrinter.h>
+#include <skypat/Support/Path.h>
 #include <time.h>
 #include <cassert>
 #include <unistd.h>
 #include <string>
 #include <cstdlib>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // Helper Functions

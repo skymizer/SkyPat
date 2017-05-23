@@ -1,23 +1,23 @@
-This is a script simplying pat's building process.
+This is a script simplying skypat's building process.
 
 ==============
     Usage
 --------------
 1. Copy `build.sh`
-copy this script out of ${PAT_SRC}. For example, if you download pat source code
-at /opt/pat, then you should copy this script in /opt
+copy this script out of ${SKYPAT_SRC}. For example, if you download skypat source code
+at /opt/skypat, then you should copy this script in /opt
 
  [user@localhost]$ cp ./build.sh ../../../ && cd ../../../
 
 2. Run `build.sh`
-You can build `pat` at three different levels: debug, optimized and normal.
+You can build `skypat` at three different levels: debug, optimized and normal.
 The default level is normal.
 
 Usage:
-  ./build.sh [pat source] [dbg|opt|normal]
+  ./build.sh [skypat source] [dbg|opt|normal]
 
 Example:
-  [user@localhost]$ ./build.sh ./pat dbg
+  [user@localhost]$ ./build.sh ./skypat dbg
 
 or
-  [user@localhost]$ ./build.sh ./pat
+  [user@localhost]$ ./build.sh ./skypat

@@ -1,16 +1,16 @@
 //===- Mutex.cpp ----------------------------------------------------------===//
 //
-//                              The "pat" team 
+//                              The SkyPat team 
 //
 // This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Thread/Mutex.h>
-#include <pat/Thread/MutexImpl.h>
-#include <pat/Config/Config.h>
+#include <skypat/Thread/Mutex.h>
+#include <skypat/Thread/MutexImpl.h>
+#include <skypat/Config/Config.h>
 
-using namespace pat;
+using namespace skypat;
 
 // Include the truly platform-specific parts.
 // *.inc defines MutexData and platform-specific mutex.

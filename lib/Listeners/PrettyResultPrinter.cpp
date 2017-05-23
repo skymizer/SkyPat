@@ -1,16 +1,16 @@
 //===- PrettyResultPrinter.cpp ---------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/Listeners/PrettyResultPrinter.h>
-#include <pat/ADT/Color.h>
+#include <skypat/Listeners/PrettyResultPrinter.h>
+#include <skypat/ADT/Color.h>
 #include <iostream>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // PrettyResultPrinter
@@ -23,7 +23,7 @@ void PrettyResultPrinter::PrintCaseName(const std::string& pCase,
 
 void PrettyResultPrinter::OnTestProgramStart(const testing::UnitTest& pUnitTest)
 {
-  testing::Log::getOStream() << Color::CYAN << "[    pat   ] "
+  testing::Log::getOStream() << Color::CYAN << "[  skypat  ] "
     << "Running " << pUnitTest.getNumOfTests()
     << " tests from " << pUnitTest.getNumOfCases() << " cases." << std::endl;
 }
@@ -124,7 +124,7 @@ void PrettyResultPrinter::OnTestEnd(const testing::TestInfo& pTestInfo)
 
     while (perf != pEnd) {
       testing::Log::getOStream() << " [" << std::setw(10)
-                                 << pat::Perf_event_name[(*perf)->getPerfEventType()]
+                                 << skypat::Perf_event_name[(*perf)->getPerfEventType()]
                                  << "]";
       ++perf;
     }

@@ -14,7 +14,7 @@ noinst_PROGRAMS = thread
 
 thread_LDFLAGS = ${SKYLDFLAGS}
 
-thread_LDADD = -lpat
+thread_LDADD = -lskypat
 
 thread_SOURCES = ${SKY_SOURCES}
 

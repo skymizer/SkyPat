@@ -1,14 +1,14 @@
 //===- Repeater.cpp --------------------------------------------------------===//
 //
-//                     The pat Team
+//                     The SkyPat Team
 //
 // This file is distributed under the New BSD License. 
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/pat.h>
+#include <skypat/skypat.h>
 
-using namespace pat;
+using namespace skypat;
 
 //===----------------------------------------------------------------------===//
 // Repeater
@@ -40,7 +40,7 @@ void testing::Repeater::release(Listener& pListener)
   }
 }
 
-#define PAT_REPEATER_METHOD(Name, ParamType) \
+#define SKYPAT_REPEATER_METHOD(Name, ParamType) \
 void testing::Repeater::Name(const ParamType& pParam) { \
   if (m_bForward) { \
     ListenerList::iterator listener, lEnd = m_Listeners.end(); \
@@ -50,15 +50,15 @@ void testing::Repeater::Name(const ParamType& pParam) { \
   } \
 }
 
-PAT_REPEATER_METHOD(OnTestProgramStart, testing::UnitTest)
-PAT_REPEATER_METHOD(OnTestCaseStart, TestCase)
-PAT_REPEATER_METHOD(OnSetUpStart, UnitTest)
-PAT_REPEATER_METHOD(OnSetUpEnd, UnitTest)
-PAT_REPEATER_METHOD(OnTestStart, TestInfo)
-PAT_REPEATER_METHOD(OnTestPartResult, TestPartResult)
-PAT_REPEATER_METHOD(OnPerfPartResult, PerfPartResult)
-PAT_REPEATER_METHOD(OnTestEnd, TestInfo)
-PAT_REPEATER_METHOD(OnTearDownStart, UnitTest)
-PAT_REPEATER_METHOD(OnTearDownEnd, UnitTest)
-PAT_REPEATER_METHOD(OnTestCaseEnd, TestCase)
-PAT_REPEATER_METHOD(OnTestProgramEnd, UnitTest)
+SKYPAT_REPEATER_METHOD(OnTestProgramStart, testing::UnitTest)
+SKYPAT_REPEATER_METHOD(OnTestCaseStart, TestCase)
+SKYPAT_REPEATER_METHOD(OnSetUpStart, UnitTest)
+SKYPAT_REPEATER_METHOD(OnSetUpEnd, UnitTest)
+SKYPAT_REPEATER_METHOD(OnTestStart, TestInfo)
+SKYPAT_REPEATER_METHOD(OnTestPartResult, TestPartResult)
+SKYPAT_REPEATER_METHOD(OnPerfPartResult, PerfPartResult)
+SKYPAT_REPEATER_METHOD(OnTestEnd, TestInfo)
+SKYPAT_REPEATER_METHOD(OnTearDownStart, UnitTest)
+SKYPAT_REPEATER_METHOD(OnTearDownEnd, UnitTest)
+SKYPAT_REPEATER_METHOD(OnTestCaseEnd, TestCase)
+SKYPAT_REPEATER_METHOD(OnTestProgramEnd, UnitTest)

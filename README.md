@@ -55,9 +55,9 @@ Download the source code from the latest release tar-ball.
     $ tar zxvf pat-3.0.0.tar.gz
 
 ### Method 2: Download **SkyPat** from our `git` repository
-Download the source code from our `git` repository into ${PAT_SRC} directory.
+Download the source code from our `git` repository into ${SKYPAT_SRC} directory.
  
-    $ git clone https://github.com/skymizer/pat.git ${PAT_SRC}
+    $ git clone https://github.com/skymizer/pat.git ${SKYPAT_SRC}
 
 ### Install required packages
 
@@ -85,7 +85,7 @@ Use `./configure` to configure the package for your system.
 See [INSTALL](https://github.com/skymizer/pat/blob/master/INSTALL INSTALL) for 
 more details.
 
-    $ ./configure --prefix=${PAT_INSTALL}
+    $ ./configure --prefix=${SKYPAT_INSTALL}
 
 Use `make` to compile the package
 
@@ -97,10 +97,10 @@ Type `make install` to install the package into your system.
 
 ### Run Examples
 
-Examples of **SkyPat** are installed at ${PAT_INSTALL}/share/pat/examples. 
+Examples of **SkyPat** are installed at ${SKYPAT_INSTALL}/share/pat/examples. 
 You can go to any sub-directory and build it. For example:
 
-    cd ${PAT_INSTALL}/share/pat/examples/assertion
+    cd ${SKYPAT_INSTALL}/share/pat/examples/assertion
     make
 
 Then, if **SkyPat** is successfully installed, you should see:

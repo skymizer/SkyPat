@@ -15,7 +15,7 @@ noinst_PROGRAMS = smoke
 
 smoke_LDFLAGS = ${SKYLDFLAGS}
 
-smoke_LDADD = -lpat
+smoke_LDADD = -lskypat
 
 dist_smoke_SOURCES = ${SKY_SOURCES}
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-#                    The pat Team 
+#                    The SkyPat Team 
 #
 
 LIBTOOLIZE=libtoolize

@@ -1,16 +1,16 @@
 //===- ThreadTest.h -----------------------------------------------------===//
 //
-//                              The "pat" team 
+//                              The SkyPat team 
 //
 //  This file is distributed under the New BSD License.
 //  See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
-#include <pat/pat.h>
-#include <pat/Thread/Thread.h>
-#include <pat/Thread/Mutex.h>
+#include <skypat/skypat.h>
+#include <skypat/Thread/Thread.h>
+#include <skypat/Thread/Mutex.h>
 
-using namespace pat;
+using namespace skypat;
 
 class Counter
 {
