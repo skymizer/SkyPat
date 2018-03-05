@@ -743,7 +743,7 @@ public:
   /// @name Static Member Functions
   /// @{
   /// Initialize - initialize environment for TestCases.
-  static void Initialize(int* pArgc, char* pArgv[]);
+  static void Initialize(const int& pArgc, char* pArgv[]);
 
   /// RunAll - run all TestCases.
   static void RunAll();

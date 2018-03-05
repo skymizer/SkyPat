@@ -2,7 +2,7 @@
 //
 //                     The SkyPat Team
 //
-// This file is distributed under the New BSD License. 
+// This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
@@ -21,7 +21,7 @@ using namespace skypat;
 //===----------------------------------------------------------------------===//
 // Helper Functions
 //===----------------------------------------------------------------------===//
-static inline void help(int pArgc, char* pArgv[])
+static inline void help(const int& pArgc, char* pArgv[])
 {
   testing::Log::getOStream() << "Usage:\n"
                              << "\t" << pArgv[0] << " [options...]\n\n"
@@ -43,19 +43,19 @@ void Test::run()
   this->TestBody();
 }
 
-void Test::Initialize(int* pArgc, char* pArgv[])
+void Test::Initialize(const int& pArgc, char* pArgv[])
 {
   // Choose user's printer
   int opt;
   std::string csvFile;
-  while ((opt = getopt(*pArgc, pArgv, "c:h")) != -1 ) {
+  while ((opt = getopt(pArgc, pArgv, "c:h")) != -1 ) {
     switch (opt) {
       case 'c':
         csvFile = optarg;
         break;
       case 'h':
       default:
-        help(*pArgc, pArgv);
+        help(pArgc, pArgv);
         return;
     }
   }

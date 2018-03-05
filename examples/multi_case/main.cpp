@@ -1,8 +1,8 @@
 //===- main.cpp -----------------------------------------------------------===//
 //
-//                              The SkyPat Team 
+//                              The SkyPat Team
 //
-// This file is distributed under the New BSD License. 
+// This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
@@ -110,6 +110,6 @@ SKYPAT_F(Factorial, factorial_special_case)
 // convenient?
 int main(int argc, char* argv[])
 {
-  skypat::Test::Initialize(&argc, argv);
+  skypat::Test::Initialize(argc, argv);
   skypat::Test::RunAll();
 }

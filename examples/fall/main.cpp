@@ -86,6 +86,6 @@ SKYPAT_F(MyCase, factorial_test_2)
 // convenient?
 int main(int argc, char* argv[])
 {
-  skypat::Test::Initialize(&argc, argv);
+  skypat::Test::Initialize(argc, argv);
   skypat::Test::RunAll();
 }

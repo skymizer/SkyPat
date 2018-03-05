@@ -2,7 +2,7 @@
 //
 //                               The SkyPat Team
 //
-// This file is distributed under the New BSD License. 
+// This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
@@ -87,7 +87,7 @@ SKYPAT_C(MyCase, test_turret_can_fire_iff_turn_on)
 }
 
 // Performance Test
-SKYPAT_C(MyCase, performance_turret_fire) 
+SKYPAT_C(MyCase, performance_turret_fire)
 {
     // Make sure the turret is On.
     Turret * turret = this->getTurret();
@@ -110,6 +110,6 @@ SKYPAT_C(MyCase, performance_turret_fire)
 // convenient?
 int main(int argc, char* argv[])
 {
-  skypat::Test::Initialize(&argc, argv);
+  skypat::Test::Initialize(argc, argv);
   skypat::Test::RunAll();
 }
