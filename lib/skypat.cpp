@@ -2,7 +2,7 @@
 //
 //                     The SkyPat Team
 //
-// This file is distributed under the New BSD License. 
+// This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
@@ -142,6 +142,14 @@ testing::TestPartResult::TestPartResult(Type pType,
                                         int pLoC,
                                         const std::string& pMessage)
   : PartResult(pFileName, pLoC, pMessage), m_Type(pType) {
+}
+
+testing::TestPartResult&
+testing::TestPartResult::appendUserMessage(const std::string& pMessage)
+{
+  if (!pMessage.empty())
+    update_message(message() + "\n" + pMessage);
+  return *this;
 }
 
 //===----------------------------------------------------------------------===//
@@ -343,6 +351,13 @@ skypat::testing::AssertionResult::operator<<(
 }
 
 //===----------------------------------------------------------------------===//
+// Message
+//===----------------------------------------------------------------------===//
+skypat::testing::Message::Message()
+  : m_Message(), m_OSS(m_Message) {
+}
+
+//===----------------------------------------------------------------------===//
 // AssertHelper
 //===----------------------------------------------------------------------===//
 skypat::testing::AssertHelper::AssertHelper(TestPartResult::Type pType,
@@ -354,8 +369,9 @@ skypat::testing::AssertHelper::AssertHelper(TestPartResult::Type pType,
 }
 
 // Store a run-time result
-void skypat::testing::AssertHelper::operator=(bool pValue) const
+void skypat::testing::AssertHelper::operator=(const Message& pMesg)
 {
+  m_Result.appendUserMessage(pMesg.str());
   UnitTest::self()->addTestPartResult(m_Result);
 }
 

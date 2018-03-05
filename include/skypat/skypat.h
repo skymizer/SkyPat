@@ -2,7 +2,7 @@
 //
 //                     The SkyPat Team
 //
-// This file is distributed under the New BSD License. 
+// This file is distributed under the New BSD License.
 // See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
@@ -109,7 +109,8 @@ void SKYPAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 // The message handling macros. The assignment is used to trigger recording a
 // partial result.
 #define SKYPAT_MESSAGE_AT(file, line, message, result_type) \
-  skypat::testing::AssertHelper(result_type, file, line, message) = true\
+  skypat::testing::AssertHelper(result_type, file, line, message) = \
+      skypat::testing::Message()
 
 #define SKYPAT_MESSAGE(message, result_type) \
   SKYPAT_MESSAGE_AT(__FILE__, __LINE__, message, result_type)
@@ -261,6 +262,8 @@ public:
                  int pLoC, const std::string& pMessage);
 
   Type type() const { return m_Type; }
+
+  TestPartResult& appendUserMessage(const std::string& pMessage);
 
 private:
   Type m_Type;
@@ -440,6 +443,36 @@ private:
   std::string m_Message;
 };
 
+/** \class Message
+ *  \brief Message is a carrier to pass user-defined message to AssertionResult
+ */
+class Message
+{
+public:
+  Message();
+
+  template<typename T>
+  inline Message& operator <<(const T& pValue) {
+    m_OSS << pValue;
+    return *this;
+  }
+
+  template<typename T>
+  inline Message& operator <<(T* const& pPointer) {
+    if (nullptr == pPointer)
+      m_OSS << "(null)";
+    else
+      m_OSS << pPointer;
+    return *this;
+  }
+
+  const std::string& str() const { return m_Message; }
+
+private:
+  std::string m_Message;
+  OStrStream m_OSS;
+};
+
 /** \class AssertHelper
  *  \brief AssertHelper carries all information to UnitTest.
  */
@@ -453,7 +486,8 @@ public:
 
   // Message assignment is a semantic trick to enable assertion
   // streaming; see the SKYPAT_MESSAGE_AT macro below.
-  void operator=(bool pValue) const;
+  // This method may update the messages stored in TestPartResult.
+  void operator=(const Message& pMesg);
 
 private:
   TestPartResult m_Result;
