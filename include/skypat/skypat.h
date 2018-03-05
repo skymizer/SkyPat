@@ -459,7 +459,7 @@ public:
 
   template<typename T>
   inline Message& operator <<(T* const& pPointer) {
-    if (nullptr == pPointer)
+    if (NULL == pPointer)
       m_OSS << "(null)";
     else
       m_OSS << pPointer;
