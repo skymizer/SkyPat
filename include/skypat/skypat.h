@@ -745,6 +745,16 @@ public:
   /// Initialize - initialize environment for TestCases.
   static void Initialize(const int& pArgc, char* pArgv[]);
 
+  /// Initialize - use the pretty printer
+  /// @param[out] pProgName The program name.
+  static void Initialize(const std::string& pProgName);
+
+  /// Initialize - initialize environment for TestCases.
+  /// @param[out] pProgName The program name.
+  /// @param[out] pCSVResult The resulting CSV file.
+  static void
+  Initialize(const std::string& pProgName, const std::string& pCSVResult);
+
   /// RunAll - run all TestCases.
   static void RunAll();
 

@@ -43,11 +43,13 @@ public:
 #endif
   }
 
-   testing::Interval getCounter() {
+  testing::Interval getCounter() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
-     unsigned long long counter;
-     read(m_Fd, &counter, sizeof(unsigned long long));
-     return counter;
+    unsigned long long counter;
+    read(m_Fd, &counter, sizeof(unsigned long long));
+    return counter;
+#else
+    return 0;
 #endif
      return -1;
   }

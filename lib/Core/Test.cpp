@@ -43,6 +43,32 @@ void Test::run()
   this->TestBody();
 }
 
+void Test::Initialize(const std::string& pProgName)
+{
+  testing::UnitTest::self()->repeater().add(new PrettyResultPrinter());
+  if (!testing::UnitTest::self()->addRunCase(pProgName))
+    testing::UnitTest::self()->addAllRunCases();
+}
+
+void Test::Initialize(const std::string& pProgName, const std::string& pCSVResult)
+{
+  if (!pCSVResult.empty()) {
+    CSVResultPrinter* printer = new CSVResultPrinter();
+    if (printer->open(pCSVResult)) {
+      testing::UnitTest::self()->repeater().add(printer);
+    }
+    else {
+      testing::Log::getOStream() << "Failed to open file `" << pCSVResult << "`\n";
+      delete printer;
+    }
+  }
+  else
+    testing::UnitTest::self()->repeater().add(new PrettyResultPrinter());
+
+  if (!testing::UnitTest::self()->addRunCase(pProgName))
+    testing::UnitTest::self()->addAllRunCases();
+}
+
 void Test::Initialize(const int& pArgc, char* pArgv[])
 {
   // Choose user's printer
@@ -60,25 +86,11 @@ void Test::Initialize(const int& pArgc, char* pArgv[])
     }
   }
 
-  if (!csvFile.empty()) {
-    CSVResultPrinter* printer = new CSVResultPrinter();
-    if (printer->open(csvFile)) {
-      testing::UnitTest::self()->repeater().add(printer);
-    }
-    else {
-      testing::Log::getOStream() << "Failed to open file `" << csvFile << "`\n";
-      delete printer;
-    }
-  }
-  else
-    testing::UnitTest::self()->repeater().add(new PrettyResultPrinter());
-
-  // Choose runnable tests
+  // Choice runnable tests
   Path progname(pArgv[0]);
   progname = progname.filename();
 
-  if (!testing::UnitTest::self()->addRunCase(progname.native()))
-    testing::UnitTest::self()->addAllRunCases();
+  Initialize(progname.native(), csv_file);
 }
 
 void Test::RunAll()
