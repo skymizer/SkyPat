@@ -1,5 +1,5 @@
 # TODO: Using M4 or something for readability.
-SHELL := /bin/bash
+SHELL := /usr/bin/env bash
 define gen_sample_make
 .PHONY: SampleMakefile
 SampleMakefile:
