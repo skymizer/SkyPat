@@ -73,11 +73,11 @@ void Test::Initialize(const int& pArgc, char* pArgv[])
 {
   // Choose user's printer
   int opt;
-  std::string csvFile;
+  std::string csv_file;
   while ((opt = getopt(pArgc, pArgv, "c:h")) != -1 ) {
     switch (opt) {
       case 'c':
-        csvFile = optarg;
+        csv_file = optarg;
         break;
       case 'h':
       default:
