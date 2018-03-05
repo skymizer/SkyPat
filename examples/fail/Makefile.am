@@ -9,20 +9,20 @@ SKY_SOURCES = main.cpp \
 
 AM_CPPFLAGS = ${SKYINCLUDES}
 
-falldir = $(pkgdatadir)/examples/fall
+faildir = $(pkgdatadir)/examples/fail
 
-noinst_PROGRAMS = fall
+noinst_PROGRAMS = fail
 
-fall_LDFLAGS = ${SKYLDFLAGS}
+fail_LDFLAGS = ${SKYLDFLAGS}
 
-fall_LDADD = -lskypat
+fail_LDADD = -lskypat
 
-dist_fall_SOURCES = ${SKY_SOURCES}
+dist_fail_SOURCES = ${SKY_SOURCES}
 
 include ../Example.mk
 
-$(eval $(call gen_sample_make, fall, ${SKY_SOURCES}))
+$(eval $(call gen_sample_make, fail, ${SKY_SOURCES}))
 
-dist_fall_DATA = ${SKY_SOURCES} SampleMakefile
+dist_fail_DATA = ${SKY_SOURCES} SampleMakefile
 
 DISTCLEANFILES = SampleMakefile

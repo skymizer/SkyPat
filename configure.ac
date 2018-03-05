@@ -96,7 +96,7 @@ AC_CONFIG_FILES([examples/multi_expect/Makefile])
 AC_CONFIG_FILES([examples/multi_case/Makefile])
 AC_CONFIG_FILES([examples/performance/Makefile])
 AC_CONFIG_FILES([examples/smoke/Makefile])
-AC_CONFIG_FILES([examples/fall/Makefile])
+AC_CONFIG_FILES([examples/fail/Makefile])
 AC_CONFIG_FILES([examples/skypat_c/Makefile])
 AC_CONFIG_FILES([examples/thread/Makefile])
 
