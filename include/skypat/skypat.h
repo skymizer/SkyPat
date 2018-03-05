@@ -799,6 +799,20 @@ public:
   SKYPAT_TEST_BOOLEAN(!(condition), #condition, true, false, \
                       SKYPAT_FATAL_FAILURE)
 
+// Boolean assertions.
+#define EXPECT_TRUE_MSG(condition, msg) \
+  SKYPAT_TEST_BOOLEAN(condition, #condition, false, true, \
+                      SKYPAT_NONFATAL_FAILURE) << msg
+#define EXPECT_FALSE_MSG(condition, msg) \
+  SKYPAT_TEST_BOOLEAN(!(condition), #condition, true, false, \
+                      SKYPAT_NONFATAL_FAILURE) << msg
+#define ASSERT_TRUE_MSG(condition, msg) \
+  SKYPAT_TEST_BOOLEAN(condition, #condition, false, true, \
+                      SKYPAT_FATAL_FAILURE) << msg
+#define ASSERT_FALSE_MSG(condition, msg) \
+  SKYPAT_TEST_BOOLEAN(!(condition), #condition, true, false, \
+                      SKYPAT_FATAL_FAILURE) << msg
+
 #define SKYPAT_EXPECT_PRED(condition, actual, expected) \
   SKYPAT_TEST_PREDICATE(condition, #condition, \
                      actual, expected, \
@@ -834,6 +848,32 @@ public:
   SKYPAT_ASSERT_PRED((actual >= expected), actual, expected)
 #define ASSERT_GT(actual, expected) \
   SKYPAT_ASSERT_PRED((actual > expected), actual, expected)
+
+#define EXPECT_EQ_MSG(actual, expected, mesg) \
+  SKYPAT_EXPECT_PRED((actual == expected), actual, expected) << mesg
+#define EXPECT_NE_MSG(actual, expected, mesg) \
+  SKYPAT_EXPECT_PRED((actual != expected), actual, expected) << mesg
+#define EXPECT_LE_MSG(actual, expected, mesg) \
+  SKYPAT_EXPECT_PRED((actual <= expected), actual, expected) << mesg
+#define EXPECT_LT_MSG(actual, expected, mesg) \
+  SKYPAT_EXPECT_PRED((actual < expected), actual, expected) << mesg
+#define EXPECT_GE_MSG(actual, expected, mesg) \
+  SKYPAT_EXPECT_PRED((actual >= expected), actual, expected) << mesg
+#define EXPECT_GT_MSG(actual, expected, mesg) \
+  SKYPAT_EXPECT_PRED((actual > expected), actual, expected) << mesg
+
+#define ASSERT_EQ_MSG(actual, expected, mesg) \
+  SKYPAT_ASSERT_PRED((actual == expected), actual, expected) << mesg
+#define ASSERT_NE_MSG(actual, expected, mesg) \
+  SKYPAT_ASSERT_PRED((actual != expected), actual, expected) << mesg
+#define ASSERT_LE_MSG(actual, expected, mesg) \
+  SKYPAT_ASSERT_PRED((actual <= expected), actual, expected) << mesg
+#define ASSERT_LT_MSG(actual, expected, mesg) \
+  SKYPAT_ASSERT_PRED((actual < expected), actual, expected) << mesg
+#define ASSERT_GE_MSG(actual, expected, mesg) \
+  SKYPAT_ASSERT_PRED((actual >= expected), actual, expected) << mesg
+#define ASSERT_GT_MSG(actual, expected, mesg) \
+  SKYPAT_ASSERT_PRED((actual > expected), actual, expected) << mesg
 
 #define PERFORM(event) \
   for (skypat::testing::PerfIterator __loop(__FILE__, __LINE__, event); \
