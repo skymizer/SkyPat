@@ -1,3 +1,13 @@
+2018-04-08 Peter Chang <peter@skymizer.com>
+	* Executive Summary:
+	1. Change some files to fit Debian's policy.
+	2. Provide ASSERT and EXPECT macros with error messages.
+	3. Replace Pat/PAT by SkyPat/SKYPAT to unify our project name.
+	
+	* Change some files to fit Debian's policy:
+	1. Remove some documents with license issues to fit Debian's policy.
+	2. Remove our homemade debian folder to fit Debian's policy.
+
 2016-12-20 Peter Chang <peter@skymizer.com>
 	* Executive Summary:
 	1. Support all general perf_events.
