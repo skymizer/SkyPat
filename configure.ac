@@ -28,7 +28,7 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 ####################
 #  Versioning, see VERSION
 CURRENT_VERSION=3
-EVISION_VERSION=1
+REVISION_VERSION=1
 AGE_VERSION=0
 FULL_VERSION_NAME=Bourbon
 BUILD_VERSION=bourbon
