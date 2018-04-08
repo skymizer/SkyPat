@@ -11,7 +11,7 @@
 #  Autoconf/Automake Initialization
 
 dnl AC_INIT(PKG_NAME, BUILD_VERSION, BUG_REPORTER)
-AC_INIT([skypat],[aquavit],[skypat-dev@@googlegroups.com])
+AC_INIT([skypat],[bourbon],[skypat-dev@@googlegroups.com])
 AC_PREREQ(2.59)
 
 AC_CONFIG_SRCDIR([LICENSE])
@@ -28,10 +28,10 @@ AM_INIT_AUTOMAKE([1.9 dist-bzip2 foreign nostdinc subdir-objects])
 ####################
 #  Versioning, see VERSION
 CURRENT_VERSION=3
-REVISION_VERSION=0
+EVISION_VERSION=1
 AGE_VERSION=0
-FULL_VERSION_NAME=Aquavit
-BUILD_VERSION=aquavit
+FULL_VERSION_NAME=Bourbon
+BUILD_VERSION=bourbon
 
 SKYPAT_VERSION=$CURRENT_VERSION:$REVISION_VERSION:$AGE_VERSION
 PACKAGE_VERSION=$CURRENT_VERSION.$REVISION_VERSION.$AGE_VERSION-$BUILD_VERSION
