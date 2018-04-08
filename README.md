@@ -17,9 +17,9 @@
 ## Directory Structure
 
 ```
-share/pat/README    - this document
-share/pat/LICENSE   - the License
-share/pat/examples/ - the place of examples
+share/SkyPat/README    - this document
+share/SkyPat/LICENSE   - the License
+share/SkyPat/examples/ - the place of examples
 include/            - include file, exported interface
 lib/                - libraries of exported interface
 ```
@@ -51,13 +51,13 @@ You could download **SkyPat** either from the latest release tar-ball or from
 ### Method 1: Download **SkyPat** from the latest release tar-ball
 Download the source code from the latest release tar-ball.
 
-    $ wget -O pat-3.0.0.tar.gz https://github.com/skymizer/SkyPat/archive/v3.0.tar.gz
-    $ tar zxvf pat-3.0.0.tar.gz
+    $ wget -O SkyPat-3.0.0.tar.gz https://github.com/skymizer/SkyPat/archive/v3.0.tar.gz
+    $ tar zxvf SkyPat-3.0.0.tar.gz
 
 ### Method 2: Download **SkyPat** from our `git` repository
 Download the source code from our `git` repository into ${SKYPAT_SRC} directory.
  
-    $ git clone https://github.com/skymizer/pat.git ${SKYPAT_SRC}
+    $ git clone https://github.com/skymizer/SkyPat.git ${SKYPAT_SRC}
 
 ### Install required packages
 
@@ -82,7 +82,7 @@ If there are no `configure` shell script in the directory,
     $ ./autogen.sh
 
 Use `./configure` to configure the package for your system. 
-See [INSTALL](https://github.com/skymizer/pat/blob/master/INSTALL INSTALL) for 
+See [INSTALL](https://github.com/skymizer/SkyPat/blob/master/INSTALL INSTALL) for 
 more details.
 
     $ ./configure --prefix=${SKYPAT_INSTALL}
@@ -97,17 +97,17 @@ Type `make install` to install the package into your system.
 
 ### Run Examples
 
-Examples of **SkyPat** are installed at ${SKYPAT_INSTALL}/share/pat/examples. 
+Examples of **SkyPat** are installed at ${SKYPAT_INSTALL}/share/skypat/examples. 
 You can go to any sub-directory and build it. For example:
 
-    cd ${SKYPAT_INSTALL}/share/pat/examples/assertion
+    cd ${SKYPAT_INSTALL}/share/skypat/examples/assertion
     make
 
 Then, if **SkyPat** is successfully installed, you should see:
 
-    c++ -I../../../../include -L../../../../lib main.cpp my_case.cpp -lpat -o assertion
+    c++ -I../../../../include -L../../../../lib main.cpp my_case.cpp -lskypat -o assertion
       LD_LIBRARY_PATH=../../../../lib ./assertion
-      [    pat   ] Running 2 tests from 1 cases.
+      [  SkyPat  ] Running 2 tests from 1 cases.
       [----------] 2 tests from MyCase.
       [ RUN      ] MyCase.fibonacci_test
       [       OK ]
@@ -119,4 +119,4 @@ Then, if **SkyPat** is successfully installed, you should see:
 ## User Guide
 
 For those who need more information about **SkyPat**, please check out our
- [UserGuide](https://github.com/skymizer/pat/wiki/HowToUse) on Github.
+ [UserGuide](https://github.com/skymizer/SkyPat/wiki/HowToUse) on Github.
