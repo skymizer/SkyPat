@@ -10,9 +10,9 @@
 
 ## Latest release
 
-* v3.0 Aquavit
-  - Tarball: https://github.com/skymizer/SkyPat/archive/v3.0.tar.gz
-  - Zipball: https://github.com/skymizer/SkyPat/archive/v3.0.zip
+* v3.1 Bourbon
+  - Tarball: https://github.com/skymizer/SkyPat/archive/v3.1.tar.gz
+  - Zipball: https://github.com/skymizer/SkyPat/archive/v3.1.zip
 
 ## Directory Structure
 
@@ -51,8 +51,8 @@ You could download **SkyPat** either from the latest release tar-ball or from
 ### Method 1: Download **SkyPat** from the latest release tar-ball
 Download the source code from the latest release tar-ball.
 
-    $ wget -O SkyPat-3.0.0.tar.gz https://github.com/skymizer/SkyPat/archive/v3.0.tar.gz
-    $ tar zxvf SkyPat-3.0.0.tar.gz
+    $ wget -O SkyPat-3.1.tar.gz https://github.com/skymizer/SkyPat/archive/v3.1.tar.gz
+    $ tar zxvf SkyPat-3.1.tar.gz
 
 ### Method 2: Download **SkyPat** from our `git` repository
 Download the source code from our `git` repository into ${SKYPAT_SRC} directory.
