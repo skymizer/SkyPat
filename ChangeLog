@@ -1,3 +1,9 @@
+2018-05-01 Peter Chang <peter@skymizer.com>
+	* Executive Summary:
+	1. Remove the white paper due to license issues.
+	2. Replace pat by SkyPat in the LICENSE file.
+	3. Make sure that all files' licenses are based on the LICENSE file.
+
 2018-04-08 Peter Chang <peter@skymizer.com>
 	* Executive Summary:
 	1. Change some files to fit Debian's policy.
