@@ -1,8 +1,9 @@
 //===- QThreadImpl.cpp ----------------------------------------------------===//
 //
-//                               Skymizer
+//                              The SkyPat team
 //
-// Copyright (C) 2013, Skymizer Inc.. All rights reserved.
+// This file is distributed under the New BSD License.
+// See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
 #include <skymizer/Thread/ThreadImpl.h>
