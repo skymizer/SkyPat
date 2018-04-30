@@ -12,8 +12,8 @@ AH_TOP([
 //===- Config.h.in --------------------------------------------------------===//
 //
 //                              The SkyPat Team 
-// Copyright (C) 2012-
-// All rights reserved.
+// This file is distributed under the New BSD License.
+// See LICENSE for details.
 //
 //===----------------------------------------------------------------------===//
 #ifndef SKYPAT_CONFIG_CONFIG_H
