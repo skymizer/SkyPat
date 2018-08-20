@@ -13,6 +13,7 @@
 * v3.1.1 Bourbon
   - Tarball: https://github.com/skymizer/SkyPat/archive/v3.1.1.tar.gz
   - Zipball: https://github.com/skymizer/SkyPat/archive/v3.1.1.zip
+  - Debian package: https://packages.debian.org/buster/libskypat-dev (credit: @szlin, @gavin09)
 
 ## Directory Structure
 
