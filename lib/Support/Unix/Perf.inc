@@ -136,28 +136,30 @@ static ManagedStatic<PerfImpl> g_Perf;
 Perf::Perf()
   : m_Interval(0), m_EventType(PerfEvent::CONTEXT_SWITCHES), m_bIsActive(false) {
   g_Perf->init(PerfEvent::CONTEXT_SWITCHES);
+  g_Perf->start();
 }
 
 Perf::Perf(enum PerfEvent pEvent)
   : m_Interval(0), m_EventType(pEvent), m_bIsActive(false) {
   g_Perf->init(pEvent);
+  g_Perf->start();
 }
 
 Perf::~Perf()
 {
+  g_Perf->stop();
 }
 
 void Perf::start()
 {
+  m_Interval = g_Perf->getValue();
   m_bIsActive = true;
-  g_Perf->start();
 }
 
 void Perf::stop()
 {
-  g_Perf->stop();
+  m_Interval = g_Perf->getValue() - m_Interval;
   m_bIsActive = false;
-  m_Interval = g_Perf->getValue();
 }
 
 std::string Perf::unit()
