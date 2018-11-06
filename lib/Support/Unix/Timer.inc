@@ -123,23 +123,24 @@ static ManagedStatic<TimerImpl> g_Timer;
 //===----------------------------------------------------------------------===//
 Timer::Timer()
   : m_Interval(0), m_bIsActive(false) {
+  g_Timer->start();
 }
 
 Timer::~Timer()
 {
+  g_Timer->stop();
 }
 
 void Timer::start()
 {
+  m_Interval = g_Timer->ns();
   m_bIsActive = true;
-  g_Timer->start();
 }
 
 void Timer::stop()
 {
-  g_Timer->stop();
+  m_Interval = g_Timer->ns() - m_Interval;
   m_bIsActive = false;
-  m_Interval = g_Timer->clock();
 }
 
 std::string Timer::unit()
