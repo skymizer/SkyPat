@@ -61,11 +61,12 @@ public:
   }
   ~TimerImpl() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
+    ioctl(m_Fd, PERF_EVENT_IOC_DISABLE);
     close(m_Fd);
 #endif
   }
 
-   testing::Interval ns() {
+   testing::Interval clock() {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
      unsigned long long runtime;
      read(m_Fd, &runtime, sizeof(unsigned long long));
@@ -86,28 +87,25 @@ public:
   }
 
   void start() {
+    if (false == g_bIsEnabled) {
 #if defined(HAVE_LINUX_PERF_EVENT_H)
-    ioctl(m_Fd, PERF_EVENT_IOC_ENABLE);
+      ioctl(m_Fd, PERF_EVENT_IOC_ENABLE);
 #endif
-    m_Start = ns();
-    assert(-1 != m_Start && "fail to get starting time");
+      g_bIsEnabled = true;
+      m_Start = clock();
+      assert(-1 != m_Start && "fail to get starting time");
+    }
   }
 
   void stop() {
-#if defined(HAVE_LINUX_PERF_EVENT_H)
-    ioctl(m_Fd, PERF_EVENT_IOC_DISABLE);
-#endif
-    m_End = ns();
+    m_End = clock();
     assert(-1 != m_End && "fail to get elapsed time");
-  }
-
-  testing::Interval clock() const {
-    return (m_End - m_Start);
   }
 
 private:
   testing::Interval m_Start;
   testing::Interval m_End;
+  static bool g_bIsEnabled;
 
   static long g_ClkTick;
 
@@ -115,6 +113,7 @@ private:
 };
 
 long TimerImpl::g_ClkTick = -1;
+bool TimerImpl::g_bIsEnabled = false;
 
 static ManagedStatic<TimerImpl> g_Timer;
 
@@ -123,23 +122,22 @@ static ManagedStatic<TimerImpl> g_Timer;
 //===----------------------------------------------------------------------===//
 Timer::Timer()
   : m_Interval(0), m_bIsActive(false) {
-  g_Timer->start();
 }
 
 Timer::~Timer()
 {
-  g_Timer->stop();
 }
 
 void Timer::start()
 {
-  m_Interval = g_Timer->ns();
+  g_Timer->start();
+  m_Interval = g_Timer->clock();
   m_bIsActive = true;
 }
 
 void Timer::stop()
 {
-  m_Interval = g_Timer->ns() - m_Interval;
+  m_Interval = g_Timer->clock() - m_Interval;
   m_bIsActive = false;
 }
 
