@@ -106,6 +106,25 @@ skypat::testing::TestInfo* const SKYPAT_TEST_CLASS_NAME_(case_name, test_name)\
             SKYPAT_TEST_CLASS_NAME_(case_name, test_name)>);\
 void SKYPAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
 
+/// Helper macro for defining SystemC Cases.
+#define SKYPAT_SYSTEMC_TEST_CASE(case_name, test_name, parent_class)\
+class SKYPAT_TEST_CLASS_NAME_(case_name, test_name) : public parent_class {\
+ public:\
+  SKYPAT_TEST_CLASS_NAME_(case_name, test_name)() {}\
+  virtual void SetUp() { sc_get_curr_simcontext()->reset(); } \
+ private:\
+  virtual void TestBody();\
+  static skypat::testing::TestInfo* const m_TestInfo;\
+};\
+\
+skypat::testing::TestInfo* const SKYPAT_TEST_CLASS_NAME_(case_name, test_name)\
+  ::m_TestInfo =\
+    skypat::testing::MakeAndRegisterTestInfo(\
+        #case_name, #test_name, \
+        new skypat::testing::TestFactory<\
+            SKYPAT_TEST_CLASS_NAME_(case_name, test_name)>);\
+void SKYPAT_TEST_CLASS_NAME_(case_name, test_name)::TestBody()
+
 // The message handling macros. The assignment is used to trigger recording a
 // partial result.
 #define SKYPAT_MESSAGE_AT(file, line, message, result_type) \
@@ -794,6 +813,9 @@ public:
 
 #define SKYPAT_F(test_fixture, test_name) \
   SKYPAT_TEST_CASE(test_fixture, test_name, skypat::Test)
+
+#define SKYPAT_SYSTEMC_F(test_fixture, test_name) \
+  SKYPAT_SYSTEMC_TEST_CASE(test_fixture, test_name, skypat::Test)
 
 // Boolean assertions.
 #define EXPECT_TRUE(condition) \
