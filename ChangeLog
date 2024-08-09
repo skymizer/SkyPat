@@ -1,3 +1,8 @@
+2024-08-09 Cheng-Chi Wang <chengchi@skymizer.com> 
+	* Executive Summary:
+	1. Add FindSkyPat CMake config
+	2. Add SKYPAT_SYSTEMC_F test function.
+
 2018-05-01 Peter Chang <peter@skymizer.com>
 	* Executive Summary:
 	1. Remove the white paper due to license issues.
