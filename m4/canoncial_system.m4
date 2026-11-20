@@ -162,6 +162,7 @@ AC_CACHE_CHECK([target architecture],
   powerpc*-*)             skypat_cv_target_arch_type="PowerPC" ;;
   arm*-*)                 skypat_cv_target_arch_type="ARM" ;;
   aarch64*-*)             skypat_cv_target_arch_type="AArch64" ;;
+  loongarch64*-*)         skypat_cv_target_arch_type="LoongArch64" ;;
   mips-* | mips64-*)      skypat_cv_target_arch_type="Mips" ;;
   mipsel-* | mips64el-*)  skypat_cv_target_arch_type="Mips" ;;
   xcore-*)                skypat_cv_target_arch_type="XCore" ;;
